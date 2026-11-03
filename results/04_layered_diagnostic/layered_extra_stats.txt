@@ -1,0 +1,16 @@
+CLUSTER IMPLEMENTATION: events sorted by start date; a new cluster starts when the gap to the previous event (any station) exceeds 3 days (chained / transitive; no distance limit).
+development: events 113, clusters 69; events per cluster median 1, max 5; stations per cluster max 5; largest chained span 7 days; clusters with span > 7 days: 0
+test: events 43, clusters 26; events per cluster median 1, max 4; stations per cluster max 4; largest chained span 4 days; clusters with span > 7 days: 0
+all: events 156, clusters 95; events per cluster median 1, max 5; stations per cluster max 5; largest chained span 7 days; clusters with span > 7 days: 0
+
+EVENT-LEVEL MAGNITUDE of the simulated (fixed-property) apparent change in ln alpha vs the observed change (identified events)
+dev: OBSERVED identified events n 53: median |delta| 0.17, SD 0.27, 90th percentile |delta| 0.45
+   SIMULATED U         n  85: median |delta| 0.00, SD 0.00, 90th percentile |delta| 0.00, max |delta| 0.00
+   SIMULATED G_low     n  85: median |delta| 0.06, SD 0.08, 90th percentile |delta| 0.17, max |delta| 0.23
+   SIMULATED G_high    n  85: median |delta| 0.06, SD 0.06, 90th percentile |delta| 0.12, max |delta| 0.17
+   SIMULATED S_central n  25: median |delta| 0.06, SD 0.06, 90th percentile |delta| 0.09, max |delta| 0.17
+test: OBSERVED identified events n 21: median |delta| 0.23, SD 0.32, 90th percentile |delta| 0.47
+   SIMULATED U         n  37: median |delta| 0.00, SD 0.00, 90th percentile |delta| 0.00, max |delta| 0.00
+   SIMULATED G_low     n  37: median |delta| 0.06, SD 0.09, 90th percentile |delta| 0.14, max |delta| 0.23
+   SIMULATED G_high    n  37: median |delta| 0.06, SD 0.07, 90th percentile |delta| 0.12, max |delta| 0.17
+   SIMULATED S_central n  23: median |delta| 0.06, SD 0.10, 90th percentile |delta| 0.12, max |delta| 0.29

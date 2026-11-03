@@ -1,0 +1,7 @@
+sequences: 156
+depth   5 cm: peak anom median 3.83 C | peak day (from spell start) median 4.0 | peak/threshold median 3.86, share with peak<=1.5xthr 0.06 | half-decay days after peak median 2.0 (observed in 0.99)
+depth  10 cm: peak anom median 3.43 C | peak day (from spell start) median 5.0 | peak/threshold median 3.72, share with peak<=1.5xthr 0.08 | half-decay days after peak median 3.0 (observed in 0.96)
+depth  20 cm: peak anom median 2.79 C | peak day (from spell start) median 5.0 | peak/threshold median 3.44, share with peak<=1.5xthr 0.13 | half-decay days after peak median 3.0 (observed in 0.90)
+depth  50 cm: peak anom median 2.04 C | peak day (from spell start) median 6.0 | peak/threshold median 3.28, share with peak<=1.5xthr 0.20 | half-decay days after peak median 3.0 (observed in 0.77)
+depth 100 cm: peak anom median 1.24 C | peak day (from spell start) median 9.0 | peak/threshold median 2.47, share with peak<=1.5xthr 0.35 | half-decay days after peak median 3.0 (observed in 0.60)
+ordering: peak at 20 cm later than at 5 cm in 0.58, same day 0.42; 100 cm later than 20 cm in 0.85

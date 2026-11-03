@@ -1,0 +1,29 @@
+[PASS] 1. uniform limit equals heatsolver (also as 3 identical layers) max abs difference 9.41e-14 C (limit 1e-8)
+
+--- criteria 2 and 3 at base (38 intervals, 3600 s)
+   uniform periodic: a=2e-07 z=0.10 amp -0.82% ph -0.018 h; a=2e-07 z=0.20 amp -2.43% ph -0.053 h; a=5e-07 z=0.10 amp -0.28% ph -0.002 h; a=5e-07 z=0.20 amp -0.85% ph -0.005 h; a=5e-07 z=0.50 amp -2.52% ph -0.015 h; a=1e-06 z=0.10 amp -0.14% ph +0.001 h; a=1e-06 z=0.20 amp -0.43% ph +0.003 h; a=1e-06 z=0.50 amp -1.28% ph +0.010 h; a=2e-06 z=0.10 amp -0.08% ph +0.002 h; a=2e-06 z=0.20 amp -0.24% ph +0.005 h; a=2e-06 z=0.50 amp -0.75% ph +0.013 h
+[PASS] 2. uniform periodic, amplitude <= 3%, phase <= 0.3 h [base (38 intervals, 3600 s)] 
+   k2/k1=0.5, C2/C1=0.5 (alpha2/alpha1 = 1.00): worst amplitude error 2.73% at z=0.50 m (relative amplitude 0.027), worst phase error 0.033 h, interface flux error 0.77%
+   k2/k1=0.5, C2/C1=2.0 (alpha2/alpha1 = 0.25): worst amplitude error 3.49% at z=0.30 m (relative amplitude 0.057), worst phase error 0.036 h, interface flux error 1.60%
+   k2/k1=2.0, C2/C1=0.5 (alpha2/alpha1 = 4.00): worst amplitude error 1.47% at z=0.50 m (relative amplitude 0.070), worst phase error 0.022 h, interface flux error 0.53%
+   k2/k1=2.0, C2/C1=2.0 (alpha2/alpha1 = 1.00): worst amplitude error 2.63% at z=0.50 m (relative amplitude 0.013), worst phase error 0.036 h, interface flux error 1.37%
+[FAIL] 3. two-layer periodic, interface between nodes, amplitude <= 3%, phase <= 0.3 h [base (38 intervals, 3600 s)] 
+[PASS] 3b. interface flux within 3% of analytic [base (38 intervals, 3600 s)] 
+
+--- criteria 2 and 3 at refined (76 intervals, 900 s)
+   uniform periodic: a=2e-07 z=0.10 amp -0.17% ph -0.006 h; a=2e-07 z=0.20 amp -0.51% ph -0.017 h; a=5e-07 z=0.10 amp -0.05% ph -0.001 h; a=5e-07 z=0.20 amp -0.14% ph -0.004 h; a=5e-07 z=0.50 amp -0.43% ph -0.011 h; a=1e-06 z=0.10 amp -0.02% ph -0.000 h; a=1e-06 z=0.20 amp -0.06% ph -0.001 h; a=1e-06 z=0.50 amp -0.18% ph -0.003 h; a=2e-06 z=0.10 amp -0.01% ph -0.000 h; a=2e-06 z=0.20 amp -0.03% ph -0.000 h; a=2e-06 z=0.50 amp -0.08% ph -0.001 h
+[PASS] 2. uniform periodic, amplitude <= 3%, phase <= 0.3 h [refined (76 intervals, 900 s)] 
+   k2/k1=0.5, C2/C1=0.5 (alpha2/alpha1 = 1.00): worst amplitude error 0.47% at z=0.50 m (relative amplitude 0.027), worst phase error 0.013 h, interface flux error 1.33%
+   k2/k1=0.5, C2/C1=2.0 (alpha2/alpha1 = 0.25): worst amplitude error 0.73% at z=0.30 m (relative amplitude 0.057), worst phase error 0.007 h, interface flux error 1.82%
+   k2/k1=2.0, C2/C1=0.5 (alpha2/alpha1 = 4.00): worst amplitude error 0.22% at z=0.50 m (relative amplitude 0.070), worst phase error 0.009 h, interface flux error 0.75%
+   k2/k1=2.0, C2/C1=2.0 (alpha2/alpha1 = 1.00): worst amplitude error 0.45% at z=0.50 m (relative amplitude 0.013), worst phase error 0.010 h, interface flux error 1.10%
+[PASS] 3. two-layer periodic, interface between nodes, amplitude <= 3%, phase <= 0.3 h [refined (76 intervals, 900 s)] 
+[PASS] 3b. interface flux within 3% of analytic [refined (76 intervals, 900 s)] 
+[PASS] 4. steady state: element-flux spread <= 1e-6 and profile matches the piecewise-linear exact solution (flux spread 7.50e-13, max profile error 4.62e-14 C)
+
+5. RMS error vs analytic (C): (nint 38, dt 3600 s) 0.0121; (nint 76, dt 3600 s) 0.0058; (nint 38, dt 900 s) 0.0094; (nint 76, dt 900 s) 0.0025; (nint 152, dt 900 s) 0.0008
+[PASS] 5. convergence: error at (76, 900 s) <= error at (38, 3600 s) 
+numerical error floor: RMS 0.012 C (base) and 0.002 C (refined) against the analytic two-layer solution (24 h amplitude 8 C at the top)
+
+CRITERIA PASSED AT: base=False, refined=True, basic checks (1, 4, 5)=True
+GENERATOR RESOLUTION SELECTED BY VERIFICATION: refined

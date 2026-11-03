@@ -1,0 +1,33 @@
+Python environment for soil heat forecasting project
+Generated: 2026-10-28
+
+Python: 3.12.10 (CPython, Windows x64)
+
+Core packages:
+  numpy       2.2.6
+  pandas      3.0.2
+  scipy       1.17.1
+  matplotlib  3.10.9
+  scikit-learn 1.8.0
+
+ML packages:
+  xgboost     3.2.0
+  lightgbm    4.7.0
+  torch       2.12.1+cpu  (CPU build only)
+
+PDF/other:
+  pymupdf (fitz)  1.27.2.2
+
+Data download date (USCRN archive):
+  Hourly USCRN files (2012–2021) downloaded 2026-10-08 from:
+  https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/
+  Files preprocessed into .npy format in phase3/data/ (not included due to size).
+  The 2022 soil moisture correction referenced in USCRN documentation
+  does not affect years 2012–2021 in this archive.
+
+Station list: phase3/stations_phase3.csv  (39 stations)
+Dev years: 2012–2017 (inclusive)
+Val years: 2018–2021 (inclusive)
+
+Working directory root: C:\Users\jtani\.gemini\antigravity\scratch\soil\
+All scripts set sys.path to this root.

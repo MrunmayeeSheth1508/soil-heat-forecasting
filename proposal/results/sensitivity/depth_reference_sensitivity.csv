@@ -1,0 +1,16 @@
+depth_m,label,rho,I_A
+0.65,"Underside of bundle (0.650 m) [V, fig-based]",90.0,866.1393415991847
+0.65,"Underside of bundle (0.650 m) [V, fig-based]",117.0,819.1038649831555
+0.65,"Underside of bundle (0.650 m) [V, fig-based]",157.0,761.6575699948162
+0.633,Lower conductor centres (0.633 m) [I],90.0,868.0043812068783
+0.633,Lower conductor centres (0.633 m) [I],117.0,821.1555629152683
+0.633,Lower conductor centres (0.633 m) [I],157.0,763.8724560631575
+0.623,Centroid of three centres (0.623 m) [I],90.0,869.1308162389778
+0.623,Centroid of three centres (0.623 m) [I],117.0,822.395781799139
+0.623,Centroid of three centres (0.623 m) [I],157.0,765.2126173743059
+0.604,Upper conductor centre (0.604 m) [I],90.0,871.3343743269419
+0.604,Upper conductor centre (0.604 m) [I],117.0,824.8242149473444
+0.604,Upper conductor centre (0.604 m) [I],157.0,767.8395884804212
+0.587,Top of bundle (~0.587 m) [I],90.0,873.3804653195209
+0.587,Top of bundle (~0.587 m) [I],117.0,827.0818333319086
+0.587,Top of bundle (~0.587 m) [I],157.0,770.2851714992148

@@ -1,0 +1,72 @@
+﻿=== PART 1. SELMA RECONCILIATION ===
+Rows: pilot raw files 17544, audit arrays 17544. Column 29 (SOIL_MOISTURE_10) and soil T 5/10/20 identical hour by hour: True
+Pilot-episode hours rebuilt: 14703 (pilot reported 14,703)
+SM10 percentiles [min p5 p25 p50 p75 p95 max]:
+  all valid hours 2019-2020            : 0.233 0.273 0.372 0.432 0.522 0.544 0.627
+  pilot-episode hours 2019-2020        : 0.241 0.278 0.388 0.454 0.527 0.544 0.627
+  audit dry informative days 2019-2021 : 0.241 0.277 0.380 0.441 0.489 0.539 0.556  (n=623)
+  audit dry days 2019-2020             : 0.241 0.260 0.356 0.413 0.489 0.541 0.556  (n=417)
+  audit dry days inside pilot episodes : 0.242 0.263 0.377 0.428 0.501 0.541 0.556  (n=352)
+  audit dry days outside pilot episodes: 0.241 0.256 0.326 0.346 0.382 0.445 0.513  (n=65)
+Pilot validity required all five depths of moisture and temperature; the audit required only 5/10/20 cm temperature and 10 cm moisture.
+Two-state contrast, audit definition:
+  audit dry days 2019-2021      : 6 bins (12, 15, 18, 21, 24, 27); r(theta,Tin)=-0.61; theta IQR 0.380-0.489
+  audit dry days 2019-2020      : 1 bins (27); r(theta,Tin)=-0.67; theta IQR 0.356-0.489
+  dry days inside pilot episodes: 2 bins (12, 15); r(theta,Tin)=-0.64; theta IQR 0.377-0.501
+  rerun training episodes 1-11  : 0 bins (); r(theta,Tin)=-0.64; theta IQR 0.372-0.501
+  rerun test episodes 12-14     : 0 bins (); r(theta,Tin)=-0.68; theta IQR 0.408-0.501
+
+=== PART 2. RECORD CHECKS (2019-2021) for audit-qualifying stations ===
+                 station state  completeness  stuck_days  jumps_per_yr  amp_order  th_min  th_max  two_state_bins  sd_TS  r_thT         flag
+        TX_Muleshoe_19_S    TX         0.998       0.750         0.667      1.000   0.059   0.311               9  0.035 -0.244             
+  SC_McClellanville_7_NE    SC         0.746       1.000         4.999      1.000   0.023   0.409               7  0.086 -0.265             
+       IL_Champaign_9_SW    IL         0.921       0.583         6.998      1.000   0.151   0.488               7  0.056 -0.466             
+        OK_Goodwell_2_SE    OK         1.000       0.833         0.667      0.989   0.143   0.553               7  0.056 -0.310             
+        NE_Lincoln_8_ENE    NE         0.875       0.333         0.000      1.000   0.190   0.505               7  0.055 -0.485             
+      CO_La_Junta_17_WSW    CO         0.978       0.917         0.333      1.000   0.092   0.328               7  0.034 -0.370             
+          CO_Cortez_8_SE    CO         0.924       0.875         0.333      1.000   0.075   0.370               7  0.033 -0.409             
+   SD_Sioux_Falls_14_NNE    SD         0.786       1.458         0.333      1.000   0.115   0.411               6  0.067 -0.357             
+         AL_Selma_13_WNW    AL         0.996       0.458         2.333      0.999   0.233   0.627               6  0.055 -0.610             
+   GA_Watkinsville_5_SSE    GA         0.973       0.958        30.326      0.938   0.028   0.386               6  0.053 -0.411        jumps
+        IN_Bedford_5_WNW    IN         0.999       0.958         0.000      0.993   0.148   0.466               5  0.062 -0.475             
+      LA_Lafayette_13_SE    LA         0.994       1.583         0.000      0.531   0.145   0.420               5  0.053 -0.172    amp_order
+      KS_Manhattan_6_SSW    KS         0.999       0.750         9.664      1.000   0.097   0.404               5  0.051 -0.369             
+     MT_Wolf_Point_34_NE    MT         0.672       0.292         3.666      1.000   0.054   0.473               5  0.049 -0.315             
+         CO_Dinosaur_2_E    CO         0.774       2.167         0.000      1.000   0.089   0.427               5  0.048 -0.577             
+      CO_Montrose_11_ENE    CO         0.782       2.208         0.667      1.000   0.101   0.433               5  0.035 -0.638             
+     MT_Lewistown_42_WSW    MT         0.724       1.000         0.000      1.000   0.145   0.373               5  0.035 -0.321             
+            AZ_Elgin_5_S    AZ         0.830       0.750         4.332      1.000   0.031   0.335               5  0.032 -0.636             
+        AL_Fairhope_3_NE    AL         0.963       1.083         0.333      0.930   0.042   0.320               5  0.031 -0.366             
+   MO_Chillicothe_22_ENE    MO         0.990       1.042         0.000      1.000   0.129   0.528               4  0.071 -0.388             
+       WY_Sundance_8_NNW    WY         0.627       1.542         0.667      1.000   0.092   0.511               4  0.068 -0.457             
+         MS_Newton_5_ENE    MS         0.992       1.500         0.000      0.489   0.046   0.469               4  0.063 -0.572    amp_order
+    MT_Wolf_Point_29_ENE    MT         0.398       0.250         0.333      1.000   0.097   0.459               4  0.060 -0.335 completeness
+        KS_Oakley_19_SSW    KS         0.421       0.792         1.333      1.000   0.198   0.504               4  0.052 -0.331 completeness
+       SD_Buffalo_13_ESE    SD         0.695       0.833         0.000      1.000   0.109   0.378               4  0.049 -0.557             
+      ND_Northgate_5_ESE    ND         0.638       0.667         4.999      1.000   0.035   0.421               4  0.048 -0.453             
+         OK_Goodwell_2_E    OK         0.448       0.917         0.000      1.000   0.139   0.429               4  0.046 -0.448 completeness
+         AL_Gadsden_19_N    AL         0.999       0.792         0.000      0.991   0.066   0.397               4  0.043 -0.644             
+  TX_Port_Aransas_32_NNE    TX         0.797       9.625         4.666      0.908   0.013   0.509               3  0.119 -0.032        stuck
+          SD_Pierre_24_S    SD         0.831       2.250         0.000      1.000   0.233   0.630               3  0.057 -0.382             
+      NM_Los_Alamos_13_W    NM         0.942       1.333         0.333      0.992   0.052   0.523               3  0.055 -0.583             
+   CA_Santa_Barbara_11_W    CA         0.986       1.333         6.665      1.000   0.045   0.445               3  0.054 -0.714             
+      NC_Asheville_8_SSW    NC         0.998       1.333         0.000      1.000   0.103   0.489               3  0.052 -0.667             
+          NC_Durham_11_W    NC         0.975       3.583         0.333      0.949   0.076   0.435               3  0.050 -0.667             
+         PA_Avondale_2_N    PA         0.941       0.958         0.667      0.989   0.120   0.477               3  0.050 -0.580             
+         RI_Kingston_1_W    RI         0.895       1.583         0.000      1.000   0.026   0.356               3  0.049 -0.511             
+        CA_Merced_23_WSW    CA         0.693       1.292       163.629      1.000   0.050   0.590               3  0.044 -0.593        jumps
+     AR_Batesville_8_WNW    AR         0.948       1.042         2.666      1.000   0.113   0.417               3  0.039 -0.538             
+CA_Yosemite_Village_12_W    CA         0.961       1.500         0.333      0.888   0.026   0.339               3  0.032 -0.757    amp_order
+
+=== PART 3. PRE-SPECIFIED SELECTION ===
+Selected: ['TX_Muleshoe_19_S', 'SC_McClellanville_7_NE', 'IL_Champaign_9_SW', 'OK_Goodwell_2_SE', 'NE_Lincoln_8_ENE', 'AL_Selma_13_WNW']
+Flagged (inspect, not rejected as faulty):                  station         flag
+   GA_Watkinsville_5_SSE        jumps
+      LA_Lafayette_13_SE    amp_order
+         MS_Newton_5_ENE    amp_order
+    MT_Wolf_Point_29_ENE completeness
+        KS_Oakley_19_SSW completeness
+         OK_Goodwell_2_E completeness
+  TX_Port_Aransas_32_NNE        stuck
+        CA_Merced_23_WSW        jumps
+CA_Yosemite_Village_12_W    amp_order

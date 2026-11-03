@@ -1,0 +1,16 @@
+### dev
+pilotA_out_dev.txt: byte-identical = True
+pilotA_part1_dev.csv: byte-identical = True
+pilotA_part2_dev.csv: byte-identical = True
+pilotA_part3_dev.csv: byte-identical = True
+### test
+pilotA_out_test.txt: byte-identical = True
+pilotA_part1_test.csv: byte-identical = True
+pilotA_part2_test.csv: byte-identical = True
+pilotA_part3_test.csv: byte-identical = True
+
+### ATTRITION (archived event-level outputs)
+dev: complete sequences 113 (wetting 76, no wetting 37); rows with windows tested 93; dropped for post-window shorter than 7 days (no row) 20; dropped for >10% missing/gaps 8; usable 85 (wet 51, ctrl 34); identified in both windows 53 (wet 33, ctrl 20); clusters 41
+   not identified: stress window only 30, post/ctrl window only 21, either 32
+test: complete sequences 43 (wetting 28, no wetting 15); rows with windows tested 42; dropped for post-window shorter than 7 days (no row) 1; dropped for >10% missing/gaps 5; usable 37 (wet 23, ctrl 14); identified in both windows 21 (wet 12, ctrl 9); clusters 14
+   not identified: stress window only 15, post/ctrl window only 8, either 16

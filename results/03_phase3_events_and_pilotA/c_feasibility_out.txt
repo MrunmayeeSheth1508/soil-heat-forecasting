@@ -1,0 +1,37 @@
+PRODUCTS (vegetation-relevant):
+  MCD12Q1 | MODIS/Terra+Aqua Land Cover Type (LC) Yearly L3 Global 500 m SIN Grid | Yearly | 500
+  MCD12Q2 | MODIS/Terra+Aqua Land Cover Dynamics (LCD) Yearly L3 Global 500 m SIN  | Yearly | 500
+  MCD15A2H | MODIS/Terra+Aqua Leaf Area Index/FPAR (LAI/FPAR)  8-Day L4 Global 500  | 8-Day | 500
+  MCD15A3H | MODIS/Terra+Aqua Leaf Area Index/FPAR (LAI/FPAR) 4-Day L4 Global 500 m | 4-Day | 500
+  MCD43A | MODIS/Terra+Aqua BRDF and Calculated Albedo (BRDF/MCD43A) 16-Day L3 Gl | Daily | 500
+  MCD43A1 | MODIS/Terra+Aqua BRDF/Albedo Model Parameters (BRDF) 16-Day L3 Global  | Daily | 500
+  MCD43A4 | MODIS/Terra+Aqua Nadir BRDF-Adjusted Reflectance (NBAR) Daily L3 Globa | Daily | 500
+  MOD09A1 | MODIS/Terra Surface Reflectance (SREF) 8-Day L3 Global 500m SIN Grid | 8-Day | 500
+  MOD11A2 | MODIS/Terra Land Surface Temperature and Emissivity (LST) 8-Day L3 Glo | 8-Day | 1000
+  MOD13Q1 | MODIS/Terra Vegetation Indices (NDVI/EVI) 16-Day L3 Global 250m SIN Gr | 16-Day | 250
+  MOD15A2H | MODIS/Terra Leaf Area Index/FPAR (LAI/FPAR) 8-Day L4 Global 500 m SIN  | 8-Day | 500
+  MOD16A2 | MODIS/Terra Net Evapotranspiration (ET) 8-Day L4 Global 500 m SIN Grid | 8-Day | 500
+  MOD16A2GF | MODIS/Terra Net Evapotranspiration Gap-Filled (ET) 8-Day L4 Global 500 | 8-Day | 500
+  MOD17A2H | MODIS/Terra Gross Primary Productivity (GPP) 8-Day L4 Global 500 m SIN | 8-Day | 500
+  MOD17A2HGF | MODIS/Terra Gross Primary Productivity Gap-Filled (GPP) 8-Day L4 Globa | 8-Day | 500
+  MOD17A3HGF | MODIS/Terra Net Primary Production Gap-Filled (NPP) Yearly L4 Global 5 | Yearly | 500
+  VNP09A1 | VIIRS/S-NPP Surface Reflectance (SREF) 8-Day L3 Global 1 km SIN Grid | 8-Day | 1000
+  VNP09H1 | VIIRS/S-NPP Surface Reflectance (SREF) 8-Day L3 Global 500m SIN Grid | 8-Day | 500
+  VNP13A1 | VIIRS/S-NPP Vegetation Indices (NDVI/EVI) 16-Day L3 Global 500m SIN Gr | 16-Day | 500
+
+LAND COVER (MCD12Q1 2019, 5x5 pixels of 500 m around the 2-decimal station coordinate):
+  stations queried 39, with result 39
+  center class counts: {'grassland': 16, 'savanna': 5, 'cropland': 5, 'woody savanna': 4, 'evergreen needleleaf': 2, 'crop/natural mosaic': 2, 'deciduous broadleaf': 2, 'open shrub': 1, 'urban': 1, 'mixed forest': 1}
+  fraction of window pixels equal to center: median 0.84; stations with >=0.8: 21; with 1.0: 15
+
+NDVI WINDOWS (MOD13Q1 16-day composites, event start-30 d .. end+45 d):
+  events 10, composites 52; mean good-reliability fraction in center 3x3: 1.00
+  composites per event window: [4, 5, 5, 5, 6, 5, 5, 5, 5, 6]; composites after the spell end: [2, 3, 3, 3, 3, 2, 3, 3, 3, 3]; within the 21-day follow-up: [1, 1, 1, 1, 1, 1, 2, 1, 2, 1]
+  within-9x9 NDVI spatial SD (250 m pixels), median: 0.066
+station
+AL_Gadsden_19_N          0.64-0.79
+KS_Oakley_19_SSW         0.36-0.46
+MO_Chillicothe_22_ENE    0.65-0.81
+NM_Los_Alamos_13_W       0.47-0.69
+OK_Goodwell_2_SE         0.17-0.52
+SD_Pierre_24_S           0.36-0.57

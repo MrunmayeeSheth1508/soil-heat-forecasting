@@ -1,0 +1,21 @@
+EXPLORATORY post-hoc selection checks on the archived OBSERVED fits (not simulated; no new fits)
+
+=== DEV: usable 85 (wet 51, ctrl 34); identified 53; overlap events 14; grid-edge fits 6 ===
+identified (archived rule)            : contrast +0.142 [-0.010, +0.284]  (wet 33, ctrl 20, clusters 41)
+all usable                            : contrast +0.149 [-0.052, +0.336]  (wet 51, ctrl 34, clusters 56)
+identified, no stress/post overlap    : contrast +0.181 [+0.020, +0.327]  (wet 23, ctrl 20, clusters 34)
+all usable, no overlap                : contrast +0.222 [+0.027, +0.409]  (wet 37, ctrl 34, clusters 48)
+identified, May-Sep                   : contrast +0.234 [+0.060, +0.390]  (wet 21, ctrl 9, clusters 24)
+not identified (either window)        : contrast +0.191 [-0.229, +0.573]  (wet 18, ctrl 14, clusters 27)
+not-identified events: median |delta| 0.50 vs identified 0.17; grid-edge fits among not-identified 6 of 32
+share of events identified: wet 0.65, ctrl 0.59
+
+=== TEST: usable 37 (wet 23, ctrl 14); identified 21; overlap events 4; grid-edge fits 1 ===
+identified (archived rule)            : contrast +0.141 [-0.154, +0.428]  (wet 12, ctrl 9, clusters 14)
+all usable                            : contrast -0.223 [-0.570, +0.213]  (wet 23, ctrl 14, clusters 24)
+identified, no stress/post overlap    : contrast +0.227 [-0.034, +0.482]  (wet 10, ctrl 9, clusters 14)
+all usable, no overlap                : contrast -0.157 [-0.521, +0.251]  (wet 19, ctrl 14, clusters 23)
+identified, May-Sep                   : contrast +0.189 [-0.074, +0.692]  (wet 6, ctrl 4, clusters 8)
+not identified (either window)        : contrast -0.835 [-1.394, -0.315]  (wet 11, ctrl 5, clusters 14)
+not-identified events: median |delta| 0.64 vs identified 0.23; grid-edge fits among not-identified 1 of 16
+share of events identified: wet 0.52, ctrl 0.64

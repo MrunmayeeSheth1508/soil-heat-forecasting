@@ -1,0 +1,62 @@
+﻿Training episodes [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], test episodes [12, 13, 14]
+theta0 0.444 m3/m3, T0 20.22 C. Hourly corr(theta, Tin) in training: -0.608
+Training IQR of theta: 0.384 to 0.529; of Tin: 13.8 to 27.8 C
+
+=== FULL TRAINING FIT (all 11 training episodes) ===
+A: a=-14.727 (alpha at centre 4.02e-07)   mean per-episode MSE 0.1777 (RMSE 0.421 C)
+B: a=-14.775 (alpha at centre 3.83e-07) b=-0.131 per 0.1 m3/m3   mean per-episode MSE 0.1749 (RMSE 0.418 C)
+    alpha multiplier across training IQR of theta: x0.83
+C: a=-14.795 (alpha at centre 3.76e-07) c=+0.279 per 10 C   mean per-episode MSE 0.1676 (RMSE 0.409 C)
+    alpha multiplier across training IQR of Tin:   x1.48
+D: a=-14.773 (alpha at centre 3.84e-07) b=+0.147 per 0.1 m3/m3, c=+0.409 per 10 C   mean per-episode MSE 0.1662 (RMSE 0.408 C)
+    alpha multiplier across training IQR of theta: x1.24
+    alpha multiplier across training IQR of Tin:   x1.77
+
+=== LEAVE-ONE-EPISODE-OUT CV (training episodes only) : held-out RMSE of T10, C ===
+ held-out ep       A       B       C       D   hours
+           1   0.193   0.156   0.169   0.162     761
+           2   0.283   0.279   0.274   0.300    3030
+           3   0.541   0.551   0.562   0.558     722
+           4   0.784   0.832   0.810   0.809     567
+           5   0.390   0.383   0.360   0.358    2637
+           6   0.254   0.233   0.216   0.220     429
+           7   0.268   0.244   0.221   0.227     663
+           8   0.353   0.351   0.342   0.353    3356
+           9   0.501   0.482   0.465   0.475     219
+          10   0.501   0.501   0.451   0.442     225
+          11   0.265   0.258   0.274   0.296     223
+        mean   0.394   0.388   0.377   0.382
+
+Paired LOEO comparisons (improvement = RMSE of first minus RMSE of second):
+  B vs A (moisture)  better in 8/11 episodes; mean RMSE improvement +0.0056 C; bootstrap 95% CI [-0.0077, +0.0170]; sign-test p=0.227
+  C vs A (temp)      better in 8/11 episodes; mean RMSE improvement +0.0173 C; bootstrap 95% CI [+0.0019, +0.0317]; sign-test p=0.227
+  D vs B (+temp)     better in 6/11 episodes; mean RMSE improvement +0.0065 C; bootstrap 95% CI [-0.0077, +0.0212]; sign-test p=1.000
+  D vs C (+moisture) better in 5/11 episodes; mean RMSE improvement -0.0052 C; bootstrap 95% CI [-0.0118, +0.0009]; sign-test p=1.000
+  D vs A             better in 7/11 episodes; mean RMSE improvement +0.0121 C; bootstrap 95% CI [-0.0052, +0.0292]; sign-test p=0.549
+
+=== EPISODE BOOTSTRAP (200 resamples of the 11 training episodes) ===
+B: b median -0.157, 95% [-0.396, +0.048], P(b<0) = 0.92
+C: c median +0.300, 95% [+0.115, +0.462], P(c>0) = 1.00
+D: b median +0.113, 95% [-0.157, +0.424], P(b<0) = 0.22
+D: c median +0.405, 95% [+0.129, +0.726], P(c>0) = 0.99
+D: bootstrap correlation corr(b, c) = +0.811
+
+=== FINAL UNTOUCHED TEST (refit on all 11 training episodes, scored once on episodes 12-14) ===
+ test ep       A       B       C       D   hours
+      12   0.514   0.519   0.521   0.521     237
+      13   0.195   0.199   0.215   0.226     618
+      14   0.234   0.233   0.266   0.283    1016
+Amplitude ratio model/obs (A B C D): {12: [0.919, 0.917, 0.913, 0.911], 13: [1.005, 1.0, 0.984, 0.977], 14: [1.12, 1.099, 1.04, 1.026]}
+Phase error h (A B C D):            {12: [np.float64(-0.4), np.float64(-0.42), np.float64(-0.45), np.float64(-0.45)], 13: [np.float64(-0.28), np.float64(-0.33), np.float64(-0.42), np.float64(-0.44)], 14: [np.float64(-0.26), np.float64(-0.36), np.float64(-0.69), np.float64(-0.78)]}
+Paired test comparisons (improvement = first RMSE minus second):
+  B vs A   better in 1/3 episodes; mean improvement -0.0025 C
+  C vs A   better in 0/3 episodes; mean improvement -0.0196 C
+  D vs B   better in 0/3 episodes; mean improvement -0.0266 C
+  D vs C   better in 0/3 episodes; mean improvement -0.0095 C
+  D vs A   better in 0/3 episodes; mean improvement -0.0291 C
+
+=== PRE-SPECIFIED DECISION RULE (D vs C) ===
+(i)  LOEO: D better than C in 5/11 and CI excludes 0 -> False
+(ii) test: D better than C in 0/3 -> False
+(iii) bootstrap 95% interval for b excludes 0 ([-0.157, +0.424]) -> False
+VERDICT: moisture effect NOT established beyond temperature

@@ -1,0 +1,23 @@
+{
+ "copied": 283,
+ "missing": [],
+ "excluded_data_mb": {
+  "phase3\\data": [
+   390,
+   601.830528
+  ],
+  "raw": [
+   4,
+   8.561472
+  ],
+  "soilsip": [
+   23,
+   115.513497
+  ],
+  "multi": [
+   393,
+   23.9035
+  ]
+ },
+ "pdf_bytes_excluded": 152109314
+}

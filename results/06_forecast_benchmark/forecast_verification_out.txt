@@ -1,0 +1,11 @@
+development alpha references: global 4.322e-07 m2/s from 48 identified archived stress windows (start year <= 2017); station medians for 11 stations
+[PASS] 1. information-set test: every forecast unchanged when ALL data after the issue hour is corrupted (+37 C, rain 999 mm) (max difference 0.0e+00 C, 3 issues)
+[PASS] 1b. positive control: the clearly separated reconstruction diagnostic reacts to future boundaries (so the test above can detect leakage) (max change 3.40 C)
+[PASS] 2. leakage test: hot-day thresholds, climatologies and moisture percentile unchanged when validation-year data are altered; alpha references use fits with start year <= 2017 (latest year contributing to alpha references: 2017)
+[PASS] 3a. persistence: hour 1 equals the value at the issue hour, constant over 72 h 
+[PASS] 3b/5. boundary rule on a periodic synthetic series: forecast is in phase (hour 1 aligned) and recovers the amplitude (corr 0.99968, amplitude 3.010 vs 3.0)
+[PASS] 4a. solver numerical accuracy (exact full-grid init, exact boundaries; Crank-Nicolson error) (RMS 0.0098 C; 20 cm amplitude 2.23 C)
+[INFO] 4b. PCHIP init-profile limitation (informational): max grid-point init error 0.692 C; forecast RMS h1-72=0.076 C, h25-72=0.040 C (decays as solver equilibrates to boundaries)
+[PASS] 6. forecast is sensitive to alpha (solver is not a pass-through) 
+
+OVERALL: ALL VERIFICATION CHECKS PASSED

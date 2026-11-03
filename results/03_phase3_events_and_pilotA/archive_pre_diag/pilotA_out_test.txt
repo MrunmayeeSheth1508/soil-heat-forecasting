@@ -1,0 +1,42 @@
+=== MODE test: PART 1 trajectories ===
+sequences 43, clusters 26, stations 27
+depth   5 cm: | peak C 3.87 [3.15,4.59] | delay d 4.00 [3.00,6.00] | persist d 3.00 [2.00,4.00] | burden degC-d 29.00 [25.26,32.15] | persist censored 0.00
+depth  10 cm: | peak C 3.49 [2.79,3.87] | delay d 5.00 [3.00,6.00] | persist d 3.00 [2.00,4.00] | burden degC-d 26.69 [22.47,31.20] | persist censored 0.00
+depth  20 cm: | peak C 2.81 [2.18,3.25] | delay d 6.00 [4.00,7.00] | persist d 2.00 [2.00,3.50] | burden degC-d 19.46 [15.53,25.84] | persist censored 0.02
+depth  50 cm: | peak C 1.90 [1.56,2.07] | delay d 7.00 [5.00,9.00] | persist d 3.00 [2.00,4.00] | burden degC-d 17.41 [13.91,21.83] | persist censored 0.05
+depth 100 cm: | peak C 0.92 [0.45,1.32] | delay d 8.50 [7.00,9.50] | persist d 4.00 [2.00,5.50] | burden degC-d 11.29 [4.77,14.84] | persist censored 0.08
+wetting minus no-wetting, median burden20: -6.89 [-12.29,+8.32]  (n wet 28, no-wet 15)
+wetting minus no-wetting, median persist20: -0.50 [-1.00,+2.00]  (n wet 28, no-wet 15)
+wetting minus no-wetting, median peak20: +0.09 [-1.17,+1.04]  (n wet 28, no-wet 15)
+wetting minus no-wetting, median delay20: -0.50 [-4.00,+3.00]  (n wet 28, no-wet 15)
+wetting minus no-wetting, median burden50: -2.41 [-10.01,+10.97]  (n wet 28, no-wet 15)
+wetting minus no-wetting, median persist50: +0.00 [-2.00,+2.50]  (n wet 28, no-wet 15)
+wetting minus no-wetting, median persist100: -0.50 [-4.00,+3.00]  (n wet 28, no-wet 15)
+driest minus wettest pre-event 10 cm moisture tertile, median burden20: -3.21 [-51.89,+16.71]
+driest minus wettest pre-event 10 cm moisture tertile, median persist20: +0.00 [-4.00,+3.00]
+higher-clay (>= median 29%) minus lower-clay, median burden20: +7.83 [-2.95,+19.69] (n 31)
+higher-clay (>= median 29%) minus lower-clay, median persist20: +0.50 [-2.00,+2.00] (n 31)
+higher-clay (>= median 29%) minus lower-clay, median peak20: +0.65 [-0.30,+1.66] (n 31)
+forcing: slope of 5 cm peak anomaly on mean Tmax anomaly = 0.28 [0.12,0.45] C per C
+
+=== MODE test: PART 2 effective diffusivity (observed boundaries) ===
+usable sequences 37 of 42; identified (both windows) 21; clusters 14
+  wetting identified 12 (clusters 9), no-wetting identified 9 (clusters 6)
+median RMSE of best alpha (C): stress window 0.39, later window 0.36 (all); median alpha stress 3.85e-07, later 4.58e-07
+median RMSE of best alpha (C): stress window 0.28, later window 0.21 (identified); median alpha stress 4.58e-07, later 4.58e-07
+all seasons: mean Delta(wet) +0.083, mean Delta(no-wet) -0.058, CONTRAST +0.141 [-0.143,+0.433] (n 12/9)
+May-Sep: mean Delta(wet) +0.291, mean Delta(no-wet) +0.102, CONTRAST +0.189 [-0.072,+0.666] (n 6/4)
+scenario contrasts (identified, all seasons): base +0.141, bias_a +0.144, bias_b +0.134, top6 +0.128, top4 +0.165
+stations with >=2 identified wetting events: 2; share with positive mean Delta: 0.50
+identified wetting clusters 9 (< 20 means underpowered by the pre-registered rule)
+
+=== MODE test: PART 3 formulation vs alternatives (identified wetting sequences at stations with Wilson bulk density) ===
+events 7 (clusters 6, stations 6); excluded for S_r > 1 in main variant: 0
+shared b (frozen from development) = +3.775
+MAE of Delta ln alpha: M0 0.300 | M_B 0.352 | M_J 0.290
+sign agreement with observed Delta (ignoring zero predictions): M_B 0.57 | M_J 0.57
+MAE(p0) - MAE(pJ) = +0.010 [-0.019,+0.046] (positive favours pJ)
+MAE(pB) - MAE(pJ) = +0.062 [-0.051,+0.154] (positive favours pJ)
+sensitivity Cs=1.8e+06: MAE M_J 0.291
+sensitivity Cs=2.4e+06: MAE M_J 0.288
+sensitivity S_r clipped at 1 (all 7 events): MAE M_J 0.290, M0 0.300

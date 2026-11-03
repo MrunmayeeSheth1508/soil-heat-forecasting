@@ -1,0 +1,224 @@
+Check: the archived identification decision is re-derived exactly from the stored interval bounds for all 122 usable pairs.
+
+================ 1. RETAINED vs REJECTED PAIRS (observed fits; descriptive, unadjusted, dependent data) ================
+
+--- DEVELOPMENT: usable 85, retained 53, rejected 32 (rejection rate 0.38); wetting rejection 0.35, control rejection 0.41
+    reasons among rejected: unstable (width > 0.6) 30; grid-edge optimum or interval 10; optimum on the grid edge 6; overlap of windows 4
+    stress-window length (hours)                 retained median   192.00 | rejected median   192.00 | unadjusted p 0.759
+    post/control-window length (hours)           retained median   240.00 | rejected median   240.00 | unadjusted p 0.959
+    stress-window missing fraction (max depth)   retained median     0.00 | rejected median     0.00 | unadjusted p 0.604
+    post/control missing fraction                retained median     0.00 | rejected median     0.00 | unadjusted p 0.474
+    stress-window SD of T5 (C)                   retained median     2.32 | rejected median     3.46 | unadjusted p 0.000
+    post/control SD of T5 (C)                    retained median     1.91 | rejected median     3.17 | unadjusted p 0.000
+    stress-window mean T5 (C)                    retained median    19.28 | rejected median    21.29 | unadjusted p 0.187
+    post/control mean T5 (C)                     retained median    18.64 | rejected median    18.94 | unadjusted p 0.156
+    stress-window mean |T5-T100| (C)             retained median     3.62 | rejected median     4.04 | unadjusted p 0.454
+    post/control mean |T5-T100| (C)              retained median     3.01 | rejected median     3.20 | unadjusted p 0.534
+    stress-window diurnal-band variance fraction retained median     0.73 | rejected median     0.84 | unadjusted p 0.003
+    post/control diurnal fraction                retained median     0.62 | rejected median     0.78 | unadjusted p 0.001
+    spell mean Tmax anomaly (C)                  retained median     6.40 | rejected median     4.95 | unadjusted p 0.009
+    spell mean solar (W/m2)                      retained median   255.00 | rejected median   278.50 | unadjusted p 0.029
+    stress-window RMSE at best alpha (C)         retained median     0.22 | rejected median     0.74 | unadjusted p 0.000
+    post/control RMSE (C)                        retained median     0.21 | rejected median     0.64 | unadjusted p 0.000
+    stress-window lag-1 residual correlation     retained median     0.77 | rejected median     0.95 | unadjusted p 0.000
+    post/control lag-1 residual correlation      retained median     0.74 | rejected median     0.93 | unadjusted p 0.000
+    stress-window effective n                    retained median    28.39 | rejected median     6.80 | unadjusted p 0.000
+    post/control effective n                     retained median    34.19 | rejected median     8.91 | unadjusted p 0.000
+    stress-window interval width (ln)            retained median     0.12 | rejected median     0.76 | unadjusted p 0.000
+    post/control interval width (ln)             retained median     0.12 | rejected median     0.79 | unadjusted p 0.000
+    wetting amount (mm), wet only                retained median    20.40 | rejected median    17.00 | unadjusted p 0.096
+    May-Sep share: retained 0.57, rejected 0.81 (unadjusted Fisher p 0.033); wetting share: retained 0.62, rejected 0.56
+    stations with >= 3 pairs (retained/rejected): Los 0/5, Wolf 0/4, Merced 0/4, Goodwell 0/3, Santa 1/2, Port 2/2, Northgate 2/1, Batesville 5/0, Oakley 4/0, Wolf 6/0, Avondale 5/0, Pierre 3/0, Muleshoe 3/0
+    month group (retained/rejected): Dec-Feb 2/1, Mar-May 20/6, Jun-Aug 13/17, Sep-Nov 15/8, Dec 3/0
+
+--- TEST: usable 37, retained 21, rejected 16 (rejection rate 0.43); wetting rejection 0.48, control rejection 0.36
+    reasons among rejected: unstable (width > 0.6) 16; grid-edge optimum or interval 4; optimum on the grid edge 1; overlap of windows 2
+    stress-window length (hours)                 retained median   216.00 | rejected median   228.00 | unadjusted p 0.207
+    post/control-window length (hours)           retained median   240.00 | rejected median   240.00 | unadjusted p 0.382
+    stress-window missing fraction (max depth)   retained median     0.00 | rejected median     0.00 | unadjusted p 0.413
+    post/control missing fraction                retained median     0.00 | rejected median     0.00 | unadjusted p 0.413
+    stress-window SD of T5 (C)                   retained median     2.40 | rejected median     2.69 | unadjusted p 0.214
+    post/control SD of T5 (C)                    retained median     2.33 | rejected median     2.44 | unadjusted p 0.530
+    stress-window mean T5 (C)                    retained median    16.67 | rejected median    18.90 | unadjusted p 0.866
+    post/control mean T5 (C)                     retained median    15.31 | rejected median    15.87 | unadjusted p 0.890
+    stress-window mean |T5-T100| (C)             retained median     3.56 | rejected median     4.67 | unadjusted p 0.238
+    post/control mean |T5-T100| (C)              retained median     3.17 | rejected median     3.51 | unadjusted p 0.748
+    stress-window diurnal-band variance fraction retained median     0.58 | rejected median     0.76 | unadjusted p 0.530
+    post/control diurnal fraction                retained median     0.59 | rejected median     0.64 | unadjusted p 0.818
+    spell mean Tmax anomaly (C)                  retained median     8.40 | rejected median     6.50 | unadjusted p 0.158
+    spell mean solar (W/m2)                      retained median   229.00 | rejected median   239.00 | unadjusted p 0.747
+    stress-window RMSE at best alpha (C)         retained median     0.28 | rejected median     0.68 | unadjusted p 0.000
+    post/control RMSE (C)                        retained median     0.21 | rejected median     0.54 | unadjusted p 0.001
+    stress-window lag-1 residual correlation     retained median     0.77 | rejected median     0.94 | unadjusted p 0.000
+    post/control lag-1 residual correlation      retained median     0.77 | rejected median     0.92 | unadjusted p 0.001
+    stress-window effective n                    retained median    22.26 | rejected median     6.69 | unadjusted p 0.000
+    post/control effective n                     retained median    31.63 | rejected median    10.62 | unadjusted p 0.001
+    stress-window interval width (ln)            retained median     0.23 | rejected median     0.82 | unadjusted p 0.000
+    post/control interval width (ln)             retained median     0.12 | rejected median     0.52 | unadjusted p 0.000
+    wetting amount (mm), wet only                retained median    19.85 | rejected median    16.90 | unadjusted p 0.782
+    May-Sep share: retained 0.48, rejected 0.62 (unadjusted Fisher p 0.508); wetting share: retained 0.57, rejected 0.69
+    stations with >= 3 pairs (retained/rejected): Sioux 2/2, Cortez 2/1, Chillicothe 2/1, Buffalo 3/0
+    month group (retained/rejected): Dec-Feb 1/3, Mar-May 7/0, Jun-Aug 5/8, Sep-Nov 8/4, Dec 0/1
+
+--- POOLED: usable 122, retained 74, rejected 48 (rejection rate 0.39); wetting rejection 0.39, control rejection 0.40
+    reasons among rejected: unstable (width > 0.6) 46; grid-edge optimum or interval 14; optimum on the grid edge 7; overlap of windows 6
+    stress-window length (hours)                 retained median   192.00 | rejected median   216.00 | unadjusted p 0.486
+    post/control-window length (hours)           retained median   240.00 | rejected median   240.00 | unadjusted p 0.533
+    stress-window missing fraction (max depth)   retained median     0.00 | rejected median     0.00 | unadjusted p 0.988
+    post/control missing fraction                retained median     0.00 | rejected median     0.00 | unadjusted p 0.287
+    stress-window SD of T5 (C)                   retained median     2.40 | rejected median     3.23 | unadjusted p 0.000
+    post/control SD of T5 (C)                    retained median     2.04 | rejected median     3.11 | unadjusted p 0.001
+    stress-window mean T5 (C)                    retained median    19.15 | rejected median    20.93 | unadjusted p 0.217
+    post/control mean T5 (C)                     retained median    17.37 | rejected median    17.07 | unadjusted p 0.389
+    stress-window mean |T5-T100| (C)             retained median     3.59 | rejected median     4.12 | unadjusted p 0.209
+    post/control mean |T5-T100| (C)              retained median     3.02 | rejected median     3.42 | unadjusted p 0.462
+    stress-window diurnal-band variance fraction retained median     0.71 | rejected median     0.82 | unadjusted p 0.007
+    post/control diurnal fraction                retained median     0.62 | rejected median     0.73 | unadjusted p 0.008
+    spell mean Tmax anomaly (C)                  retained median     7.00 | rejected median     5.30 | unadjusted p 0.005
+    spell mean solar (W/m2)                      retained median   243.50 | rejected median   247.50 | unadjusted p 0.064
+    stress-window RMSE at best alpha (C)         retained median     0.24 | rejected median     0.72 | unadjusted p 0.000
+    post/control RMSE (C)                        retained median     0.21 | rejected median     0.63 | unadjusted p 0.000
+    stress-window lag-1 residual correlation     retained median     0.77 | rejected median     0.94 | unadjusted p 0.000
+    post/control lag-1 residual correlation      retained median     0.76 | rejected median     0.92 | unadjusted p 0.000
+    stress-window effective n                    retained median    27.01 | rejected median     6.72 | unadjusted p 0.000
+    post/control effective n                     retained median    32.62 | rejected median     9.46 | unadjusted p 0.000
+    stress-window interval width (ln)            retained median     0.15 | rejected median     0.76 | unadjusted p 0.000
+    post/control interval width (ln)             retained median     0.12 | rejected median     0.70 | unadjusted p 0.000
+    wetting amount (mm), wet only                retained median    20.40 | rejected median    16.90 | unadjusted p 0.115
+    May-Sep share: retained 0.54, rejected 0.75 (unadjusted Fisher p 0.023); wetting share: retained 0.61, rejected 0.60
+    stations with >= 3 pairs (retained/rejected): Los 0/6, Wolf 0/5, Merced 0/4, Elgin 0/4, Goodwell 0/3, Goodwell 1/3, Santa 2/3, Dinosaur 1/2, Sioux 2/2, Port 2/2, Northgate 2/2, Cortez 4/1, Chillicothe 4/1, La 3/0
+    month group (retained/rejected): Dec-Feb 3/4, Mar-May 27/6, Jun-Aug 18/25, Sep-Nov 23/12, Dec 3/1
+
+--- Spearman correlation of profile-interval width with signal strength and data quality (window level, pooled; descriptive) ---
+    width vs window length                 : rho +0.06 (n 244, p 0.317)
+    width vs missing fraction              : rho +0.03 (n 244, p 0.694)
+    width vs SD of T5                      : rho +0.25 (n 244, p 6.74e-05)
+    width vs mean |T5-T100|                : rho +0.10 (n 244, p 0.109)
+    width vs diurnal-band fraction         : rho +0.24 (n 244, p 0.000175)
+    width vs mean T5                       : rho +0.07 (n 244, p 0.253)
+    width vs residual RMSE                 : rho +0.87 (n 244, p 8.45e-75)
+    width vs lag-1 residual correlation    : rho +0.82 (n 244, p 6.82e-60)
+
+--- logistic regression of REJECTION on standardised covariates (n 122; descriptive, unadjusted for clustering) ---
+    nh         coefficient -0.24 (z -1.0, p 0.332)
+    miss       coefficient +0.07 (z +0.3, p 0.757)
+    sd5        coefficient +1.39 (z +4.0, p 0.000)
+    grad       coefficient -0.70 (z -2.3, p 0.023)
+    diur       coefficient -0.05 (z -0.1, p 0.887)
+    Tmax_anom  coefficient -0.38 (z -1.2, p 0.216)
+    wet        coefficient +0.29 (z +1.1, p 0.270)
+    mayseps    coefficient +0.38 (z +1.5, p 0.135)
+    pseudo R2 0.20
+
+================ 2. INFLUENCE ON THE ALL-USABLE-EVENT CONTRAST (all variants reported; none chosen) ================
+
+--- TEST all usable events: n 37 (wet 23, control 14), clusters 24 ---
+full contrast -0.223 [-0.578, +0.197]
+leave-one-EVENT-out contrast range -0.288 to -0.134; sign changes in 0 of 37
+leave-one-CLUSTER-out contrast range -0.329 to -0.120; sign changes in 0 of 24
+remove top-k events by |change| (k = 1..5, all reported): k=1: -0.288; k=2: -0.199; k=3: -0.140; k=4: -0.183; k=5: -0.123
+remove every grid-edge estimate (optimum or interval on the edge; 4 events): -0.037 (wet 20, ctrl 13)
+remove only events whose OPTIMUM is on the grid edge (1): -0.164
+remove every unstable (width > 0.6) event = archived rule (16 events; retained = identified): +0.141
+symmetric trimmed mean contrast: 10% each tail -0.203; 20% -0.204; difference of group medians -0.204; Hodges-Lehmann -0.233
+group distributions of change in ln alpha: wetting median +0.00, IQR [-0.32, +0.29]; control median +0.20, IQR [-0.17, +0.64]
+events with |change| > 0.5: 13 (of which rejected 11); share of squared deviations from the group means carried by the five largest |change| events: 0.55
+ten events with the largest influence (influence = full contrast minus contrast without the event):
+    Wolf           2020-08-17 ctrl change +1.40 influence -0.089 widths 1.40/2.10 retained=False edge=True month 8
+    Elgin          2019-07-11 wet  change +1.46 influence +0.065 widths 1.34/0.76 retained=False edge=False month 7
+    Yosemite       2021-01-14 wet  change -1.28 influence -0.059 widths 2.16/0.47 retained=False edge=True month 1
+    Chillicothe    2020-10-08 ctrl change -0.47 influence +0.055 widths 0.35/0.00 retained=True edge=False month 10
+    Sioux          2020-10-06 ctrl change -0.41 influence +0.050 widths 0.47/0.35 retained=True edge=False month 10
+    Sioux          2020-08-21 ctrl change +0.87 influence -0.048 widths 0.93/0.35 retained=False edge=False month 8
+    Santa          2021-06-10 ctrl change -0.35 influence +0.046 widths 0.12/0.52 retained=True edge=False month 6
+    Cortez         2020-07-11 wet  change +0.87 influence +0.039 widths 0.70/0.17 retained=False edge=False month 7
+    Northgate      2019-06-03 wet  change +0.76 influence +0.033 widths 0.64/0.52 retained=False edge=False month 6
+    Wolf           2020-08-17 ctrl change -0.17 influence +0.032 widths 0.12/0.06 retained=True edge=False month 8
+
+--- DEVELOPMENT all usable events: n 85 (wet 51, control 34), clusters 56 ---
+full contrast +0.149 [-0.041, +0.331]
+leave-one-EVENT-out contrast range +0.129 to +0.185; sign changes in 0 of 85
+leave-one-CLUSTER-out contrast range +0.119 to +0.191; sign changes in 0 of 56
+remove top-k events by |change| (k = 1..5, all reported): k=1: +0.185; k=2: +0.165; k=3: +0.145; k=4: +0.177; k=5: +0.160
+remove every grid-edge estimate (optimum or interval on the edge; 10 events): +0.177 (wet 47, ctrl 28)
+remove only events whose OPTIMUM is on the grid edge (6): +0.173
+remove every unstable (width > 0.6) event = archived rule (30 events; retained = identified): +0.142
+symmetric trimmed mean contrast: 10% each tail +0.195; 20% +0.189; difference of group medians +0.233; Hodges-Lehmann +0.175
+group distributions of change in ln alpha: wetting median +0.23, IQR [-0.06, +0.50]; control median +0.00, IQR [-0.12, +0.12]
+events with |change| > 0.5: 19 (of which rejected 16); share of squared deviations from the group means carried by the five largest |change| events: 0.42
+ten events with the largest influence (influence = full contrast minus contrast without the event):
+    Fairhope       2012-05-25 wet  change -1.57 influence -0.036 widths 0.00/0.17 retained=False edge=True month 5
+    Sundance       2012-08-27 ctrl change +1.11 influence -0.032 widths 1.22/1.11 retained=False edge=False month 8
+    Lewistown      2013-08-28 ctrl change +0.93 influence -0.026 widths 0.82/0.87 retained=False edge=False month 8
+    Port           2012-05-04 wet  change +1.22 influence +0.020 widths 0.82/0.06 retained=False edge=False month 5
+    Los            2018-06-26 wet  change +1.17 influence +0.019 widths 0.82/2.04 retained=False edge=True month 6
+    Northgate      2017-07-03 ctrl change -0.47 influence +0.016 widths 0.23/1.34 retained=False edge=False month 7
+    Los            2012-06-20 wet  change +0.99 influence +0.016 widths 1.28/0.47 retained=False edge=True month 6
+    Los            2018-05-07 wet  change -0.52 influence -0.015 widths 1.75/1.92 retained=False edge=True month 5
+    Wolf           2017-09-08 wet  change -0.52 influence -0.015 widths 1.92/0.99 retained=False edge=False month 9
+    Lafayette      2015-10-13 wet  change +0.93 influence +0.014 widths 0.99/0.82 retained=False edge=False month 10
+
+================ 3. CONTRAST vs IDENTIFICATION-WIDTH CUTOFF (EXPLORATORY sensitivity, not a replacement confirmation test) ================
+      split                      cutoff  n_wet  n_ctrl  clusters  clusters_wet  clusters_ctrl  contrast     lo    hi
+development                         0.2     22      12        28            19             12     0.172  0.021 0.321
+development                         0.3     28      15        35            25             14     0.196  0.042 0.329
+development                         0.4     30      16        36            25             15     0.166  0.017 0.313
+development                         0.5     32      19        39            26             17     0.151  0.010 0.301
+development                         0.6     33      20        41            27             18     0.142 -0.003 0.273
+development                         0.8     42      21        47            32             19     0.217  0.074 0.345
+development                         1.0     44      24        51            34             21     0.216  0.041 0.384
+development                         1.5     45      26        51            34             21     0.201  0.001 0.391
+development                         2.0     47      27        52            35             22     0.175 -0.019 0.354
+development                         3.0     47      28        52            35             22     0.177 -0.009 0.340
+development none (interval inside grid)     47      28        52            35             22     0.177 -0.010 0.350
+development                    opt_only     49      30        53            35             24     0.173 -0.010 0.350
+development                         all     51      34        56            36             26     0.149 -0.039 0.326
+       test                         0.2      4       4         7             4              4     0.102 -0.058 0.311
+       test                         0.3      8       5        10             7              4     0.050 -0.145 0.378
+       test                         0.4      9       6        11             8              4     0.165 -0.076 0.476
+       test                         0.5     10       7        11             8              4     0.212 -0.067 0.491
+       test                         0.6     12       9        14             9              6     0.141 -0.127 0.408
+       test                         0.8     16      10        17            12              6     0.105 -0.242 0.498
+       test                         1.0     17      12        19            13              7    -0.064 -0.437 0.353
+       test                         1.5     18      13        21            14              8    -0.008 -0.401 0.408
+       test                         2.0     19      13        22            15              8    -0.010 -0.372 0.437
+       test                         3.0     20      13        23            16              8    -0.037 -0.429 0.376
+       test none (interval inside grid)     20      13        23            16              8    -0.037 -0.395 0.369
+       test                    opt_only     22      14        24            18              8    -0.164 -0.484 0.216
+       test                         all     23      14        24            19              8    -0.223 -0.574 0.221
+     pooled                         0.2     26      16        35            23             16     0.164  0.040 0.284
+     pooled                         0.3     36      20        45            32             18     0.161  0.031 0.283
+     pooled                         0.4     39      22        47            33             19     0.165  0.037 0.296
+     pooled                         0.5     42      26        50            34             21     0.168  0.038 0.293
+     pooled                         0.6     45      29        55            36             24     0.144  0.017 0.269
+     pooled                         0.8     58      31        64            44             25     0.185  0.036 0.333
+     pooled                         1.0     61      36        70            47             28     0.132 -0.042 0.298
+     pooled                         1.5     63      39        72            48             29     0.136 -0.051 0.311
+     pooled                         2.0     66      40        74            50             30     0.118 -0.061 0.297
+     pooled                         3.0     67      41        75            51             30     0.111 -0.061 0.271
+     pooled none (interval inside grid)     67      41        75            51             30     0.111 -0.069 0.286
+     pooled                    opt_only     71      44        77            53             32     0.067 -0.117 0.235
+     pooled                         all     74      48        80            55             34     0.037 -0.145 0.211
+
+================ 4. SAME-SUBSET COMPARISON: OBSERVED vs SIMULATED fixed columns on exactly the same events ================
+core-based (S-eligible) stations: 15; S-eligible usable pairs: development 25, test 23
+split                             selection  n_wet  n_ctrl  clusters  observed  obs_lo  obs_hi  sim_U  sim_G_low  sim_G_high  sim_S_central  sim_S_dry_ref  sim_S_wet_ref  sim_S_Cs_low  sim_S_Cs_high
+  dev                            all usable     19       6        21     0.271  -0.160   0.661    0.0     -0.013      -0.015         -0.040         -0.088         -0.059        -0.079         -0.056
+  dev             identified 0.6 (archived)     12       2        13     0.126  -0.204   0.477    0.0     -0.015       0.044         -0.083         -0.146         -0.131        -0.146         -0.151
+  dev                          width <= 1.0     14       3        16     0.082  -0.187   0.459    0.0     -0.026       0.033         -0.053         -0.115         -0.085        -0.111         -0.096
+  dev                          width <= 2.0     15       4        18     0.271  -0.124   0.754    0.0     -0.017       0.002         -0.050         -0.112         -0.076        -0.093         -0.068
+  dev interval inside grid, no width cutoff     15       4        18     0.271  -0.117   0.733    0.0     -0.017       0.002         -0.050         -0.112         -0.076        -0.093         -0.068
+ test                            all usable     13      10        17     0.068  -0.413   0.529    0.0     -0.013       0.022         -0.010         -0.030         -0.020        -0.011         -0.025
+ test             identified 0.6 (archived)      7       7        10     0.100  -0.350   0.486    0.0      0.008       0.008          0.008          0.017         -0.008         0.033         -0.017
+ test                          width <= 0.3      3       4         6     0.107  -0.418   0.602    0.0      0.068      -0.039         -0.005          0.053         -0.015         0.024         -0.010
+ test                          width <= 1.0     10       9        13     0.006  -0.555   0.519    0.0     -0.009       0.027         -0.031         -0.043         -0.038        -0.019         -0.043
+ test                          width <= 2.0     12      10        16     0.085  -0.432   0.605    0.0     -0.011       0.025         -0.014         -0.035         -0.024        -0.015         -0.029
+ test interval inside grid, no width cutoff     12      10        16     0.085  -0.387   0.608    0.0     -0.011       0.025         -0.014         -0.035         -0.024        -0.015         -0.029
+
+Event-level agreement between OBSERVED and SIMULATED change in ln alpha on the S-eligible usable pairs (Spearman; descriptive):
+    dev G_low: all n 25 rho +0.33 (p 0.10); retained n 14 rho +0.39 (p 0.17)
+    dev G_high: all n 25 rho -0.36 (p 0.08); retained n 14 rho -0.20 (p 0.50)
+    dev S_central: all n 25 rho -0.14 (p 0.50); retained n 14 rho -0.11 (p 0.71)
+    test G_low: all n 23 rho +0.49 (p 0.02); retained n 14 rho +0.43 (p 0.12)
+    test G_high: all n 23 rho -0.56 (p 0.01); retained n 14 rho -0.42 (p 0.13)
+    test S_central: all n 23 rho +0.28 (p 0.20); retained n 14 rho +0.19 (p 0.52)

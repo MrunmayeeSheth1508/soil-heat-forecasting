@@ -1,0 +1,76 @@
+======== DEV ========
+ATTRITION (events): {'usable': 85, 'dropped_short_post_window': 20, 'dropped_missing_data': 8}; usable wet 51, ctrl 34; observed identified 53
+stress/post window OVERLAP: 14 of 85 usable events (wet events 14); events with overlap among observed-identified: 10
+clusters: usable 56; observed-identified 41  (clusters = start dates within 3 days chained across stations; operational, not guaranteed independent)
+OBSERVED contrast (archived selection) +0.142 [-0.010, +0.284] (wet 33, ctrl 20)
+
+---- DEV primary run R0 (refined generator, noise-free, SIMULATED): contrast by column, selection = events identified in the simulated pair ----
+   column  n_wet  n_ctrl  clusters  mean_wet  mean_ctrl  contrast     lo     hi  observed_same_subset  ident_share
+        U     51      34        56     0.000      0.000     0.000  0.000  0.000                 0.142          1.0
+   U_a2e7     51      34        56     0.000      0.000     0.000  0.000  0.000                 0.142          1.0
+   U_a1e6     51      34        56    -0.001      0.000    -0.001 -0.004  0.000                 0.142          1.0
+    G_low     51      34        56     0.026      0.019     0.007 -0.025  0.042                 0.142          1.0
+   G_high     51      34        56    -0.031     -0.009    -0.022 -0.050  0.004                 0.142          1.0
+S_central     19       6        21     0.018      0.058    -0.040 -0.101  0.012                 0.126          1.0
+S_dry_ref     19       6        21     0.018      0.107    -0.088 -0.163 -0.020                 0.126          1.0
+S_wet_ref     19       6        21     0.009      0.068    -0.059 -0.134  0.002                 0.126          1.0
+ S_Cs_low     19       6        21     0.018      0.097    -0.079 -0.152 -0.012                 0.126          1.0
+S_Cs_high     19       6        21     0.012      0.068    -0.056 -0.135  0.014                 0.126          1.0
+
+---- DEV R0, selection = events identified in the OBSERVED pair (the archived selection) ----
+   column  n_wet  n_ctrl  clusters  contrast     lo     hi  observed_same_subset
+        U     33      20        41     0.000  0.000  0.000                 0.142
+   U_a2e7     33      20        41     0.000  0.000  0.000                 0.142
+   U_a1e6     33      20        41     0.000  0.000  0.000                 0.142
+    G_low     33      20        41     0.019 -0.029  0.067                 0.142
+   G_high     33      20        41    -0.025 -0.065  0.011                 0.142
+S_central     12       2        13    -0.083 -0.161 -0.004                 0.126
+S_dry_ref     12       2        13    -0.146 -0.238 -0.053                 0.126
+S_wet_ref     12       2        13    -0.131 -0.244 -0.018                 0.126
+ S_Cs_low     12       2        13    -0.146 -0.229 -0.063                 0.126
+S_Cs_high     12       2        13    -0.151 -0.233 -0.069                 0.126
+
+---- DEV R0, selection = all usable events ----
+   column  n_wet  n_ctrl  clusters  contrast     lo    hi  observed_same_subset
+        U     51      34        56     0.000  0.000 0.000                 0.149
+   U_a2e7     51      34        56     0.000    NaN   NaN                 0.149
+   U_a1e6     51      34        56    -0.001    NaN   NaN                 0.149
+    G_low     51      34        56     0.007 -0.025 0.041                 0.149
+   G_high     51      34        56    -0.022 -0.051 0.004                 0.149
+S_central     19       6        21    -0.040 -0.098 0.008                 0.271
+S_dry_ref     19       6        21    -0.088    NaN   NaN                 0.271
+S_wet_ref     19       6        21    -0.059    NaN   NaN                 0.271
+ S_Cs_low     19       6        21    -0.079    NaN   NaN                 0.271
+S_Cs_high     19       6        21    -0.056    NaN   NaN                 0.271
+
+---- DEV numerical / noise / initialisation sensitivity (selection = simulated-identified), columns U, S_central, G_low, G_high ----
+run        R0_refined_nf  R1_base_nf  R2_refined_round  R3_refined_nf_Bs24
+column                                                                    
+G_high            -0.022      -0.023            -0.026              -0.018
+G_low              0.007       0.011             0.010               0.010
+S_central         -0.040      -0.040            -0.031              -0.050
+U                  0.000       0.000             0.000               0.000
+
+---- FORCING DEPENDENCE (R0, simulated-identified events): Spearman correlation of the simulated change in ln alpha with the change in forcing character ----
+dev U: n 85; vs change in diurnal-band variance fraction rho +nan (p nan); vs change in |T5-T100| rho +nan (p nan)
+dev S_central: n 25; vs change in diurnal-band variance fraction rho +0.16 (p 0.45); vs change in |T5-T100| rho +0.10 (p 0.64)
+dev G_low: n 85; vs change in diurnal-band variance fraction rho -0.14 (p 0.19); vs change in |T5-T100| rho -0.65 (p 0.00)
+dev G_high: n 85; vs change in diurnal-band variance fraction rho +0.40 (p 0.00); vs change in |T5-T100| rho +0.33 (p 0.00)
+
+---- STATION BREAKDOWN (S_central, R0, SIMULATED, simulated-identified): mean change in ln alpha by station and group ----
+dev:
+                        mean        count      
+wet                    False  True  False True 
+station                                        
+AL_Fairhope_3_NE         NaN  0.029   NaN   2.0
+AZ_Elgin_5_S           0.000  0.000   1.0   1.0
+CO_Cortez_8_SE         0.175  0.117   1.0   1.0
+CO_La_Junta_17_WSW       NaN  0.000   NaN   1.0
+CO_Montrose_11_ENE       NaN -0.058   NaN   1.0
+LA_Lafayette_13_SE       NaN  0.029   NaN   2.0
+MO_Chillicothe_22_ENE    NaN  0.000   NaN   2.0
+MS_Newton_5_ENE          NaN  0.000   NaN   1.0
+NC_Durham_11_W           NaN -0.029   NaN   2.0
+ND_Northgate_5_ESE     0.058  0.117   2.0   1.0
+NM_Los_Alamos_13_W     0.029  0.000   2.0   3.0
+SD_Buffalo_13_ESE        NaN  0.058   NaN   2.0

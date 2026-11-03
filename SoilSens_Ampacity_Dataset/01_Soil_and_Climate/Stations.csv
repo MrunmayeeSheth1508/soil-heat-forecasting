@@ -1,0 +1,14 @@
+﻿station_id,state,climate_zone,wban,station_name,latitude_deg,longitude_deg,elevation_ft,period_covered,n_hours,missing_frac_sm_50cm,missing_frac_sm_100cm,in_pipeline_run,in_wilson_t1,wilson_key
+NM_Socorro_20_N,NM,Arid-SW,03048,Sevilleta National Wildlife Refuge (LTER Site),34.35,-106.88,4847.0,2018-12-31 to 2021-12-31 (LST),26304,0.0002,0.0002,True,True,NM_SOCORRO20N
+NM_Las_Cruces_20_N,NM,Arid-SW,03074,Jornada USDA ARS Experimental Range (Jornada Headquarters Site),32.61,-106.74,4327.0,2018-12-31 to 2021-12-31 (LST),26304,0.0004,0.0004,True,True,NM_LASCRUCES20N
+NV_Mercury_3_SSW,NV,Arid-SW,53136,Nevada Test Site (Desert Rock Meteorological Lab),36.62,-116.02,3284.0,2018-12-31 to 2021-12-31 (LST),26304,0.0002,0.0002,True,True,NV_MERCURY3SSW
+TX_Monahans_6_ENE,TX,Arid-SW,03047,Sandhills State Park,31.62,-102.8,2724.0,2018-12-31 to 2021-12-31 (LST),26304,0.0007,0.0004,True,True,TX_MONAHANS6ENE
+CA_Santa_Barbara_11_W,CA,Mediterranean,53152,Univ. of California - Santa Barbara (Coal Oil Point Reserve),34.41,-119.87,18.0,2018-12-31 to 2021-12-31 (LST),26304,0.0129,0.021,True,False,
+CA_Bodega_6_WSW,CA,Mediterranean,93245,University of California - Davis (Bodega Marine Laboratory),38.32,-123.07,63.0,2018-12-31 to 2021-12-31 (LST),26304,0.0016,0.0016,True,False,
+OR_Riley_10_WSW,OR,Semi-arid-NW,04128,Northern Great Basin Experimental Range (Rainout Site),43.47,-119.69,4583.0,2018-12-31 to 2021-12-31 (LST),26304,0.0002,0.0002,True,True,OR_RILEY10WSW
+OK_Stillwater_2_W,OK,Sub-humid,53926,Oklahoma State Univ. (Ag.  Research Farm Site),36.11,-97.09,890.0,2018-12-31 to 2021-12-31 (LST),26304,0.0043,0.0039,True,True,OK_STILLWATER2W
+NE_Lincoln_8_ENE,NE,Sub-humid,94995,University of Nebraska (Prairie Pines Site),40.84,-96.56,1189.0,2018-12-31 to 2021-12-31 (LST),26304,0.0138,0.0138,True,True,NE_LINCOLN8ENE
+AL_Fairhope_3_NE,AL,Humid-subtropical,63869,"Auburn University, Gulf Coast Research and Extension Center",30.54,-87.87,95.0,2018-12-31 to 2021-12-31 (LST),26304,0.1448,0.0374,True,True,AL_FAIRHOPE3NE
+NC_Asheville_13_S,NC,Humid-subtropical,53878,NC Mtn. Horticultural Crops Res. Ctr. (Backlund Site),35.41,-82.55,2103.0,2018-12-31 to 2021-12-31 (LST),26304,0.0046,0.0012,True,True,NC_ASHEVILLE13S
+WY_Sundance_8_NNW,WY,Continental,94088,"Bear Lodge Ranger Dist, Black Hills NF (Massengale Flats Site)",44.51,-104.43,5792.0,2018-12-31 to 2021-12-31 (LST),26304,0.1969,0.0338,True,False,
+MI_Chatham_1_SE,MI,Continental,54810,Michigan State University (Upper Peninsula Experiment Station),46.33,-86.92,875.0,2018-12-31 to 2021-12-31 (LST),26304,0.0006,0.0006,True,False,

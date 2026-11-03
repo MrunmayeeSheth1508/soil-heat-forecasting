@@ -1,0 +1,28 @@
+
+--- Lead-time MAE profile (validation, best baselines) ---
+  T20 best=C2:  h1_24=0.363 C  h1_48=0.538 C  h1_72=0.673 C
+  T50 best=B1:  h1_24=0.125 C  h1_48=0.198 C  h1_72=0.274 C
+
+--- Station-level MAE72 spread (validation) ---
+  T20 C2: n_stations=38, median=0.651, IQR=[0.522,0.903], max=1.925 (CA_Merced_23_WSW)
+  T50 B1: n_stations=38, median=0.294, IQR=[0.207,0.367], max=1.236 (AZ_Elgin_5_S)
+
+========================================================================
+FROZEN DECISION RULE (validation set):
+
+  T20: best=C2, median MAE72=0.673 C, CI=[0.855,1.039]
+    Headroom (C2-RECON): mean=0.552 C, CI=[0.470,0.658], fraction=82.0%
+    -> Rule 3: none of the above => ROOM FOR A FAIR AI TRIAL
+    DECISION (T20): ROOM_FOR_AI_TRIAL
+
+  T50: best=B1, median MAE72=0.274 C, CI=[0.359,0.434]
+    Headroom (B1-RECON): mean=0.100 C, CI=[0.059,0.147], fraction=36.6%
+    -> Rule 2a: MAE72 < 0.30 C => BASELINES ADEQUATE
+    DECISION (T50): BASELINES_ADEQUATE
+
+  Combined:
+    OVERALL: MIXED -- T20=ROOM_FOR_AI_TRIAL, T50=BASELINES_ADEQUATE
+
+========================================================================
+Retrospective feasibility evidence only. Score differences do not prove
+an AI model can recover the remaining information.

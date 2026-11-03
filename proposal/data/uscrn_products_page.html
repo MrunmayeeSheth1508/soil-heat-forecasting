@@ -1,0 +1,987 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    <title>Products</title>
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="U.S. Climate Reference Network">
+    <meta name="keywords" content="NCEI USCRN">
+    <meta name="author" content="National Centers for Environmental Information (NCEI)">
+    <meta name="application-name" content="XXXXXXX">
+    <link rel="icon" href="https://www.ncei.noaa.gov/themes/custom/ncei/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="144x144"
+          href="https://www.ncdc.noaa.gov/shared/v1/images/apple-touch-icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="https://www.ncdc.noaa.gov/shared/v1/images/apple-touch-icon-114x114.png"/>
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="https://www.ncdc.noaa.gov/shared/v1/images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="57x57"
+          href="https://www.ncdc.noaa.gov/shared/v1/images/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon" href="https://www.ncdc.noaa.gov/shared/v1/images/apple-touch-icon.png"/>
+    <meta name="msapplication-tooltip" content="XXXXXXX"/>
+    <meta name="msapplication-task"
+          content="name=NCDC;action-uri=https://www.ncdc.noaa.gov/;icon-uri=https://www.ncdc.noaa.gov/favicon.ico"/>
+    <meta name="msapplication-TileColor" content="#007EC6"/>
+    <meta name="msapplication-TileImage" content="https://www.ncdc.noaa.gov/shared/v1/images/apple-touch-icon-144.png"/>
+    <meta name="verify-v1" content="DjxBYfR0oM2KSNJl6i2BbxfTcXOGUnbglkT0QQj5KtI="/>
+
+    <!-- The following is a speed hack for IE browsers -->
+    <!--[if IE]><![endif]-->
+
+    <link type="text/css" rel="stylesheet" media="all" href="https://www.ncdc.noaa.gov/shared/v1/css/reset.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="https://www.ncdc.noaa.gov/shared/v1/css/shared.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="https://www.ncdc.noaa.gov/shared/v1/css/menus.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="https://www.ncdc.noaa.gov/shared/v1/css/extlink.css"/>
+
+    <link type="text/css" rel="stylesheet" media="screen and (max-width: 659px)"
+          href="https://www.ncdc.noaa.gov/shared/v1/css/layout_320.css"/>
+    <link type="text/css" rel="stylesheet" media="screen and (min-width: 660px) and (max-width: 1023px)"
+          href="https://www.ncdc.noaa.gov/shared/v1/css/layout_640.css"/>
+    <link type="text/css" rel="stylesheet" media="screen and (min-width: 1024px)"
+          href="https://www.ncdc.noaa.gov/shared/v1/css/layout_1024.css"/>
+
+    <link type="text/css" rel="stylesheet" media="all"
+          href="/access/crn/js/jquery-ui-1.13.2/jquery-ui.css"/>
+
+    <!--[if IE 8]>
+    <link type="text/css" rel="stylesheet" media="all" href="https://www.ncdc.noaa.gov/shared/v1/css/ie8.css"/>
+    <![endif]-->
+
+    <!--[if IE 7]>
+    <link type="text/css" rel="stylesheet" media="all" href="https://www.ncdc.noaa.gov/shared/v1/css/ie7.css"/>
+    <![endif]-->
+
+    <!--[if lte IE 6]>
+    <link type="text/css" rel="stylesheet" media="all" href="https://www.ncdc.noaa.gov/shared/v1/css/ie6.css"/>
+    <![endif]-->
+
+    <!--[if gte IE 6]>
+    <link type="text/css" rel="stylesheet" media="all" href="https://www.ncdc.noaa.gov/shared/v1/css/ie.css"/>
+    <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"
+            integrity="sha384-j2BVfhFirIfIfLA3XlWy+TMlVQTr3QGEo7cvvKse2sOOe9rUxHjtEjz5HV4denAF"
+            crossorigin="anonymous"></script>
+    <script>WebFont.load({google: {families: ['Open+Sans', 'Bitter']}});</script>
+
+    <script type="text/javascript" src="/access/crn/js/jquery-3.5.0.min.js"></script>
+
+    <!--[if lte IE 9]>
+    <script type="text/javascript" src="https://www.ncdc.noaa.gov/shared/v1/js/lib/html5shiv.min.js"></script>
+    <script type="text/javascript" src="https://www.ncdc.noaa.gov/shared/v1/js/lib/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="https://www.ncdc.noaa.gov/shared/v1/js/application.js"></script>
+
+    <script async src="https://siteimproveanalytics.com/js/siteanalyze_6294131.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="/access/crn/css/alert.css"/>
+
+    <style>
+        .ncei-header-footer-container {
+            background-color: #112e51;
+            padding: 12px;
+            padding-bottom: 0;
+        }
+
+        .ncei-header-footer {
+            max-width: 1050px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .ncei-header-footer-container {
+            font-family: "Source Sans Pro", sans-serif;
+            font-size: 16px;
+        }
+
+        .ncei-header-footer-container p.ncei-header-footer-title {
+            font-family: Merriweather, serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .ncei-header-footer-inner {
+            padding: 15px;
+            padding-bottom: 0;
+            text-align: left;
+            color: white;
+        }
+
+        .ncei-header-footer-inner li {
+            height: 28px;
+        }
+
+        .ncei-header-footer-inner a {
+            color: #9bdaf1;
+            text-decoration: none;
+            height: 28px;
+        }
+
+        .ncei-header-footer-inner a:hover {
+            color: #e1f3f8;
+        }
+
+        .ncei-header-footer-inner ul {
+            list-style-type: none;
+            padding-inline-start: 0;
+        }
+
+        .ncei-header-logo img {
+            width: 300px;
+            height: 60px;
+        }
+
+        .ncei-footer-half-width {
+            width: 49%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .ncei-footer-quarter-width {
+            width: 24%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .ncei-footer-quarter-width img {
+            width: auto;
+            height: 18px;
+            vertical-align: text-bottom;
+            margin-left: 4px;
+        }
+
+        .ncei-footer-half-width img {
+            width: 300px;
+            height: 60px;
+        }
+
+        @media only screen and (max-width: 800px) {
+            .ncei-footer-half-width, .ncei-footer-quarter-width, .ncei-header-logo {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /* CRN Override NCDC Content Bottom Padding */
+        #content {
+            padding-bottom: 100px !important;
+        }
+
+        .ncei-nav-wrapper {
+            display: flex;
+            padding: 0 15px;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        .ncei-nav {
+            display: inline-block;
+        }
+
+        .ncei-nav li {
+            display: inline-block;
+            padding: 9.5px;
+        }
+
+        .ncei-nav li a, .ncei-nav li a:visited {
+            color: #f1f3f6;
+            font-size: 19px;
+        }
+
+        .ncei-nav-search {
+            display: flex;
+            align-items: center;
+            padding-bottom: 16px;
+        }
+
+        .ncei-nav-search label {
+            display: none;
+            visibility: hidden;
+        }
+
+        .ncei-nav-search input[type=text], .ncei-nav-search button {
+            border: none;
+            height: 40px;
+            padding: 0 8px;
+            background-color: #fff;
+        }
+
+        .ncei-nav-search input[type=text] {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        .ncei-nav-search button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+        }
+
+        .ncei-nav-search button img {
+            height: 20px;
+            width: 20px;
+            opacity: 0.5;
+        }
+
+        .ncei-nav-search button:hover img {
+            opacity: 0.75;
+        }
+
+    </style>
+
+        <link type="text/css" rel="stylesheet" media="all" href="/access/crn/css/articles.css"/>
+        <link type="text/css" rel="stylesheet" media="all" href="/access/crn/js/jquery-ui-1.13.2/jquery-ui.css"/>
+        
+
+
+    <style type="text/css">
+        .large {
+            font-size: 200%;
+        }
+    </style>
+
+
+
+    </head>
+    <body>
+            <header>
+    <!--Start Header code-->
+    <div class="ncei-header-footer-container">
+        <div class="ncei-header-footer">
+            <div class="ncei-header-footer-inner">
+                <div class="ncei-header-logo">
+                    <a href="http://www.ncei.noaa.gov">
+                        <img src="/access/crn/images/logo.svg" title="Link to NCEI's Homepage" alt="Link to NCEI's Homepage" />
+                    </a>
+                </div>
+            </div>
+            <div class="ncei-nav-wrapper">
+                <ul class="ncei-nav" role="menubar">
+                    <li role="menuitem"><a href="https://www.ncei.noaa.gov/" title="Home">Home</a></li>
+                    <li role="menuitem"><a href="https://www.ncei.noaa.gov/products" title="Products">Products</a></li>
+                    <li role="menuitem"><a href="https://www.ncei.noaa.gov/services" title="Services">Services</a></li>
+                    <li role="menuitem"><a href="https://www.ncei.noaa.gov/resources" title="Resources">Resources</a></li>
+                    <li role="menuitem"><a href="https://www.ncei.noaa.gov/news" title="News">News</a></li>
+                    <li role="menuitem"><a href="https://www.ncei.noaa.gov/about" title="About">About</a></li>
+                    <li role="menuitem"><a href="https://www.ncei.noaa.gov/contact" title="Contact Us">Contact</a></li>
+                </ul>
+                <form class="ncei-nav-search" name="sitesearchform" method="get" action="https://search.usa.gov/search">
+                    <a id="site-search"></a>
+                    <input type="hidden" name="utf8" value="✓" class="d-none">
+                    <input type="hidden" name="affiliate" id="affiliate" class="d-none" value="nceinoaa">
+                    <label for="site-search-input">Search Field:</label>
+                    <input type="text" name="query" class="searchtext inputbox" id="site-search-input" placeholder="Search NCEI" maxlength="50" tabindex="1" />
+                    <label for="site-search-button">Search button:</label>
+                    <button id="site-search-button"  tabindex="2">
+                        <img src="/access/crn/images/search.svg">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--End Header Code-->
+
+    <!-- Required for 508 compliance -->
+    <div class="element-invisible">
+        <a class="element-invisible element-focusable" href="#main-content">Skip to main content</a><br />
+        <a class="element-invisible element-focusable" href="#site-search">Skip to site search</a>
+    </div>
+    </header>
+
+    <div id="breadcrumbs">
+        <div class="inset">
+
+            <a href="/access/crn" title="US Climate Reference Network">USCRN</a>
+                &gt; <a href="/access/crn/data.html">Data</a>
+
+            > Products
+
+            <ul class="extraLinks">
+    <ul class="extraLinks">
+        <li role="menuitem"> <a href="/access/crn/overview.html">Overview</a> </li>
+        <li role="menuitem"> <a href="/access/crn/data.html">Data</a> </li>
+        <li role="menuitem"> <a href="https://www.ncei.noaa.gov/access/isis">Metadata</a> </li>
+        <li role="menuitem"> <a href="/access/crn/more-info.html">More Info</a> </li>
+    </ul>
+            </ul>
+
+        </div>
+    </div>
+
+    <div id="ncei-alert" class="alert clearfix" style="display:none"></div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url : "https://www.ncdc.noaa.gov/common/warning.html",
+                success : function (data) {
+                    if(data.trim().length > 0){
+                        $("#ncei-alert").html(data).show();
+                    }
+                }
+            });
+        });
+    </script>
+
+    <div id="crn-alert" class="alert clearfix" style="display:none"></div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url : "https://www.ncdc.noaa.gov/warnings/crn.txt",
+                success : function (data) {
+                    if(data.trim().length > 0){
+                        $("#crn-alert").html(data).show();
+                    }
+                }
+            });
+        });
+    </script>
+
+    <div id="content" class="clearfix">
+        <div class="inset">
+                <h1>
+        Products
+    </h1>
+    <p>
+        Selected subsets of monthly, daily, hourly and sub-hourly
+        (5-minute) USCRN/USRCRN data are available as text files for easy
+        access by users ranging from the general public to science experts.
+        When using these data, please cite Diamond et. al.(2013) and for soil
+        observations, also cite Bell et. al. (2013). Please see the
+        <a href="#faq">
+            Frequently
+            Asked Questions
+        </a>
+        below for citations.
+    </p>
+    <p>
+        The most useful variables, including air temperature, precipitation,
+        solar radiation, surface temperature, soil moisture and soil
+        temperature data, are available. Files contain raw observations with
+        quality flags, as well as calculated variables. Calculated data are
+        shown only if a sufficient amount of source data passes its quality
+        control tests; otherwise these values are set to a missing value.
+    </p>
+    <p>
+        For the daily, hourly and sub-hourly data, users can retrieve the
+        entire archive of data by downloading the most recent file in the
+        <i>
+            snapshots
+        </i>
+        subdirectory. The
+        <i>
+            updates
+        </i>
+        subdirectory in the daily and
+        hourly directories contain a record of the real-time daily/hourly data
+        transmitted over NOAAPORT. Detailed descriptions of the files and
+        variables are available in the documentation links listed below.
+    </p>
+    <p>
+        Please review the
+        <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/DATASET-STATUS.txt"
+           title="Dataset Change Log">
+            Dataset Change Log
+        </a>
+        for information on dataset corrections, algorithm changes, and more.
+    </p>
+    <h1 id="basic-products">
+        Basic Products
+    </h1>
+    <div>
+        <h2>
+            <img alt="product icon" class="icon" src="/access/crn/theme/images/folder_db.png"/>
+            Monthly
+        </h2>
+        <p>
+            Monthly data are found in the
+            <b>
+                Monthly01
+            </b>
+            directory. Each station
+            file contains monthly temperature, precipitation, global solar
+            radiation, and surface infrared temperature data in text format for
+            the station's period-of-record.
+        </p>
+        <p>
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/monthly01/readme.txt">
+                Documentation
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/monthly01/headers.txt">
+                Headers
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/monthly01/">
+                Data Access
+            </a>
+        </p>
+        <p>
+            FTP Client Access
+            <a href="#ftp-notice">
+                <sup>
+                    *
+                </sup>
+            </a>
+            :
+            ftp://ftp.ncei.noaa.gov/pub/data/uscrn/products/monthly01
+        </p>
+    </div>
+    <div>
+        <h2>
+            <img alt="product icon" class="icon" src="/access/crn/theme/images/folder_db.png"/>
+            Daily
+        </h2>
+        <p>
+            The
+            <b>
+                Daily01
+            </b>
+            directory contains files with each station's daily
+            data by year. Daily air temperature, precipitation, global solar
+            radiation, relative humidity, surface infrared temperature, soil
+            moisture and soil temperature data are shown in text format.
+        </p>
+        <p>
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/daily01/readme.txt">
+                Documentation
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/daily01/headers.txt">
+                Headers
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/daily01/">
+                Data Access
+            </a>
+        </p>
+        <p>
+            FTP Client Access
+            <a href="#ftp-notice">
+                <sup>
+                    *
+                </sup>
+            </a>
+            :
+            ftp://ftp.ncei.noaa.gov/pub/data/uscrn/products/daily01
+        </p>
+    </div>
+    <div>
+        <h2>
+            <img alt="product icon" class="icon" src="/access/crn/theme/images/folder_db.png"/>
+            Hourly
+        </h2>
+        <p>
+            The
+            <b>
+                Hourly02
+            </b>
+            directory contains files with each station's
+            hourly data by year. Hourly data include: air temperature,
+            precipitation, global solar radiation, relative humidity, surface
+            infrared temperature, soil moisture and soil temperature.
+        </p>
+        <p>
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/readme.txt">
+                Documentation
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/headers.txt">
+                Headers
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/">
+                Data Access
+            </a>
+        </p>
+        <p>
+            FTP Client Access
+            <a href="#ftp-notice">
+                <sup>
+                    *
+                </sup>
+            </a>
+            :
+            ftp://ftp.ncei.noaa.gov/pub/data/uscrn/products/hourly02
+        </p>
+    </div>
+    <div>
+        <h2>
+            <img alt="product icon" class="icon" src="/access/crn/theme/images/folder_db.png"/>
+            Sub-hourly
+        </h2>
+        <p>
+            The
+            <b>
+                Subourly01
+            </b>
+            directory contains files with each station's
+            sub-hourly (5-minute) data by year. Sub-hourly data include: air
+            temperature, precipitation, global solar radiation, surface infrared
+            temperature, relative humidity, soil moisture and temperature,
+            wetness, and 1.5 meter wind speed.
+        </p>
+        <p>
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/subhourly01/readme.txt">
+                Documentation
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/subhourly01/headers.txt">
+                Headers
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/subhourly01/">
+                Data Access
+            </a>
+        </p>
+        <p>
+            FTP Client Access
+            <a href="#ftp-notice">
+                <sup>
+                    *
+                </sup>
+            </a>
+            :
+            ftp://ftp.ncei.noaa.gov/pub/data/uscrn/products/subhourly01
+        </p>
+    </div>
+    <h1 id="derived-products">
+        Derived Products
+    </h1>
+    <div>
+        <h2>
+            <img alt="product icon" class="icon" src="/access/crn/theme/images/folder_db.png"/>
+            Standardized Soil Moisture
+        </h2>
+        <p>
+            The soilanom01 directory contains files with each station's hourly soil moisture data for
+            the period-of-record. Hourly data include: soil moisture volumetric water content, soil
+            moisture anomaly, soil moisture percentile, and soil temperature. These are calculated
+            for individual layers 5, 10, 20, 50, and 100 cm, and for the top layer (5 &amp; 10 cm) and the
+            total column layer.
+        </p>
+        <p>
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/soil/soilanom01/readme.txt">
+                Documentation
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/soil/soilanom01/">
+                Data Access
+            </a>
+        </p>
+        <p>
+            FTP Client Access
+            <a href="#ftp-notice">
+                <sup>
+                    *
+                </sup>
+            </a>
+            :
+            ftp://ftp.ncei.noaa.gov/pub/data/uscrn/products/soil/soilanom01
+        </p>
+    </div>
+    <div>
+        <h2>
+            <img alt="product icon" class="icon" src="/access/crn/theme/images/folder_db.png"/>
+            Soil Moisture Climatology
+        </h2>
+        <p>
+            The soilclim01 directory contains files with each station’s hourly soil moisture
+            climatology. Hourly data include: soil moisture mean, soil moisture median, soil moisture
+            interquartile range, and the fraction of possible data that is valid. These are calculated
+            for individual layers 5, 10, 20, 50, and 100 cm, and for the top layer (5 &amp; 10 cm) and the
+            total column layer.
+        </p>
+        <p>
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/soil/soilclim01/readme.txt">
+                Documentation
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/soil/soilclim01/">
+                Data Access
+            </a>
+        </p>
+        <p>
+            FTP Client Access
+            <a href="#ftp-notice">
+                <sup>
+                    *
+                </sup>
+            </a>
+            :
+            ftp://ftp.ncei.noaa.gov/pub/data/uscrn/products/soil/soilclim01
+        </p>
+    </div>
+    <div>
+        <h2>
+            <img alt="product icon" class="icon" src="/access/crn/theme/images/folder_db.png"/>
+            Heat Exposure
+        </h2>
+        <p>
+            The heat01 directory contains files with each station’s hourly heat exposure.
+            Hourly data include: surface pressure (from external sources), solar radiation, estimated 10m wind speed,
+            air temperature, heat index, apparent temperature, and wet bulb globe temperature.
+        </p>
+        <p>
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/heat01/readme.txt">
+                Documentation
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/heat01/">
+                Data Access
+            </a>
+        </p>
+        <p>
+            FTP Client Access
+            <a href="#ftp-notice">
+                <sup>
+                    *
+                </sup>
+            </a>
+            :
+            ftp://ftp.ncei.noaa.gov/pub/data/uscrn/products/heat01
+        </p>
+    </div>
+    <div>
+        <h2>
+            <img alt="product icon" class="icon" src="/access/crn/theme/images/folder_db.png"/>
+            Drought Indices
+        </h2>
+        <p>
+            The drought01 directory contains files with each station’s daily drought index.
+            Daily data include: running weekly averages of soil moisture, running weekly averages of
+            soil moisture anomolies, fraction of soil moisture values ≤ 30th percentile, and
+            fraction of soil moisture values ≥ 70th percentile at 5cm, 10cm, 20cm, 50cm, and 100cm,
+            as well as those values for the top two-layers (i.e. 5cm and 10cm) and across all layers.
+        </p>
+        <p>
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/drought01/readme.txt">
+                Documentation
+            </a>
+            |
+            <a href="https://www.ncei.noaa.gov/pub/data/uscrn/products/drought01/">
+                Data Access
+            </a>
+        </p>
+        <p>
+            FTP Client Access
+            <a href="#ftp-notice">
+                <sup>
+                    *
+                </sup>
+            </a>
+            :
+            ftp://ftp.ncei.noaa.gov/pub/data/uscrn/products/drought01
+        </p>
+    </div>
+    <h1 id="faq">
+        Frequently Asked Questions
+    </h1>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align:text-bottom;"/>
+        <b>
+            How do I read these files?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align:text-bottom;"/>
+        The data files can be found at the Data Access links above. For each
+        product, there is a Documentation link above (also available as
+        readme.txt in each product folder) which explains the file layouts and
+        how to read the data within the files. Products are either structured in
+        a year-site hierarchy, or simply organized by site. For products in a
+        year-site hierarchy, data is separated into yearly directories and
+        site-specific files within each yearly directory. You may read them in
+        your browser using the links provided on this page, or connect to the
+        FTP server using an FTP client (see below).
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align:text-bottom;"/>
+        <b>
+            Which data files should I select?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align:text-bottom;"/>
+        The files in the yearly subdirectories are updated frequently and contain
+        all the data for that year for each station. The entire period of
+        record for all stations is available for download from the
+        <i>
+            snapshots
+        </i>
+        subdirectory. The
+        <i>
+            updates
+        </i>
+        subdirectory in the daily and hourly
+        directories contain a record of the real-time daily/hourly data
+        transmitted over NOAAPORT. For more detailed information, see the
+        documentation links shown above.
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align:text-bottom;"/>
+        <b>
+            What are the columns for each data file?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align:text-bottom;"/>
+        For each product, there is a Headers link above (also available as
+        headers.txt in each product folder), which is designed to be
+        prepended to the data for use with spreadsheet programs, data
+        extraction tools (e.g. awk) or any other programming language. This
+        file contains the following three lines: Field Number, Field Name and
+        Unit of Measure.
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align:text-bottom;"/>
+        <b>
+            Why do some stations not report some measurements?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align:text-bottom;"/>
+        Unlike the U.S. Climate Reference Network (USCRN), the
+        <a href="/access/crn/usrcrn">
+            U.S. Regional
+            Climate Reference Network (USRCRN)
+        </a>
+        stations do not measure solar
+        radiation, surface temperature, relative humidity or soil variables;
+        those fields are shown as missing values in the data files.
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align:text-bottom;"/>
+        <b>
+            Why are there no wind reports in these products?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align:text-bottom;"/>
+        The wind instrument on a USCRN station tower is mounted at the same
+        height as the air intakes to the temperature sensors, which is usually
+        1.5 meters above the ground. The wind speed instruments were deployed
+        for studying the environments of the temperature measurements, and are
+        not comparable to the 10-meter wind measurements with which most
+        people are familiar which are taken at airports. To avoid confusion,
+        these data are only included in the sub-hourly files. However, other
+        calculated wind measurements can be viewed in the
+        <a href="/access/crn/reports.html">
+            Reports
+        </a>
+        web tool.
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align: text-bottom;"/>
+        <b>
+            How can I access these files via FTP?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align: text-bottom;"/>
+        Each product above lists an address for "FTP Client Access", you may use this
+        address with any FTP client (e.g. FileZilla) to connect and browse/download files.
+        As of 2021, most major web browsers are deprecating direct FTP access, so you will
+        have to use a dedicated FTP client.
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align: text-bottom;"/>
+        <b>
+            Where can I find 5-minute data?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align: text-bottom;"/>
+        Some 5-minute data for USCRN stations are available in the NCEI Climate Data Online system
+        in the
+        <a href="https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/quality-controlled-local-climatological-data-qclcd">
+            Quality Controlled Local Climate Data Products
+        </a>
+        . Bulk transfers of 5-minute data for
+        research purposes are best handled by NCEI Customer Service at
+        <a href="https://www.ncdc.noaa.gov/customer-support">
+            https://www.ncdc.noaa.gov/customer-support
+        </a>
+        .
+        USCRN contacts can also help direct persons with special requests. See
+        our
+        <a href="/access/crn/contacts.html">
+            Contacts
+        </a>
+        page for details.
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align:text-bottom;"/>
+        <b>
+            Who can I contact for help?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align:text-bottom;"/>
+        USCRN personnel can help. See our
+        <a href="/access/crn/contacts.html">
+            Contacts
+        </a>
+        page for details.
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align:text-bottom;"/>
+        <b>
+            How do I cite USCRN data?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align:text-bottom;"/>
+        When using USCRN data in any written work, please reference:
+        <br/>
+    </p>
+    <p>
+        Diamond, H. J., T. R. Karl, M. A. Palecki, C. B. Baker, J. E. Bell, R. D. Leeper, D. R. Easterling,
+        J. H. Lawrimore, T. P. Meyers, M. R. Helfert, G. Goodge, and P. W. Thorne,
+        <time datetime="2013">
+            2013
+        </time>
+        :
+        U.S. Climate Reference Network after one decade of operations: status and assessment.
+        <cite>
+            Bull. Amer. Meteor. Soc.
+        </cite>
+        ,
+        <strong>
+            94
+        </strong>
+        , 489-498.
+        <br/>
+        doi:
+        <a href="https://dx.doi.org/10.1175/BAMS-D-12-00170.1">
+            10.1175/BAMS-D-12-00170.1
+        </a>
+    </p>
+    If you are using the soil products, please also reference:
+    <br/>
+    <p>
+        Bell, J. E., M. A. Palecki, C. B. Baker, W. G. Collins, J. H. Lawrimore,
+        R. D. Leeper, M. E. Hall, J. Kochendorfer, T. P. Meyers, T. Wilson, and H. J. Diamond.
+        <time datetime="2013">
+            2013
+        </time>
+        : U.S. Climate Reference Network soil
+        moisture and temperature observations.
+        <cite>
+            J. Hydrometeorol.
+        </cite>
+        ,
+        <strong>
+            14
+        </strong>
+        , 977-988.
+        <br/>
+        doi:
+        <a href="https://dx.doi.org/10.1175/JHM-D-12-0146.1">
+            10.1175/JHM-D-12-0146.1
+        </a>
+    </p>
+    <p>
+        <img alt="FAQ icon" class="icon" src="theme/images/q.gif" style="vertical-align:text-bottom;"/>
+        <b>
+            Where can I find a list of publications using USCRN/USRCRN data?
+        </b>
+        <br/>
+        <img alt="FAQ icon" class="icon" src="theme/images/a.gif" style="vertical-align:text-bottom;"/>
+        Check our
+        <a href="/access/crn/publications.html">
+            Publications/Citations
+        </a>
+        page.
+    </p>
+
+
+
+        </div>
+    </div>
+
+    <!--Start Footer code-->
+    <div class="ncei-header-footer-container">
+        <div class="ncei-header-footer">
+            <div class="ncei-header-footer-inner">
+                <div class="ncei-footer-half-width">
+                    <div class="ncei-footer-logo">
+                        <a href="http://www.ncei.noaa.gov">
+                            <img src="/access/crn/images/logo.svg" title="Link to NCEI's Homepage" alt="Link to NCEI's Homepage" />
+                        </a>
+                    </div>
+                </div>
+                <div class="ncei-footer-quarter-width">
+                    <p class="ncei-header-footer-title">FOLLOW US</p>
+                    <ul>
+                        <li>
+                            <a href="https://www.facebook.com/NOAANCEI/">
+                                @NOAANCEI
+                                <img src="/access/crn/images/facebook-icon.png" title="NCEI Facebook" alt="NCEI Facebook" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/noaadata/">
+                                @NOAAData
+                                <img src="/access/crn/images/instagram-icon.png" title="NOAA Data Instagram" alt="NOAA Data Instagram" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/NOAANCEI" title="Link to Weather &amp; Climate Twitter">
+                                @NOAANCEI
+                                <img src="/access/crn/images/twitter-icon.png" title="NCEI Weather &amp; Climate Twitter" alt="NCEI Weather &amp; Climate Twitter" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.ncei.noaa.gov/news.xml">
+                                News Feed
+                                <img src="/access/crn/images/rss-icon.png" title="NCEI RSS Feed" alt="NCEI RSS Feed" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ncei-footer-quarter-width">
+                    <p class="ncei-header-footer-title">
+                        CONTACT US
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="mailto:ncei.info@noaa.gov">
+                                Email: ncei.info@noaa.gov
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:8282714800">
+                                Phone: (828) 271-4800
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Footer code -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1Q1BML6E5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E1Q1BML6E5');
+    </script>
+
+    <script async src="https://touchpoints.app.cloud.gov/touchpoints/89426825.js" ></script>
+
+
+    <script id="_fed_an_ua_tag" type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&subagency=NOAA"></script></body>
+</html>
+
+

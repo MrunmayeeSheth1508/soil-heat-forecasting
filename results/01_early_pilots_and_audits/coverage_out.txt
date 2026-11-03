@@ -1,0 +1,63 @@
+﻿Qualifying stations: 10 cm moisture distribution on dry informative days (m3/m3)
+                          n_dry  th_p05  th_p25  th_p75  th_p95  r_thT  two_state_bins
+station                                                                               
+TX_Port_Aransas_32_NNE    415.0   0.017   0.050   0.157   0.405 -0.032             3.0
+SC_McClellanville_7_NE    470.0   0.034   0.112   0.252   0.341 -0.265             7.0
+CA_Yosemite_Village_12_W  562.0   0.038   0.042   0.159   0.228 -0.757             3.0
+GA_Watkinsville_5_SSE     607.0   0.041   0.077   0.163   0.266 -0.411             6.0
+RI_Kingston_1_W           341.0   0.042   0.155   0.212   0.242 -0.511             3.0
+AZ_Elgin_5_S              714.0   0.045   0.057   0.122   0.178 -0.636             5.0
+AL_Fairhope_3_NE          428.0   0.047   0.083   0.140   0.153 -0.366             5.0
+ND_Northgate_5_ESE        402.0   0.051   0.098   0.193   0.255 -0.453             4.0
+CA_Santa_Barbara_11_W     855.0   0.066   0.074   0.167   0.310 -0.714             3.0
+NM_Los_Alamos_13_W        426.0   0.075   0.100   0.261   0.349 -0.583             3.0
+TX_Muleshoe_19_S          777.0   0.082   0.099   0.155   0.204 -0.244             9.0
+CO_Cortez_8_SE            568.0   0.085   0.099   0.137   0.258 -0.409             7.0
+CA_Merced_23_WSW          536.0   0.087   0.095   0.177   0.284 -0.593             3.0
+MS_Newton_5_ENE           537.0   0.088   0.199   0.306   0.327 -0.572             4.0
+NC_Durham_11_W            514.0   0.091   0.194   0.279   0.311 -0.667             3.0
+AL_Gadsden_19_N           531.0   0.091   0.182   0.257   0.288 -0.644             4.0
+WY_Sundance_8_NNW         286.0   0.100   0.123   0.297   0.355 -0.457             4.0
+MT_Wolf_Point_34_NE       418.0   0.103   0.122   0.217   0.305 -0.315             5.0
+CO_Montrose_11_ENE        464.0   0.112   0.126   0.232   0.304 -0.638             5.0
+CO_Dinosaur_2_E           572.0   0.117   0.141   0.284   0.362 -0.577             5.0
+MT_Wolf_Point_29_ENE      268.0   0.120   0.171   0.309   0.338 -0.335             4.0
+SD_Sioux_Falls_14_NNE     396.0   0.121   0.164   0.296   0.372 -0.357             6.0
+CO_La_Junta_17_WSW        672.0   0.124   0.157   0.228   0.277 -0.370             7.0
+SD_Buffalo_13_ESE         383.0   0.125   0.134   0.227   0.319 -0.557             4.0
+NC_Asheville_8_SSW        552.0   0.135   0.210   0.317   0.365 -0.667             3.0
+AR_Batesville_8_WNW       389.0   0.139   0.221   0.275   0.301 -0.538             3.0
+PA_Avondale_2_N           344.0   0.148   0.231   0.315   0.346 -0.580             3.0
+OK_Goodwell_2_E           308.0   0.149   0.164   0.269   0.334 -0.448             4.0
+KS_Manhattan_6_SSW        571.0   0.156   0.227   0.329   0.375 -0.369             5.0
+MT_Lewistown_42_WSW       422.0   0.160   0.176   0.282   0.303 -0.321             5.0
+OK_Goodwell_2_SE          585.0   0.160   0.195   0.337   0.399 -0.310             7.0
+IN_Bedford_5_WNW          359.0   0.162   0.230   0.370   0.415 -0.475             5.0
+IL_Champaign_9_SW         445.0   0.164   0.187   0.319   0.377 -0.466             7.0
+MO_Chillicothe_22_ENE     413.0   0.185   0.248   0.394   0.468 -0.388             4.0
+LA_Lafayette_13_SE        408.0   0.193   0.266   0.346   0.377 -0.172             5.0
+KS_Oakley_19_SSW          302.0   0.207   0.221   0.342   0.379 -0.331             4.0
+NE_Lincoln_8_ENE          499.0   0.212   0.271   0.399   0.431 -0.485             7.0
+SD_Pierre_24_S            316.0   0.253   0.316   0.409   0.445 -0.382             3.0
+AL_Selma_13_WNW           623.0   0.277   0.380   0.489   0.539 -0.610             6.0
+
+Stations whose 5th percentile is below 0.15 (reach the dry range): 28 of 39
+Stations whose 5th percentile is above 0.30 (always moist): 0 of 39
+
+Pooled coverage across qualifying stations, by Tin bin:
+    days  stations  th_p05  th_p95
+Tb                                
+0     73        21   0.178   0.426
+3   1147        31   0.119   0.403
+6   1658        36   0.098   0.422
+9   2035        39   0.085   0.421
+12  2209        39   0.067   0.403
+15  2297        39   0.066   0.371
+18  2426        38   0.047   0.386
+21  2724        38   0.067   0.387
+24  2414        33   0.059   0.356
+27  1341        20   0.032   0.400
+30   315         8   0.044   0.368
+33    39         2   0.049   0.134
+
+Within-site day pairs at the same 1 C Tin with |dtheta| >= 0.10: 52337 total; stations with >=100 such pairs: 39

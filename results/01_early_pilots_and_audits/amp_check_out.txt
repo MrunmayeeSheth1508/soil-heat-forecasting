@@ -1,0 +1,45 @@
+﻿=== Q2. SOLVER CHECK vs exact analytic periodic solution (semi-infinite wave, boundaries at 5 and 20 cm) ===
+ alpha m2/s  damping depth cm  amp err % (dt=1h)  amp err % (sub=6)  phase err h (1h)
+   2.00e-07               7.4              -0.99              -1.36             0.016
+   4.00e-07              10.5              -0.39              -0.88            -0.001
+   6.00e-07              12.8              -0.20              -0.73            -0.003
+   8.00e-07              14.8              -0.12              -0.66            -0.003
+   1.20e-06              18.2              -0.06              -0.59            -0.003
+
+=== Q3. IS THE AMPLITUDE ERROR REMOVED BY FITTING alpha IN-SAMPLE? (whole episode, global grid) ===
+Episode 4 (429 h), observed 10 cm diurnal amplitude (whole episode, after 48 h warm-up): 0.839 C
+     alpha   RMSE C  amp ratio model/obs  phase err h
+  5.00e-08    0.891                0.452        -3.37
+  8.37e-08    0.602                0.628        -2.34
+  1.40e-07    0.367                0.842        -1.44
+  2.34e-07    0.216                1.048        -0.55
+  3.92e-07    0.242                1.184         0.20
+  6.56e-07    0.335                1.252         0.74
+  1.10e-06    0.408                1.281         1.09
+  1.84e-06    0.454                1.292         1.30
+  3.07e-06    0.483                1.297         1.42
+  5.15e-06    0.500                1.299         1.50
+  2.71e-07    0.206                1.095        -0.32   <-- minimum RMSE
+Alpha that matches the observed amplitude exactly: 2.02e-07; RMSE there 0.244 C, phase error -0.80 h; min-RMSE alpha 2.71e-07 gives amp ratio 1.095
+MIN-RMSE alpha 2.71e-07: RMSE 0.206 C, amplitude ratio 1.095, phase err -0.32 h
+
+All episodes >= 144 h, in-sample min-RMSE alpha on whole episode:
+ ep  hours     alpha*    RMSE  amp ratio  phase h  obs amp10
+  1    761   3.14e-07   0.147      1.050    -0.13      1.239
+  2   5900   3.92e-07   0.427      1.090    -0.16      1.733
+  3   2649   2.52e-07   0.350      1.152    -0.66      0.936
+  4    429   2.71e-07   0.206      1.095    -0.32      0.839
+  5    676   2.92e-07   0.209      1.081    -0.21      1.013
+  6   3739   4.22e-07   0.385      1.057    -0.16      1.952
+  7    473   8.81e-07   0.260      0.876     0.11      1.568
+ 10    223   4.89e-07   0.257      1.070    -0.19      1.647
+ 11    237   7.06e-07   0.470      0.987     0.16      1.991
+ 12   1698   4.22e-07   0.216      1.085    -0.22      1.190
+Amplitude ratio at min-RMSE alpha across 10 episodes: median 1.076, min 0.876, max 1.152
+
+=== Q4. SOLVER-FREE CHECK: alpha from amplitude decay vs alpha from phase lag (daily 24 h windows, linear trend removed) ===
+Homogeneous 1D conduction requires alpha_amp = alpha_phase for every layer.
+    layer  days  alpha_amp median  alpha_phase median  median ratio amp/phase     IQR of ratio  median |A_lower/A_upper|  median lag h
+  5-10 cm   574          2.64e-07            6.43e-07                    0.44    0.26- 0.83                     0.556          1.44
+ 10-20 cm   575          3.56e-07            3.75e-07                    1.01    0.76- 1.47                     0.364          3.76
+  5-20 cm   575          3.20e-07            4.15e-07                    0.74    0.59- 1.17                     0.202          5.36

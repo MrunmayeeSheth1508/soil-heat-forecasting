@@ -1,0 +1,159 @@
+﻿TX_Muleshoe_19_S             (33.95,-102.77): NO lab pedon within +/-0.03 deg
+SC_McClellanville_7_NE       (33.15,-79.36): NO lab pedon within +/-0.03 deg
+IL_Champaign_9_SW            (40.05,-88.37): 1 pedon(s)
+    pedon 36276 date 8/1/1976 1 usiteid 1976IL019015 name Drummer at (40.0218878,-88.3849825) layers in 5-20 cm: 1
+OK_Goodwell_2_SE             (36.56,-101.60): NO lab pedon within +/-0.03 deg
+NE_Lincoln_8_ENE             (40.84,-96.56): 2 pedon(s)
+    pedon 2125 date 6/1/1973 1 usiteid 73NE109005 name Sharpsburg at (40.8430557,-96.5588913) layers in 5-20 cm: 2
+    pedon 34028 date 11/7/2006  usiteid S2006NE109200 name Aksarben at (40.8450012,-96.5615005) layers in 5-20 cm: 2
+CO_La_Junta_17_WSW           (37.86,-103.82): NO lab pedon within +/-0.03 deg
+CO_Cortez_8_SE               (37.25,-108.50): NO lab pedon within +/-0.03 deg
+SD_Sioux_Falls_14_NNE        (43.73,-96.62): 3 pedon(s)
+    pedon 20328 date 6/1/1993 1 usiteid 92SD099075 name Splitrock at (43.7541667,-96.5911111) layers in 5-20 cm: 1
+    pedon 29691 date 5/14/2003  usiteid S2003SD099001 name Moody at (43.7386513,-96.6190186) layers in 5-20 cm: 2
+    pedon 29692 date 5/14/2003  usiteid S2003SD099002 name Moody at (43.733333,-96.616667) layers in 5-20 cm: 2
+AL_Selma_13_WNW              (32.45,-87.24): 1 pedon(s)
+    pedon 4776 date 5/27/1958  usiteid S1958AL047001 name VAIDEN at (32.4674988,-87.2591629) layers in 5-20 cm: 2
+GA_Watkinsville_5_SSE        (33.78,-83.38): NO lab pedon within +/-0.03 deg
+IN_Bedford_5_WNW             (38.88,-86.57): NO lab pedon within +/-0.03 deg
+LA_Lafayette_13_SE           (30.09,-91.87): NO lab pedon within +/-0.03 deg
+KS_Manhattan_6_SSW           (39.10,-96.60): 36 pedon(s)
+    pedon 14121 date 5/1/1987 1 usiteid S1987KS161001 name Clime T at (39.0866661,-96.5941696) layers in 5-20 cm: 2
+    pedon 14122 date 5/30/1987  usiteid 87KS061002 name Tully at (39.0711432,-96.5972487) layers in 5-20 cm: 2
+    pedon 14124 date 5/1/1987 1 usiteid S1987KS161004 name Florence at (39.0963898,-96.5774994) layers in 5-20 cm: 2
+    pedon 14126 date 5/1/1987 1 usiteid S1987KS161006 name Tully at (39.0999985,-96.589447) layers in 5-20 cm: 2
+    pedon 18443 date 8/5/1991 1 usiteid 91KS161991 name (unnamed) at (39.0823111,-96.5828661) layers in 5-20 cm: 2
+    pedon 18444 date 8/5/1991 1 usiteid 91KS161992 name Clime at (39.0822456,-96.5823135) layers in 5-20 cm: 3
+    pedon 18445 date 8/6/1991 1 usiteid 91KS161993 name Ivan at (39.0869764,-96.5844706) layers in 5-20 cm: 2
+    pedon 18446 date 8/1/1991 1 usiteid S1991KS161004 name Reading at (39.0866661,-96.5844421) layers in 5-20 cm: 3
+    pedon 18447 date 8/1/1991 1 usiteid S1991KS161005 name Tully at (39.086113,-96.5841675) layers in 5-20 cm: 2
+    pedon 18448 date 8/1/1991 1 usiteid S1991KS161006 name Labette at (39.0802765,-96.5869446) layers in 5-20 cm: 2
+    pedon 18449 date 8/1/1991 1 usiteid S1991KS061001 name Labette at (39.0711098,-96.5833359) layers in 5-20 cm: 3
+    pedon 18450 date 8/1/1991 1 usiteid S1991KS061002 name Konza at (39.0727768,-96.582222) layers in 5-20 cm: 3
+    pedon 18451 date 8/1/1991 1 usiteid S1991KS161007 name Benfield at (39.080555,-96.5786133) layers in 5-20 cm: 2
+    pedon 18452 date 8/1/1991 1 usiteid S1991KS161008 name Benfield at (39.080555,-96.5786133) layers in 5-20 cm: 3
+    pedon 52257 date 5/1/1991 1 usiteid 91KS161011 name Tully at (39.0843849,-96.5837402) layers in 5-20 cm: 1
+    pedon 52258 date 5/9/1991 1 usiteid 91KS161026 name Reading at (39.085083,-96.5836487) layers in 5-20 cm: 2
+    pedon 52259 date 5/20/1991  usiteid 91KS161048 name SND (Calciaquolls) at (39.0818405,-96.5827866) layers in 5-20 cm: 1
+    pedon 52260 date 5/29/1991  usiteid 91KS161060 name Ivan at (39.0803566,-96.5824738) layers in 5-20 cm: 1
+    pedon 52261 date 5/31/1991  usiteid 91KS161069 name Clime at (39.0805168,-96.5815201) layers in 5-20 cm: 1
+    pedon 52262 date 6/3/1991 1 usiteid 91KS161077 name Benfield at (39.0808296,-96.5810242) layers in 5-20 cm: 1
+    pedon 52266 date 11/16/1992 usiteid 92KS161015 name Tully at (39.0782166,-96.5809937) layers in 5-20 cm: 1
+    pedon 52267 date 11/30/1992 usiteid 92KS161016 name Tully at (39.0813217,-96.5837784) layers in 5-20 cm: 2
+    pedon 71957 date nan usiteid S2014KS161603 name Chase at (39.1082778,-96.6104722) layers in 5-20 cm: 2
+    pedon 74276 date 10/24/2018 usiteid S2018KS161102 name Tully at (39.10559,-96.61004) layers in 5-20 cm: 2
+    pedon 74277 date 10/25/2018 usiteid S2018KS161103 name Reading at (39.1033,-96.60426) layers in 5-20 cm: 2
+    pedon 74317 date nan usiteid S2014KS161603 name Chase at (39.1082778,-96.6104722) layers in 5-20 cm: 4
+    pedon 74345 date nan usiteid 2015KS061900 name Tully at (39.07098,-96.5889) layers in 5-20 cm: 2
+    pedon 74346 date nan usiteid S2015KS161100 name Benfield at (39.07361,-96.57133) layers in 5-20 cm: 1
+    pedon 74351 date nan usiteid S2015KS161105 name Tully at (39.10396,-96.59631) layers in 5-20 cm: 1
+    pedon 74352 date nan usiteid S2015KS161106 name Clime at (39.10603,-96.59763) layers in 5-20 cm: 2
+    pedon 74353 date nan usiteid S2015KS161107 name Ivan at (39.09877,-96.60176) layers in 5-20 cm: 2
+    pedon 74354 date nan usiteid S2015KS161108 name Kipson at (39.09203,-96.58411) layers in 5-20 cm: 2
+    pedon 74355 date nan usiteid S2015KS161109 name Tully at (39.10068,-96.58558) layers in 5-20 cm: 2
+    pedon 74357 date nan usiteid S2015KS161111 name Tully at (39.08433,-96.58242) layers in 5-20 cm: 2
+    pedon 74886 date nan usiteid S2018KS161057 name Irwin at (39.10834,-96.61478) layers in 5-20 cm: 2
+    pedon 74887 date nan usiteid S2018KS161048 name Reading at (39.10787,-96.61286) layers in 5-20 cm: 2
+MT_Wolf_Point_34_NE          (48.48,-105.20): NO lab pedon within +/-0.03 deg
+CO_Dinosaur_2_E              (40.24,-108.96): NO lab pedon within +/-0.03 deg
+CO_Montrose_11_ENE           (38.54,-107.69): NO lab pedon within +/-0.03 deg
+MT_Lewistown_42_WSW          (46.88,-110.28): NO lab pedon within +/-0.03 deg
+AZ_Elgin_5_S                 (31.59,-110.50): NO lab pedon within +/-0.03 deg
+AL_Fairhope_3_NE             (30.54,-87.87): 1 pedon(s)
+    pedon 39645 date 3/24/2007  usiteid 2007AL003001 name Malbis at (30.5408333,-87.8819444) layers in 5-20 cm: 1
+MO_Chillicothe_22_ENE        (39.86,-93.14): 1 pedon(s)
+    pedon 46130 date 3/26/2003  usiteid 2003MO115005 name RACOON at (39.8536111,-93.1658333) layers in 5-20 cm: 1
+WY_Sundance_8_NNW            (44.51,-104.43): NO lab pedon within +/-0.03 deg
+MS_Newton_5_ENE              (32.33,-89.07): NO lab pedon within +/-0.03 deg
+MT_Wolf_Point_29_ENE         (48.30,-105.10): NO lab pedon within +/-0.03 deg
+KS_Oakley_19_SSW             (38.87,-100.96): NO lab pedon within +/-0.03 deg
+SD_Buffalo_13_ESE            (45.51,-103.30): 1 pedon(s)
+    pedon 75743 date 6/28/2019  usiteid S2019SD063001 name Maltese at (45.519401550293,-103.289001464844) layers in 5-20 cm: 2
+ND_Northgate_5_ESE           (48.96,-102.17): NO lab pedon within +/-0.03 deg
+OK_Goodwell_2_E              (36.59,-101.59): 1 pedon(s)
+    pedon 24862 date 12/13/1999 usiteid S1999OK139001 name Plack at (36.6179428,-101.5782776) layers in 5-20 cm: 1
+AL_Gadsden_19_N              (34.28,-85.96): NO lab pedon within +/-0.03 deg
+TX_Port_Aransas_32_NNE       (28.30,-96.82): 2 pedon(s)
+    pedon 24805 date 10/4/1999  usiteid S1999TX007001 name Mustang at (28.3099728,-96.8271942) layers in 5-20 cm: 2
+    pedon 24806 date 10/1/1999  usiteid S1999TX007002 name Galveston at (28.3063889,-96.8231944) layers in 5-20 cm: 2
+SD_Pierre_24_S               (44.01,-100.35): NO lab pedon within +/-0.03 deg
+NM_Los_Alamos_13_W           (35.85,-106.52): 2 pedon(s)
+    pedon 32744 date 2/1/2006 1 usiteid 04NM043011 name Puminoche at (35.8324432,-106.546196) layers in 5-20 cm: 2
+    pedon 7083 date 7/1/1978 1 usiteid S78NM043001 name Calaveras at (35.8761604,-106.5178109) layers in 5-20 cm: 2
+CA_Santa_Barbara_11_W        (34.41,-119.87): NO lab pedon within +/-0.03 deg
+NC_Asheville_8_SSW           (35.49,-82.61): 1 pedon(s)
+    pedon 31229 date 11/17/2003 usiteid S2003NC021002 name Evard at (35.4843674,-82.6020126) layers in 5-20 cm: 1
+NC_Durham_11_W               (35.97,-79.09): NO lab pedon within +/-0.03 deg
+PA_Avondale_2_N              (39.85,-75.78): 2 pedon(s)
+    pedon 32325 date 9/23/2003  usiteid S2003PA029012 name Edgemont, red at (39.8630981,-75.7816315) layers in 5-20 cm: 1
+    pedon 32326 date 10/22/2003 usiteid S2003PA029014 name Codorus at (39.862278,-75.7835312) layers in 5-20 cm: 2
+RI_Kingston_1_W              (41.47,-71.54): 11 pedon(s)
+    pedon 25907 date 7/29/2000  usiteid S2000RI009001 name Enfield at (41.4778328,-71.5616913) layers in 5-20 cm: 3
+    pedon 39554 date 6/10/2008  usiteid S2008-RI009-020-Bridgehampton name Bridgehampton at (41.4798927,-71.5501862) layers in 5-20 cm: 3
+    pedon 73177 date 5/31/2015  usiteid S2013RI009007 name Enfield at (41.479237,-71.5636038) layers in 5-20 cm: 1
+    pedon 73180 date 7/18/2015  usiteid S2013RI009010 name Enfield at (41.4776846,-71.561917) layers in 5-20 cm: 1
+    pedon 73181 date 7/18/2015  usiteid S2013RI009011 name Enfield at (41.4871624,-71.5694862) layers in 5-20 cm: 2
+    pedon 73182 date 7/18/2015  usiteid S2013RI009012 name Enfield at (41.465859,-71.5565386) layers in 5-20 cm: 2
+    pedon 73187 date 7/22/2015  usiteid S2013RI009017 name Merrimac at (41.4743047,-71.5443498) layers in 5-20 cm: 2
+    pedon 73191 date 10/25/2015 usiteid S2013RI009021 name Walpole at (41.485871,-71.568985) layers in 5-20 cm: 2
+    pedon 74209 date 10/6/2018  usiteid S2018RI009004 name Rainbow at (41.475375,-71.5149361) layers in 5-20 cm: 1
+    pedon 74210 date 10/6/2018  usiteid S2018RI009005 name Rainbow at (41.4750806,-71.5139722) layers in 5-20 cm: 2
+    pedon 74211 date 10/19/2018 usiteid S2018RI009006 name Rainbow at (41.475176,-71.513744) layers in 5-20 cm: 1
+CA_Merced_23_WSW             (37.23,-120.88): NO lab pedon within +/-0.03 deg
+AR_Batesville_8_WNW          (35.82,-91.78): 45 pedon(s)
+    pedon 57888 date 11/27/2012 usiteid 1959AR06301 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57889 date 11/27/2012 usiteid 1959AR06303 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57890 date 11/27/2012 usiteid 1959AR06304 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57891 date 11/27/2012 usiteid 1959AR063005 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57892 date 11/27/2012 usiteid 1959AR063006 name Dunning at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57893 date 11/27/2012 usiteid 1959AR063007 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57894 date 11/27/2012 usiteid 1959AR06308 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57895 date 11/27/2012 usiteid 1959AR063009 name Nixa at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57896 date 11/27/2012 usiteid 1959AR06310 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57897 date 11/27/2012 usiteid 1959AR063011 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57898 date 11/27/2012 usiteid 1959AR063012 name Tonti at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57899 date 11/27/2012 usiteid 1959AR063013 name Elk at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57900 date 11/27/2012 usiteid 1959AR06314 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57901 date 11/27/2012 usiteid 1959AR06316 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57902 date 11/27/2012 usiteid 1959AR06317 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57903 date 11/27/2012 usiteid 1959AR063019 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57904 date 11/27/2012 usiteid 1959AR063021 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57905 date 11/27/2012 usiteid 1959AR06322 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57906 date 11/27/2012 usiteid 1959AR063023 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57907 date 11/27/2012 usiteid 1959AR06325 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57908 date 11/27/2012 usiteid 1959AR06326 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57979 date 11/27/2012 usiteid 1960AR06301 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57980 date 11/27/2012 usiteid 1960AR06302 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57981 date 11/27/2012 usiteid 1960AR06304 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57982 date 11/27/2012 usiteid 1960AR06317 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 57983 date 11/27/2012 usiteid 1960AR06320 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57984 date 11/27/2012 usiteid 1960AR063024 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57986 date 11/27/2012 usiteid 1960AR063028 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57987 date 11/27/2012 usiteid 1960AR06329 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57988 date 11/27/2012 usiteid 1960AR063030 name Jefferson at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57990 date 11/27/2012 usiteid 1960AR063032 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57991 date 11/27/2012 usiteid 1960AR063033 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57992 date 11/27/2012 usiteid 1960AR06334 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57993 date 11/27/2012 usiteid 1960AR06335 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 57994 date 11/27/2012 usiteid 1960AR06336 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 58021 date 11/27/2012 usiteid 1961AR063001 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 58022 date 11/27/2012 usiteid 1961AR063002 name Ramsey at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 58023 date 11/27/2012 usiteid 1961AR063003 name nan at (35.8267,-91.7746) layers in 5-20 cm: 3
+    pedon 58024 date 11/27/2012 usiteid 1961AR06304 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 58025 date 11/27/2012 usiteid 1961AR063005 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 58026 date 11/27/2012 usiteid 1961AR063006 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 58027 date 11/27/2012 usiteid 1961AR06308 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 58028 date 11/27/2012 usiteid 1961AR06309 name nan at (35.8267,-91.7746) layers in 5-20 cm: 1
+    pedon 58029 date 11/27/2012 usiteid 1961AR063010 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+    pedon 58030 date 11/27/2012 usiteid 1961AR06311 name nan at (35.8267,-91.7746) layers in 5-20 cm: 2
+CA_Yosemite_Village_12_W     (37.75,-119.82): 8 pedon(s)
+    pedon 22992 date 9/10/1996  usiteid 790056 name Coarse-loamy, mixed, frigid, Ultic Haploxeralfs at (37.7607572,-119.8209817) layers in 5-20 cm: 2
+    pedon 22993 date 9/10/1996  usiteid 790057 name Sandy-skeletal , mixed, Dystric Xerochrepts at (37.7543685,-119.8107036) layers in 5-20 cm: 2
+    pedon 23632 date 7/16/1997  usiteid 790083 name Loamy-skeletal, mixed, frigid Eutric Glassoboralfs at (37.751035,-119.8418155) layers in 5-20 cm: 2
+    pedon 23633 date 7/15/1997  usiteid 790084 name Coarse-loamy, mixed, frigid, Xeric Kandihumults at (37.7604792,-119.8420934) layers in 5-20 cm: 3
+    pedon 23644 date 7/7/1997 1 usiteid S1997CA043017 name SND at (37.7657585,-119.8315353) layers in 5-20 cm: 2
+    pedon 23649 date 7/23/1997  usiteid 790092 name Loamy, mixed, mesic, Ultic Palexeralfs at (37.7693682,-119.806537) layers in 5-20 cm: 2
+    pedon 23652 date 7/31/1997  usiteid 790101 name Loamy-skeletal, mixed, frigid Typic Haploxerults at (37.7668683,-119.8048702) layers in 5-20 cm: 1
+    pedon 23653 date 7/25/1997  usiteid 790094 name Sandy, mixed, frigid Fluvaquentic Humaquepts at (37.7610351,-119.8045924) layers in 5-20 cm: 3
+
+Saved 210 layer rows

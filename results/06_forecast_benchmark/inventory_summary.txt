@@ -1,0 +1,27 @@
+ISSUE-TIME INVENTORY (no scores). stations 39; detected spells 1907; clusters 254
+
+STAGE-WISE ATTRITION (counts of issues; the same common set is used for all competitors)
+dev : detected 1074 (clusters 151, stations 39) -> five-depth profile at issue 1001 -> 168 h coverage >= 80% 979 -> trailing-24h data 979 -> 20 cm outcome valid 974 -> BOTH depths valid = COMMON SET 973 (clusters 146, stations 39)
+val : detected 833 (clusters 103, stations 39) -> five-depth profile at issue 731 -> 168 h coverage >= 80% 727 -> trailing-24h data 727 -> 20 cm outcome valid 716 -> BOTH depths valid = COMMON SET 716 (clusters 99, stations 38)
+all : detected 1907 (clusters 254, stations 39) -> five-depth profile at issue 1732 -> 168 h coverage >= 80% 1706 -> trailing-24h data 1706 -> 20 cm outcome valid 1690 -> BOTH depths valid = COMMON SET 1689 (clusters 245, stations 39)
+
+STAND-ALONE REQUIREMENTS (what each competitor alone would need): persistence = profile at issue; anomaly baseline = profile + trailing 24 h; conduction = profile + 168 h coverage. Counts below are before the outcome-validity step.
+dev: persistence 1001; anomaly 998; conduction 979
+val: persistence 731; anomaly 730; conduction 727
+
+REASONS FOR MISSING OUTCOMES (among issues passing the input requirements): 
+dev: inputs ok 979; 20 cm outcome invalid 5; 50 cm outcome invalid 6; either 6
+val: inputs ok 727; 20 cm outcome invalid 11; 50 cm outcome invalid 11; either 11
+
+COMMON SET: per split
+dev: issues 973, clusters 146, stations 39; May-Sep 465; dry at issue 424; non-freezing past week 845
+   initial T20 median 17.7 C (range -6.1 to 32.3); initial T50 median 17.0 C (range -4.2 to 30.8); initial 10 cm moisture median 0.18 (range 0.01 to 0.65)
+   recorded later outcomes (not used as filters): rain >= 10 mm within 72 h in 198 issues; any rain 526; at least one more hot day in the next 3 days: 368
+val: issues 716, clusters 99, stations 38; May-Sep 385; dry at issue 309; non-freezing past week 619
+   initial T20 median 18.2 C (range -3.9 to 31.6); initial T50 median 17.3 C (range -3.2 to 31.4); initial 10 cm moisture median 0.18 (range 0.01 to 0.65)
+   recorded later outcomes (not used as filters): rain >= 10 mm within 72 h in 134 issues; any rain 370; at least one more hot day in the next 3 days: 369
+
+issues per station in the common set (validation / development): Fairhope 18/26, Gadsden 13/31, Selma 11/27, Batesville 18/27, Elgin 12/14, Merced 7/33, Santa 16/27, Yosemite 23/33, Cortez 28/34, Dinosaur 27/27, La 27/23, Montrose 30/27, Watkinsville 16/24, Champaign 15/27, Bedford 22/31, Manhattan 0/20, Oakley 9/23, Lafayette 30/25, Chillicothe 22/17, Newton 7/14, Lewistown 22/24, Wolf 11/26, Wolf 25/19, Asheville 19/28, Durham 19/23, Northgate 25/20, Lincoln 17/22, Los 24/26, Goodwell 6/28, Goodwell 17/31, Avondale 22/26, Kingston 25/26, McClellanville 17/23, Buffalo 28/27, Pierre 22/23, Sioux 12/26, Muleshoe 22/25, Port 15/14, Sundance 17/26
+
+EVENTS BY MONTH (common set): 1:113, 2:121, 3:89, 4:102, 5:187, 6:161, 7:143, 8:194, 9:165, 10:126, 11:119, 12:169
+clusters: median events 4, max events 56, max stations 29, longest chained span 46 days

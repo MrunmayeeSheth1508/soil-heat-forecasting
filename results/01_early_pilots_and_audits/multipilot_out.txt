@@ -1,0 +1,47 @@
+﻿Stations and development segments (336 h pieces, 2019-2021):
+  TX_Muleshoe_19_S             segments  68  scored hours  17923  theta 0.061-0.255 (IQR 0.100-0.155)  r(theta,Tin) -0.23
+  SC_McClellanville_7_NE       segments  58  scored hours  13038  theta 0.023-0.409 (IQR 0.113-0.255)  r(theta,Tin) -0.23
+  IL_Champaign_9_SW            segments  62  scored hours  13401  theta 0.151-0.438 (IQR 0.190-0.334)  r(theta,Tin) -0.46
+  OK_Goodwell_2_SE             segments  78  scored hours  20918  theta 0.143-0.511 (IQR 0.199-0.350)  r(theta,Tin) -0.44
+  NE_Lincoln_8_ENE             segments  59  scored hours  13341  theta 0.190-0.470 (IQR 0.276-0.403)  r(theta,Tin) -0.46
+  AL_Selma_13_WNW              segments  77  scored hours  17058  theta 0.233-0.561 (IQR 0.387-0.504)  r(theta,Tin) -0.58
+
+=== POOLED FIT, all stations, all development data ===
+M_T: c = -0.000 per 10 C  intercepts: TX_Mulesh 1.70e-07, SC_McClel 5.49e-07, IL_Champa 3.73e-07, OK_Goodwe 2.06e-06, NE_Lincol 1.35e-07, AL_Selma 3.90e-07
+M_TM: c = +0.008 per 10 C, b = +0.046 per 0.1 m3/m3  intercepts: TX_Mulesh 1.71e-07, SC_McClel 5.60e-07, IL_Champa 3.77e-07, OK_Goodwe 2.07e-06, NE_Lincol 1.36e-07, AL_Selma 3.92e-07
+
+=== LEAVE-ONE-STATION-OUT, local calibration on first 25% of held-out segments ===
+  held out TX_Muleshoe_19_S             cal  17 seg / test  51 seg   RMSE M_T 0.5118  M_TM 0.5571  diff -0.0453   fold b -0.116  c(M_T) +0.070  c(M_TM) +0.013
+  held out SC_McClellanville_7_NE       cal  14 seg / test  44 seg   RMSE M_T 0.3958  M_TM 0.4168  diff -0.0210   fold b +0.114  c(M_T) +0.003  c(M_TM) +0.022
+  held out IL_Champaign_9_SW            cal  16 seg / test  46 seg   RMSE M_T 0.1421  M_TM 0.1457  diff -0.0036   fold b +0.061  c(M_T) -0.003  c(M_TM) +0.007
+  held out OK_Goodwell_2_SE             cal  20 seg / test  58 seg   RMSE M_T 0.6744  M_TM 0.6744  diff +0.0000   fold b +0.046  c(M_T) -0.001  c(M_TM) +0.008
+  held out NE_Lincoln_8_ENE             cal  15 seg / test  44 seg   RMSE M_T 0.9890  M_TM 0.9925  diff -0.0035   fold b +0.096  c(M_T) -0.016  c(M_TM) -0.003
+  held out AL_Selma_13_WNW              cal  19 seg / test  58 seg   RMSE M_T 0.3594  M_TM 0.3613  diff -0.0019   fold b +0.067  c(M_T) -0.010  c(M_TM) +0.000
+M_TM better at 1/6 held-out stations; station-averaged improvement -0.0125 C, bootstrap 95% CI [-0.0154, -0.0094]
+LOSO fold b values: [-0.116  0.114  0.061  0.046  0.096  0.067]
+
+=== SEGMENT BLOCK BOOTSTRAP WITHIN STATIONS (100), pooled M_TM ===
+b median +0.045, 95% [-0.016, +0.113];  c median +0.009, 95% [-0.044, +0.059];  corr(b,c) +0.228
+Note: segments within a station are autocorrelated in season; this bootstrap understates uncertainty.
+
+=== BOUNDARY OFFSET SENSITIVITY (pooled M_TM refit) ===
+  T5 +0.1  T20 +0.0:  b +0.043   c +0.009
+  T5 -0.1  T20 +0.0:  b +0.050   c +0.007
+  T5 +0.0  T20 +0.1:  b +0.045   c +0.009
+  T5 +0.0  T20 -0.1:  b +0.048   c +0.008
+  Moisture scale error +/-20%: b would become +0.039 to +0.058 (sign unchanged)
+
+=== STATION-SPECIFIC FITS (a_s, b_s, c_s on each station alone) ===
+  TX_Muleshoe_19_S             b_s +0.459 (bootstrap 95% +0.378 to +0.585)  c_s -0.007  alpha 1.80e-07
+  SC_McClellanville_7_NE       b_s -0.230 (bootstrap 95% -0.320 to -0.078)  c_s -0.165  alpha 5.28e-07
+  IL_Champaign_9_SW            b_s -0.055 (bootstrap 95% -0.091 to -0.017)  c_s +0.019  alpha 3.66e-07
+  OK_Goodwell_2_SE             b_s +0.172 (bootstrap 95% +0.060 to +0.345)  c_s +0.354  alpha 1.91e-06
+  NE_Lincoln_8_ENE             b_s -0.075 (bootstrap 95% -0.178 to +0.010)  c_s +0.065  alpha 1.34e-07
+  AL_Selma_13_WNW              b_s -0.022 (bootstrap 95% -0.076 to +0.065)  c_s +0.099  alpha 3.84e-07
+
+=== PRE-SPECIFIED DECISION (development) ===
+D1 better at >=5/6 held-out stations: 1/6 -> False
+D2 improvement CI excludes 0: [-0.0154, -0.0094] -> False
+D3 b same sign in all folds and bootstrap CI excludes 0: folds [-0.116  0.114  0.061  0.046  0.096  0.067], CI [-0.016, +0.113] -> False
+D4 sign of b robust to boundary offsets: [0.043 0.05  0.045 0.048] -> True
+VERDICT: moisture contribution NOT established in development

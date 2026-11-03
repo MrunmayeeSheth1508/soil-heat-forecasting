@@ -1,0 +1,18 @@
+﻿EPISODE COUNTS: temperature-only validity, >=96 h: 12  >=144 h: 10
+                temperature+moisture validity, >=96 h: 17  >=144 h: 14
+Rows in pilot_out2.txt episode screen table: 0
+
+Windows fitted: 276 from 14 episodes (96 h windows, 5 cm diurnal amplitude >= 1 C)
+Per-window alpha: median 3.65e-07; 10th-90th pct 2.40e-07 - 5.28e-07
+Per-window amplitude ratio at best alpha: median 1.085; 10th-90th pct 1.008 - 1.176
+Per-window RMSE: median 0.247 C
+
+Spearman correlation of log(window alpha) with window-mean covariate:
+     covariate  pooled rho         p   within-episode rho (episodes demeaned)
+       SM 5 cm      -0.302   3.1e-07       -0.321 (p 4.9e-08)
+      SM 10 cm      -0.269   6.0e-06       -0.218 (p 2.7e-04)
+      SM 20 cm      -0.097   1.1e-01       -0.138 (p 2.2e-02)
+  T 10 cm mean       0.537   4.7e-22        0.475 (p 6.6e-17)
+
+Variance of log alpha: total 0.121, mean within-episode 0.034
+Effective independent windows is far fewer than the window count: windows overlap by 50% and are autocorrelated.

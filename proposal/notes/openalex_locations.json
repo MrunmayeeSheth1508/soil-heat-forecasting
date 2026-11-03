@@ -1,0 +1,265 @@
+{
+ "darmstadt_paper": {
+  "doi": "10.3390/en14217189",
+  "title": "Heat Dissipation in Variable Underground Power Cable Beddings: Experiences from a Real Scale Field Experiment",
+  "year": 2021,
+  "is_oa": true,
+  "oa_status": "gold",
+  "oa_url": "https://www.mdpi.com/1996-1073/14/21/7189/pdf?version=1635821922",
+  "locations": [
+   {
+    "pdf": "https://www.mdpi.com/1996-1073/14/21/7189/pdf?version=1635821922",
+    "landing": "https://doi.org/10.3390/en14217189",
+    "license": "cc-by",
+    "version": "publishedVersion",
+    "src": "Energies"
+   },
+   {
+    "pdf": "https://tuprints.ulb.tu-darmstadt.de/20074/1/energies-14-07189.pdf",
+    "landing": "https://tuprints.ulb.tu-darmstadt.de/20074/1/energies-14-07189.pdf",
+    "license": "cc-by",
+    "version": "acceptedVersion",
+    "src": "Technischen Universit\u00e4t Darmstadt"
+   },
+   {
+    "pdf": null,
+    "landing": "https://www.mdpi.com/1996-1073/14/21/7189/",
+    "license": null,
+    "version": "submittedVersion",
+    "src": "RePEc: Research Papers in Economics"
+   },
+   {
+    "pdf": null,
+    "landing": "https://doaj.org/article/9603490335e0413083cbb83665cc000a",
+    "license": "cc-by-sa",
+    "version": "submittedVersion",
+    "src": "DOAJ (DOAJ: Directory of Open Access Journals)"
+   },
+   {
+    "pdf": null,
+    "landing": "https://gfzpublic.gfz-potsdam.de/pubman/item/item_5014003",
+    "license": "other-oa",
+    "version": "submittedVersion",
+    "src": "Publication Database GFZ (GFZ German Research Centre for Geosciences)"
+   },
+   {
+    "pdf": null,
+    "landing": "https://gfzpublic.gfz.de/pubman/item/item_5014003",
+    "license": "cc-by",
+    "version": "submittedVersion",
+    "src": "Publication Database GFZ (GFZ German Research Centre for Geosciences)"
+   },
+   {
+    "pdf": null,
+    "landing": "http://tubiblio.ulb.tu-darmstadt.de/129205/",
+    "license": null,
+    "version": "submittedVersion",
+    "src": "TUbilio (Technical University of Darmstadt)"
+   },
+   {
+    "pdf": null,
+    "landing": "http://tubiblio.ulb.tu-darmstadt.de/132357/",
+    "license": null,
+    "version": "submittedVersion",
+    "src": "TUbilio (Technical University of Darmstadt)"
+   },
+   {
+    "pdf": null,
+    "landing": "https://doi.org/10.26083/tuprints-00020074",
+    "license": null,
+    "version": "submittedVersion",
+    "src": "Technischen Universit\u00e4t Darmstadt"
+   },
+   {
+    "pdf": null,
+    "landing": "https://doi.org/10.26083/tuprints-00020074",
+    "license": "cc-by",
+    "version": null,
+    "src": "Technischen Universit\u00e4t Darmstadt"
+   }
+  ]
+ },
+ "thermohydraulic": {
+  "doi": "10.3390/en15238897",
+  "title": "Insights into the Thermal Performance of Underground High Voltage Electricity Transmission Lines through Thermo-Hydraulic Modelling",
+  "year": 2022,
+  "is_oa": true,
+  "oa_status": "gold",
+  "oa_url": "https://www.mdpi.com/1996-1073/15/23/8897/pdf?version=1669367497",
+  "locations": [
+   {
+    "pdf": "https://www.mdpi.com/1996-1073/15/23/8897/pdf?version=1669367497",
+    "landing": "https://doi.org/10.3390/en15238897",
+    "license": "cc-by",
+    "version": "publishedVersion",
+    "src": "Energies"
+   },
+   {
+    "pdf": "https://orca.cardiff.ac.uk/id/eprint/154487/1/Thomas%20H%20-%20Insights%20into%20the%20Thermal%20Performance%20....pdf",
+    "landing": "https://orca.cardiff.ac.uk/id/eprint/154487/1/Thomas%20H%20-%20Insights%20into%20the%20Thermal%20Performance%20....pdf",
+    "license": null,
+    "version": "acceptedVersion",
+    "src": "ORCA Online Research @Cardiff (Cardiff University)"
+   },
+   {
+    "pdf": null,
+    "landing": "https://www.mdpi.com/1996-1073/15/23/8897/",
+    "license": null,
+    "version": "submittedVersion",
+    "src": "RePEc: Research Papers in Economics"
+   },
+   {
+    "pdf": null,
+    "landing": "https://doaj.org/article/5e7f0731e4ca4b58b95569ebdf5ac898",
+    "license": "cc-by-sa",
+    "version": "submittedVersion",
+    "src": "DOAJ (DOAJ: Directory of Open Access Journals)"
+   }
+  ]
+ },
+ "temperature_field": {
+  "doi": "10.3390/en14238191",
+  "title": "Evolution of Temperature Field around Underground Power Cable for Static and Cyclic Heating",
+  "year": 2021,
+  "is_oa": true,
+  "oa_status": "gold",
+  "oa_url": "https://www.mdpi.com/1996-1073/14/23/8191/pdf?version=1638883217",
+  "locations": [
+   {
+    "pdf": "https://www.mdpi.com/1996-1073/14/23/8191/pdf?version=1638883217",
+    "landing": "https://doi.org/10.3390/en14238191",
+    "license": "cc-by",
+    "version": "publishedVersion",
+    "src": "Energies"
+   },
+   {
+    "pdf": null,
+    "landing": "https://www.mdpi.com/1996-1073/14/23/8191/",
+    "license": null,
+    "version": "submittedVersion",
+    "src": "RePEc: Research Papers in Economics"
+   },
+   {
+    "pdf": null,
+    "landing": "https://doaj.org/article/c699cbd6e5b74de29fd1ef43932ba574",
+    "license": "cc-by-sa",
+    "version": "submittedVersion",
+    "src": "DOAJ (DOAJ: Directory of Open Access Journals)"
+   },
+   {
+    "pdf": null,
+    "landing": "https://nbn-resolving.org/urn:nbn:de:gbv:8:3-2022-00040-3",
+    "license": "cc-by",
+    "version": "submittedVersion",
+    "src": "Multimedialen Archiv und Publikationsserver der Christian-Albrechts-Universit\u00e4t zu Kiel (Christian-Albrechts-Universit\u00e4t zu Kiel)"
+   }
+  ]
+ },
+ "complex_arrangements": {
+  "doi": "10.3390/en14206813",
+  "title": "Fundamentals of the Thermal Analysis of Complex Arrangements of Underground Heat Sources",
+  "year": 2021,
+  "is_oa": true,
+  "oa_status": "gold",
+  "oa_url": "https://www.mdpi.com/1996-1073/14/20/6813/pdf?version=1634694997",
+  "locations": [
+   {
+    "pdf": "https://www.mdpi.com/1996-1073/14/20/6813/pdf?version=1634694997",
+    "landing": "https://doi.org/10.3390/en14206813",
+    "license": "cc-by",
+    "version": "publishedVersion",
+    "src": "Energies"
+   },
+   {
+    "pdf": null,
+    "landing": "https://www.mdpi.com/1996-1073/14/20/6813/",
+    "license": null,
+    "version": "submittedVersion",
+    "src": "RePEc: Research Papers in Economics"
+   },
+   {
+    "pdf": null,
+    "landing": "https://doaj.org/article/7de2f8ea38f1496c9829cfb0709b84e6",
+    "license": "cc-by-sa",
+    "version": "submittedVersion",
+    "src": "DOAJ (DOAJ: Directory of Open Access Journals)"
+   }
+  ]
+ },
+ "bracale": {
+  "doi": "10.1109/ACCESS.2018.2888505",
+  "title": "Day-Ahead and Intraday Forecasts of the Dynamic Line Rating for Buried Cables",
+  "year": 2018,
+  "is_oa": true,
+  "oa_status": "gold",
+  "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08580536.pdf",
+  "locations": [
+   {
+    "pdf": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08580536.pdf",
+    "landing": "https://doi.org/10.1109/access.2018.2888505",
+    "license": null,
+    "version": "publishedVersion",
+    "src": "IEEE Access"
+   },
+   {
+    "pdf": "https://iris.polito.it/bitstream/11583/2726154/1/Day-Ahead%20and%20Intraday%20Forecasts%20of%20the%20Dynamic%20Line%20Rating%20for%20Buried%20Cables.pdf",
+    "landing": "http://hdl.handle.net/11583/2726154",
+    "license": "other-oa",
+    "version": "submittedVersion",
+    "src": "PORTO@Iris"
+   },
+   {
+    "pdf": null,
+    "landing": "https://doaj.org/article/600220c8b7774ce6863bb32816a1f819",
+    "license": "cc-by-sa",
+    "version": "submittedVersion",
+    "src": "DOAJ (DOAJ: Directory of Open Access Journals)"
+   },
+   {
+    "pdf": null,
+    "landing": "http://hdl.handle.net/11367/72328",
+    "license": null,
+    "version": "submittedVersion",
+    "src": "CINECA IRIS Institutial research information system (Parthenope University of Naples)"
+   }
+  ]
+ },
+ "nn_cable_2025": {
+  "doi": "10.1049/icp.2025.1508",
+  "title": "Neural-network assisted modelling of cable ampacity for dynamic load profiles",
+  "year": 2025,
+  "is_oa": false,
+  "oa_status": "closed",
+  "oa_url": null,
+  "locations": [
+   {
+    "pdf": null,
+    "landing": "https://doi.org/10.1049/icp.2025.1508",
+    "license": null,
+    "version": "publishedVersion",
+    "src": "IET conference proceedings."
+   }
+  ]
+ },
+ "wilson2016": {
+  "doi": "10.2136/vzj2016.05.0047",
+  "error": "'charmap' codec can't encode character '\\u2010' in position 4: character maps to <undefined>"
+ },
+ "darmstadt_dataset": {
+  "doi": "10.48328/tudatalib-665",
+  "title": "Supplementary Information to \u2018Heat Dissipation in variable Underground Power Cable Beddings: Experiences from a Real Scale Field Experiment'",
+  "year": 2021,
+  "is_oa": true,
+  "oa_status": "green",
+  "oa_url": "https://doi.org/10.48328/tudatalib-665",
+  "locations": [
+   {
+    "pdf": null,
+    "landing": "https://doi.org/10.48328/tudatalib-665",
+    "license": null,
+    "version": null,
+    "src": "TUdatalib"
+   }
+  ]
+ }
+}

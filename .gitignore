@@ -1,0 +1,41 @@
+workspace/
+__pycache__/
+*.pyc
+
+# Large / regenerable data (see README "Data not included")
+data/phase3_processed_hourly/
+data/uscrn_soil_sip/
+proposal/results/dynamic_ampacity/ampacity_timeseries_*.csv
+proposal/results/dynamic_ampacity/ampacity_plot_*.png
+proposal/results/dynamic_ampacity_corrected_depth/ampacity_timeseries_*.csv
+
+# Third-party papers, standards and full-text extractions (copyright; fetch via DOIs in notes/)
+literature/papers_all/
+literature/early_pdfs/
+literature/phase3_lit_pdfs/
+proposal/papers/
+proposal/standards_and_specs/
+proposal/notes/*.txt
+!proposal/notes/darmstadt_dataset_page_text.txt
+
+# Darmstadt workbook (CC BY-NC 4.0): download from TUdatalib, DOI 10.48328/tudatalib-665
+proposal/data/*.xlsx
+proposal/data/*.xls
+proposal/data/*.pdf
+
+# Archives and scratch
+*.zip
+proposal/scratch/
+*.docx
+
+# Literature review (kept private; share via a shared drive, see README)
+literature/
+reports/05_literature/
+docs/syntheses/
+scripts/05_literature_tooling/
+proposal/notes/survey_*.md
+proposal/notes/LITERATURE_MATRIX.md
+proposal/notes/source_verification.md
+proposal/notes/AMPACITY_SOURCES_PARAMETERS_AND_GAPS.md
+reports/02_direction_and_proposals/phase3_literature_comparison.md
+proposal/notes/V4_Q14_literature_section.md
