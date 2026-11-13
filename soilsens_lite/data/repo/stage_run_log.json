@@ -1,0 +1,282 @@
+[
+ {
+  "script": "01_inventory",
+  "status": "FAILED (exit 1)",
+  "seconds": 0.8,
+  "tail": "\"C:\\Users\\jtani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\requests\\sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\jtani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\requests\\adapters.py\", line 678, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='www.ncei.noaa.gov', port=443): Max retries exceeded with url: /pub/data/uscrn/products/hourly02/2019/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001A4856D32C0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))"
+ },
+ {
+  "script": "02_episode_audit",
+  "status": "OK",
+  "seconds": 2.9,
+  "tail": "few mm (unknown for USCRN)\n\nImplication: the effective measurement uncertainty for this product is larger\nthan Brunetti's identifiability floor. Whether the moisture-conditioning signal\n(expected to be O(0.1-0.5 C difference between wet and dry diffusivity predictions)\nis detectable above USCRN's effective noise is not established.\nThis is the central question Gate 3 must answer quantitatively."
+ },
+ {
+  "script": "03_episode4_audit",
+  "status": "OK",
+  "seconds": 0.4,
+  "tail": "within the episode? (check AUDIT 3)\n  2. Do gradients hold throughout, or only transiently? (check AUDIT 4)\n  3. Does moisture penetrate to 100cm in this episode, or is it decoupled?\n  4. Is the 0.044 m3/m3 wet-dry contrast within the episode enough to\n     produce a temperature signature at 20cm above the noise level?\n     This cannot be answered from the audit alone \u00e2\u20ac\u201d needs the forward model."
+ },
+ {
+  "script": "04_shallow_pilot",
+  "status": "FAILED (exit 1)",
+  "seconds": 1.5,
+  "tail": "per_args + args))\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\jtani\\.gemini\\antigravity\\scratch\\soil-heat-forecasting\\scripts\\01_data_audit_and_pilots\\04_shallow_pilot.py\", line 253, in cost\n    out    = run_crank_nicolson(alpha_vec, T5[idx], T20[idx], T_init)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\jtani\\.gemini\\antigravity\\scratch\\soil-heat-forecasting\\scripts\\01_data_audit_and_pilots\\04_shallow_pilot.py\", line 170, in run_crank_nicolson\n    rhs   = (r/2)*T[:-2][:-1] + (1-r)*T_int + (r/2)*T[2:][1:]\n            ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\nValueError: operands could not be broadcast together with shapes (4,) (5,)"
+ },
+ {
+  "script": "04b_shallow_pilot",
+  "status": "OK",
+  "seconds": 69.2,
+  "tail": "454    0.2454   0.0000  \n 16      618       0.314   4.625e-07    0.1856    0.1856  -0.0000  \n 17     1016       0.358   3.877e-07    0.2172    0.2172   0.0000  \n\n=== PILOT SCOPE REMINDER ===\nThis is an exploratory conditional reconstruction test, not a forecast.\nBoundaries (T5, T20) are measured contemporaneously.\nResults do not establish literature gap, physical mechanism, or PINO justification."
+ },
+ {
+  "script": "09_amplitude_check",
+  "status": "OK",
+  "seconds": 26.9,
+  "tail": "g h\n  5-10 cm   574          2.64e-07            6.43e-07                    0.44    0.26- 0.83                     0.556          1.44\n 10-20 cm   575          3.56e-07            3.75e-07                    1.01    0.76- 1.47                     0.364          3.76\n  5-20 cm   575          3.20e-07            4.15e-07                    0.74    0.59- 1.17                     0.202          5.36"
+ },
+ {
+  "script": "10_windowed_alpha",
+  "status": "OK",
+  "seconds": 26.1,
+  "tail": "02   3.1e-07       -0.321 (p 4.9e-08)\n      SM 10 cm      -0.269   6.0e-06       -0.218 (p 2.7e-04)\n      SM 20 cm      -0.097   1.1e-01       -0.138 (p 2.2e-02)\n  T 10 cm mean       0.537   4.7e-22        0.475 (p 6.6e-17)\n\nVariance of log alpha: total 0.121, mean within-episode 0.034\nEffective independent windows is far fewer than the window count: windows overlap by 50% and are autocorrelated."
+ },
+ {
+  "script": "11_episode_table",
+  "status": "OK",
+  "seconds": 0.4,
+  "tail": "2.92     1.99         21.6\n 13   20201022   20201117    618     0.371     0.538     0.167      0.439    2.01     1.27         19.3\n 14   20201119   20210101   1016     0.328     0.531     0.203      0.479    2.10     1.15         11.2\nTotal hours 14703\nHourly correlation SM10 vs mean(T5,T20): -0.587\nBetween-episode correlation of mean SM10 and mean T: -0.866  SM10 episode-means range 0.259 0.542"
+ },
+ {
+  "script": "12_four_model_rerun",
+  "status": "OK",
+  "seconds": 116.7,
+  "tail": "better in 0/3 episodes; mean improvement -0.0095 C\n  D vs A   better in 0/3 episodes; mean improvement -0.0291 C\n\n=== PRE-SPECIFIED DECISION RULE (D vs C) ===\n(i)  LOEO: D better than C in 5/11 and CI excludes 0 -> False\n(ii) test: D better than C in 0/3 -> False\n(iii) bootstrap 95% interval for b excludes 0 ([-0.157, +0.424]) -> False\nVERDICT: moisture effect NOT established beyond temperature"
+ },
+ {
+  "script": "14_contrast_audit",
+  "status": "OK",
+  "seconds": 80.1,
+  "tail": "a, Tin) = -0.442; variance inflation = 1.24; days = 18678\nQualifying-station r(theta, Tin): [-0.76 -0.71 -0.67 -0.67 -0.64 -0.64 -0.64 -0.61 -0.59 -0.58 -0.58 -0.58\n -0.57 -0.56 -0.54 -0.51 -0.49 -0.48 -0.47 -0.46 -0.45 -0.45 -0.41 -0.41\n -0.39 -0.38 -0.37 -0.37 -0.37 -0.36 -0.33 -0.33 -0.32 -0.31 -0.31 -0.26\n -0.24 -0.17 -0.03]\nSelma alone (dry informative days 2019-2021): r(theta, Tin) = -0.610"
+ },
+ {
+  "script": "15_coverage",
+  "status": "OK",
+  "seconds": 1.3,
+  "tail": "0.421\n12  2209        39   0.067   0.403\n15  2297        39   0.066   0.371\n18  2426        38   0.047   0.386\n21  2724        38   0.067   0.387\n24  2414        33   0.059   0.356\n27  1341        20   0.032   0.400\n30   315         8   0.044   0.368\n33    39         2   0.049   0.134\n\nWithin-site day pairs at the same 1 C Tin with |dtheta| >= 0.10: 52337 total; stations with >=100 such pairs: 39"
+ },
+ {
+  "script": "16_reconcile_qc_select",
+  "status": "OK",
+  "seconds": 21.4,
+  "tail": "ejected as faulty):                  station         flag\n   GA_Watkinsville_5_SSE        jumps\n      LA_Lafayette_13_SE    amp_order\n         MS_Newton_5_ENE    amp_order\n    MT_Wolf_Point_29_ENE completeness\n        KS_Oakley_19_SSW completeness\n         OK_Goodwell_2_E completeness\n  TX_Port_Aransas_32_NNE        stuck\n        CA_Merced_23_WSW        jumps\nCA_Yosemite_Village_12_W    amp_order"
+ },
+ {
+  "script": "17_multistation_pilot",
+  "status": "OK",
+  "seconds": 112.2,
+  "tail": "development) ===\nD1 better at >=5/6 held-out stations: 1/6 -> False\nD2 improvement CI excludes 0: [-0.0154, -0.0094] -> False\nD3 b same sign in all folds and bootstrap CI excludes 0: folds [-0.116  0.114  0.061  0.046  0.096  0.067], CI [-0.016, +0.113] -> False\nD4 sign of b robust to boundary offsets: [0.043 0.05  0.045 0.048] -> True\nVERDICT: moisture contribution NOT established in development"
+ },
+ {
+  "script": "24_soil_lab_audit",
+  "status": "FAILED (exit 1)",
+  "seconds": 2.0,
+  "tail": "File \"C:\\Users\\jtani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\requests\\sessions.py\", line 706, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\jtani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\requests\\adapters.py\", line 678, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPSConnectionPool(host='sdmdataaccess.sc.egov.usda.gov', port=443): Max retries exceeded with url: /Tabular/post.rest (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001DB17442C60>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))"
+ },
+ {
+  "script": "25_bell_text",
+  "status": "OK",
+  "seconds": 0.4,
+  "tail": "ations in the early 1980s ( Hu and Feng 2004 ) and currently has 301 stations. An average trend for 38 of the most complete stations from 1967 to 2002 indicated the rate of temperature increase to be 0.31\u00c2\u00b0C decade \u00e2\u02c6\u20191 at the 10-cm level ( Hu and Feng 2003 ), considerably higher than the comparable trend (0.10\u00c2\u00b0C decade \u00e2\u02c6\u20191 ) for air temperature ( Karl et al. 1995b ) and indicating the impo..."
+ },
+ {
+  "script": "26_wilson_table",
+  "status": "OK",
+  "seconds": 1.4,
+  "tail": "0,20 cm: 15 ['NE_Lincoln_8_ENE', 'CO_La_Junta_17_WSW', 'CO_Cortez_8_SE', 'SD_Sioux_Falls_14_NNE', 'LA_Lafayette_13_SE', 'CO_Montrose_11_ENE', 'AZ_Elgin_5_S', 'AL_Fairhope_3_NE', 'MO_Chillicothe_22_ENE', 'MS_Newton_5_ENE', 'SD_Buffalo_13_ESE', 'ND_Northgate_5_ESE', 'NM_Los_Alamos_13_W', 'NC_Asheville_8_SSW', 'NC_Durham_11_W']\nunmatched OK_Goodwell_2_SE -> same-town Wilson entries: ['Goodwell 2 E']"
+ },
+ {
+  "script": "32_event_inventory",
+  "status": "OK",
+  "seconds": 45.8,
+  "tail": "6\n          CO_Cortez_8_SE           1973     61                 2                 5                    9\n     MT_Lewistown_42_WSW           1448     49                 1                 5                    7\n  TX_Port_Aransas_32_NNE           1424     71                 0                 0                    0\nB totals: eligible days 73360, qualifying cells 582, stations with >=1 cell 38"
+ },
+ {
+  "script": "33_thermal_check",
+  "status": "OK",
+  "seconds": 5.0,
+  "tail": "median 3.28, share with peak<=1.5xthr 0.20 | half-decay days after peak median 3.0 (observed in 0.77)\ndepth 100 cm: peak anom median 1.24 C | peak day (from spell start) median 9.0 | peak/threshold median 2.47, share with peak<=1.5xthr 0.35 | half-decay days after peak median 3.0 (observed in 0.60)\nordering: peak at 20 cm later than at 5 cm in 0.58, same day 0.42; 100 cm later than 20 cm in 0.85"
+ },
+ {
+  "script": "35_c_feasibility",
+  "status": "FAILED (exit 1)",
+  "seconds": 835.4,
+  "tail": "Traceback (most recent call last):\n  File \"C:\\Users\\jtani\\.gemini\\antigravity\\scratch\\soil-heat-forecasting\\scripts\\06_phase3_events_and_pilotA\\35_c_feasibility.py\", line 55, in <module>\n    L.append('  center class counts: ' + str(ok.center_name.value_counts().to_dict()))\n                                             ^^^^^^^^^^^^^^\n  File \"C:\\Users\\jtani\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pandas\\core\\generic.py\", line 6206, in __getattr__\n    return object.__getattribute__(self, name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'DataFrame' object has no attribute 'center_name'"
+ },
+ {
+  "script": "39_pilotA_solver_check",
+  "status": "OK",
+  "seconds": 5.2,
+  "tail": "2\n2e-06    20    3.4099   3.4016    -0.24     0.005\n2e-06    50    0.9489   0.9417    -0.75     0.013\n\nRefinement (alpha 1e-6): amplitude at 20 cm for (nint, dt)\n  nint  38 dt   3600s amp 2.3848 phase 1.2069\n  nint  76 dt   3600s amp 2.3879 phase 1.2082\n  nint  38 dt    900s amp 2.3907 phase 1.2044\n  nint  76 dt    900s amp 2.3937 phase 1.2057\n\nACCEPTANCE (amp err <= 3%, phase err <= 0.3 h): PASS"
+ },
+ {
+  "script": "40_pilotA_run",
+  "status": "FAILED (exit 1)",
+  "seconds": 2.4,
+  "tail": "Traceback (most recent call last):\n  File \"C:\\Users\\jtani\\.gemini\\antigravity\\scratch\\soil-heat-forecasting\\scripts\\06_phase3_events_and_pilotA\\40_pilotA_run.py\", line 15, in <module>\n    MODE = sys.argv[1]; assert MODE in ('dev', 'test')\n           ~~~~~~~~^^^\nIndexError: list index out of range"
+ },
+ {
+  "script": "45_frozen_columns",
+  "status": "OK",
+  "seconds": 2.9,
+  "tail": "table; PA_Avondale_2_N: not in Wilson table; RI_Kingston_1_W: not in Wilson table; SD_Pierre_24_S: no usable L1 bulk density or sand -> excluded from S; TX_Muleshoe_19_S: no usable L1 bulk density or sand -> excluded from S; TX_Port_Aransas_32_NNE: not in Wilson table; WY_Sundance_8_NNW: not in Wilson table\nsha256 columns_frozen.csv 5a3589e207eadfe776f66aae0eb4778200d369fd360f5e94b2995b15dc079344"
+ },
+ {
+  "script": "46_layered_diagnostic",
+  "status": "FAILED (exit 1)",
+  "seconds": 2.5,
+  "tail": "Traceback (most recent call last):\n  File \"C:\\Users\\jtani\\.gemini\\antigravity\\scratch\\soil-heat-forecasting\\scripts\\07_layered_and_identifiability\\46_layered_diagnostic.py\", line 17, in <module>\n    MODE = sys.argv[1]; assert MODE in ('dev', 'test')\n           ~~~~~~~~^^^\nIndexError: list index out of range"
+ },
+ {
+  "script": "47_compare_repro",
+  "status": "OK",
+  "seconds": 1.4,
+  "tail": "stress window only 30, post/ctrl window only 21, either 32\ntest: complete sequences 43 (wetting 28, no wetting 15); rows with windows tested 42; dropped for post-window shorter than 7 days (no row) 1; dropped for >10% missing/gaps 5; usable 37 (wet 23, ctrl 14); identified in both windows 21 (wet 12, ctrl 9); clusters 14\n   not identified: stress window only 15, post/ctrl window only 8, either 16"
+ },
+ {
+  "script": "48_layered_verification",
+  "status": "OK",
+  "seconds": 4.3,
+  "tail": "0.0094; (nint 76, dt 900 s) 0.0025; (nint 152, dt 900 s) 0.0008\n[PASS] 5. convergence: error at (76, 900 s) <= error at (38, 3600 s) \nnumerical error floor: RMS 0.012 C (base) and 0.002 C (refined) against the analytic two-layer solution (24 h amplitude 8 C at the top)\n\nCRITERIA PASSED AT: base=False, refined=True, basic checks (1, 4, 5)=True\nGENERATOR RESOLUTION SELECTED BY VERIFICATION: refined"
+ },
+ {
+  "script": "49_layered_analysis",
+  "status": "OK",
+  "seconds": 314.0,
+  "tail": "aN\nMO_Chillicothe_22_ENE -0.117  0.000   1.0   2.0\nNC_Asheville_8_SSW       NaN -0.058   NaN   1.0\nNC_Durham_11_W           NaN -0.058   NaN   1.0\nND_Northgate_5_ESE       NaN  0.058   NaN   1.0\nNE_Lincoln_8_ENE         NaN -0.117   NaN   1.0\nNM_Los_Alamos_13_W       NaN  0.000   NaN   1.0\nSD_Buffalo_13_ESE      0.019    NaN   3.0   NaN\nSD_Sioux_Falls_14_NNE -0.029  0.029   2.0   2.0\nfigure saved"
+ },
+ {
+  "script": "50_observed_selection_checks",
+  "status": "OK",
+  "seconds": 19.6,
+  "tail": "0.251]  (wet 19, ctrl 14, clusters 23)\nidentified, May-Sep                   : contrast +0.189 [-0.074, +0.692]  (wet 6, ctrl 4, clusters 8)\nnot identified (either window)        : contrast -0.835 [-1.394, -0.315]  (wet 11, ctrl 5, clusters 14)\nnot-identified events: median |delta| 0.64 vs identified 0.23; grid-edge fits among not-identified 1 of 16\nshare of events identified: wet 0.52, ctrl 0.64"
+ },
+ {
+  "script": "51_layered_extra_stats",
+  "status": "OK",
+  "seconds": 1.2,
+  "tail": "90th percentile |delta| 0.00, max |delta| 0.00\n   SIMULATED G_low     n  37: median |delta| 0.06, SD 0.09, 90th percentile |delta| 0.14, max |delta| 0.23\n   SIMULATED G_high    n  37: median |delta| 0.06, SD 0.07, 90th percentile |delta| 0.12, max |delta| 0.17\n   SIMULATED S_central n  23: median |delta| 0.06, SD 0.10, 90th percentile |delta| 0.12, max |delta| 0.29\ncombined event-level rows 2964"
+ },
+ {
+  "script": "52_ident_diagnostic",
+  "status": "OK",
+  "seconds": 104.9,
+  "tail": "dev G_high: all n 25 rho -0.36 (p 0.08); retained n 14 rho -0.20 (p 0.50)\n    dev S_central: all n 25 rho -0.14 (p 0.50); retained n 14 rho -0.11 (p 0.71)\n    test G_low: all n 23 rho +0.49 (p 0.02); retained n 14 rho +0.43 (p 0.12)\n    test G_high: all n 23 rho -0.56 (p 0.01); retained n 14 rho -0.42 (p 0.13)\n    test S_central: all n 23 rho +0.28 (p 0.20); retained n 14 rho +0.19 (p 0.52)\ndone"
+ },
+ {
+  "script": "53_ident_diag_extra",
+  "status": "OK",
+  "seconds": 2.8,
+  "tail": "ange  : wet coefficient +0.112 [-0.029, +0.252]  (n 53)\n  test all usable unadjusted        : wet coefficient -0.223 [-0.612, +0.166]  (n 37)\n  test all usable + forcing change  : wet coefficient -0.287 [-0.588, +0.013]  (n 37)\n  test retained   unadjusted        : wet coefficient +0.141 [-0.147, +0.429]  (n 21)\n  test retained   + forcing change  : wet coefficient +0.114 [-0.132, +0.361]  (n 21)"
+ },
+ {
+  "script": "13_multistation_download",
+  "status": "SKIPPED",
+  "reason": "network download (NCEI)"
+ },
+ {
+  "script": "31_phase3_download",
+  "status": "SKIPPED",
+  "reason": "network download (NCEI)"
+ },
+ {
+  "script": "18_list_soil_products",
+  "status": "SKIPPED",
+  "reason": "network (NCEI listing)"
+ },
+ {
+  "script": "19_read_soil01",
+  "status": "SKIPPED",
+  "reason": "network"
+ },
+ {
+  "script": "20_soilsip",
+  "status": "SKIPPED",
+  "reason": "network download"
+ },
+ {
+  "script": "21_sda_probe",
+  "status": "SKIPPED",
+  "reason": "network (USDA SDA)"
+ },
+ {
+  "script": "22_sda_probe2",
+  "status": "SKIPPED",
+  "reason": "network (USDA SDA)"
+ },
+ {
+  "script": "23_sda_projects",
+  "status": "SKIPPED",
+  "reason": "network (USDA SDA)"
+ },
+ {
+  "script": "27_pdf2txt",
+  "status": "SKIPPED",
+  "reason": "needs PDFs at original external paths"
+ },
+ {
+  "script": "28_brunetti_xml",
+  "status": "SKIPPED",
+  "reason": "reads C:\\Users\\jtani\\Downloads xml"
+ },
+ {
+  "script": "29_citation_search",
+  "status": "SKIPPED",
+  "reason": "network (literature APIs)"
+ },
+ {
+  "script": "30_audit15",
+  "status": "SKIPPED",
+  "reason": "reads files outside project"
+ },
+ {
+  "script": "34_lit_search",
+  "status": "SKIPPED",
+  "reason": "network"
+ },
+ {
+  "script": "36_lit_search2",
+  "status": "SKIPPED",
+  "reason": "network"
+ },
+ {
+  "script": "37_extract_pages",
+  "status": "SKIPPED",
+  "reason": "external PDFs"
+ },
+ {
+  "script": "38_lit_search3",
+  "status": "SKIPPED",
+  "reason": "network"
+ },
+ {
+  "script": "41_extract_user_pdfs",
+  "status": "SKIPPED",
+  "reason": "reads Downloads"
+ },
+ {
+  "script": "42_salvage_docx",
+  "status": "SKIPPED",
+  "reason": "reads Downloads docx"
+ },
+ {
+  "script": "43_read_synthesis_v2",
+  "status": "SKIPPED",
+  "reason": "reads Downloads docx"
+ },
+ {
+  "script": "44_archive_and_repro_setup",
+  "status": "SKIPPED",
+  "reason": "moves/archives workspace files (would disturb frozen archive)"
+ }
+]

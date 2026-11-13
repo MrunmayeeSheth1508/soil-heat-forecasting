@@ -1,0 +1,135 @@
+{
+ "architecture": "1-layer GRU encoder (hidden 64) over 168 h x 25 inputs; separate temperature and moisture heads (128 -> 72 x 5)",
+ "inputs": "soil temperature and moisture at 5, 10, 20, 50, 100 cm; rainfall; missing-data flags; hour and day-of-year encodings",
+ "targets": "change from the issue-time value, leads 1-72 h, 5 depths, temperature and moisture",
+ "loss": "masked MSE, temperature scaled by 1 K and moisture by 0.01 m3/m3, summed",
+ "training": "2019-01-01..2020-09-30",
+ "validation (early stopping)": "2020-10-01..2020-12-31",
+ "test": "2021 (not used in training)",
+ "stations": [
+  "NM_Socorro_20_N",
+  "NM_Las_Cruces_20_N",
+  "NV_Mercury_3_SSW",
+  "TX_Monahans_6_ENE",
+  "CA_Santa_Barbara_11_W",
+  "CA_Bodega_6_WSW",
+  "OR_Riley_10_WSW",
+  "OK_Stillwater_2_W",
+  "NE_Lincoln_8_ENE",
+  "AL_Fairhope_3_NE",
+  "NC_Asheville_13_S",
+  "WY_Sundance_8_NNW",
+  "MI_Chatham_1_SE"
+ ],
+ "best_validation_loss": 3.542,
+ "epochs_run": 21,
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 5.427038924055114,
+   "val_loss": 4.213831377169254
+  },
+  {
+   "epoch": 2,
+   "train_loss": 4.510842468910159,
+   "val_loss": 4.028218132060195
+  },
+  {
+   "epoch": 3,
+   "train_loss": 4.330546159466777,
+   "val_loss": 3.948343229458629
+  },
+  {
+   "epoch": 4,
+   "train_loss": 4.18286270648378,
+   "val_loss": 3.8050403416806002
+  },
+  {
+   "epoch": 5,
+   "train_loss": 4.094864579941193,
+   "val_loss": 3.750543049728216
+  },
+  {
+   "epoch": 6,
+   "train_loss": 4.035635464713548,
+   "val_loss": 3.6827083596336228
+  },
+  {
+   "epoch": 7,
+   "train_loss": 3.986618946653778,
+   "val_loss": 3.7038189208078043
+  },
+  {
+   "epoch": 8,
+   "train_loss": 3.94661092467549,
+   "val_loss": 3.647720614436485
+  },
+  {
+   "epoch": 9,
+   "train_loss": 3.9077500925166317,
+   "val_loss": 3.594797429950556
+  },
+  {
+   "epoch": 10,
+   "train_loss": 3.8735035711262165,
+   "val_loss": 3.594144201448486
+  },
+  {
+   "epoch": 11,
+   "train_loss": 3.8356062273519145,
+   "val_loss": 3.6980105109128885
+  },
+  {
+   "epoch": 12,
+   "train_loss": 3.8047236439060836,
+   "val_loss": 3.723070819881305
+  },
+  {
+   "epoch": 13,
+   "train_loss": 3.775079026682271,
+   "val_loss": 3.5843106802657503
+  },
+  {
+   "epoch": 14,
+   "train_loss": 3.7471201454150913,
+   "val_loss": 3.636203669745102
+  },
+  {
+   "epoch": 15,
+   "train_loss": 3.7104719738573246,
+   "val_loss": 3.578273572243054
+  },
+  {
+   "epoch": 16,
+   "train_loss": 3.678491840964985,
+   "val_loss": 3.542030708456219
+  },
+  {
+   "epoch": 17,
+   "train_loss": 3.6495187370919524,
+   "val_loss": 3.6297039909996047
+  },
+  {
+   "epoch": 18,
+   "train_loss": 3.6174022213496255,
+   "val_loss": 3.6751902367112823
+  },
+  {
+   "epoch": 19,
+   "train_loss": 3.5932323429595456,
+   "val_loss": 3.647210744344194
+  },
+  {
+   "epoch": 20,
+   "train_loss": 3.5763395325367155,
+   "val_loss": 3.662308650369868
+  },
+  {
+   "epoch": 21,
+   "train_loss": 3.5382257313604195,
+   "val_loss": 3.641733103958093
+  }
+ ],
+ "issues": "08:00 and 20:00 LST for training; 08:00 for test",
+ "parameters": 126992
+}

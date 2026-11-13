@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoilSens</title>
+<style>
+:root{--bg:#f6f6f3;--panel:#fff;--ink:#1f2328;--mute:#6b7280;--line:#e5e7eb;--accent:#b4372c;--obs:#222;--blue:#1e6fd9}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);font-size:14px}
+header{background:#fff;border-bottom:1px solid var(--line);padding:12px 24px 0;position:sticky;top:0;z-index:5}
+header h1{font-size:20px;margin:0}
+header .sub{color:var(--mute);font-size:12px}
+.steps{display:flex;gap:2px;margin-top:10px;flex-wrap:wrap}
+.step{padding:9px 14px;cursor:pointer;border-bottom:3px solid transparent;color:#444;font-size:14px;white-space:nowrap}
+.step b{display:inline-block;width:20px;height:20px;border-radius:50%;background:#e8e8e4;color:#555;text-align:center;line-height:20px;font-size:12px;margin-right:6px}
+.step.on{border-color:var(--accent);color:var(--accent)} .step.on b{background:var(--accent);color:#fff}
+.step.aux{margin-left:auto}
+.casebar{font-size:12px;color:var(--mute);padding:6px 0 8px}
+.casebar span{background:#f1f1ec;border-radius:4px;padding:2px 7px;margin-right:6px;color:#333}
+main{padding:18px 24px 60px;max-width:1500px}
+.screen{display:none}.screen.on{display:block}
+.lead{font-size:15px;color:#333;margin:2px 0 14px;max-width:950px;border-left:3px solid var(--accent);padding-left:10px;font-style:italic}
+.grid{display:grid;gap:14px}
+.g-side{grid-template-columns:300px 1fr}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:14px;min-width:0}
+.card h3{margin:0 0 8px;font-size:15px}
+.ctl label{display:block;font-size:12px;color:#444;margin:9px 0 3px}
+select,input[type=number]{width:100%;padding:6px 8px;border:1px solid #cfd2d6;border-radius:6px;background:#fff;font-size:13px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px}
+.row label{display:inline-flex;gap:4px;align-items:center;margin:0}
+button{background:var(--accent);color:#fff;border:0;border-radius:6px;padding:8px 13px;font-size:13px;cursor:pointer}
+button.sec{background:#fff;color:var(--ink);border:1px solid #cfd2d6}
+button:disabled{opacity:.5;cursor:wait}
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+.metric{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.metric .l{font-size:12px;color:var(--mute)}.metric .v{font-size:24px;margin-top:2px}.metric .d{font-size:11px;color:var(--mute)}
+.caption{color:var(--mute);font-size:12px;margin-top:4px}
+.badge{color:#fff;border-radius:4px;padding:1px 6px;font-size:11px;white-space:nowrap}
+.pill{border-radius:10px;padding:1px 8px;font-size:11px;background:#eef3fb;color:#1d4f91;white-space:nowrap}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{border-bottom:1px solid var(--line);padding:5px 7px;text-align:left;vertical-align:top}
+th{background:#fafafa;font-weight:600}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.warn{background:#fff6e0;color:#6b4a00;border-radius:6px;padding:7px 10px;font-size:12px;margin:6px 0}
+.err{background:#fdecea;color:#8a1c1c;padding:10px;border-radius:8px;white-space:pre-wrap;font-size:13px}
+.ok{color:#2e7d32}.bad{color:#b4372c}
+.tip{position:absolute;pointer-events:none;background:rgba(255,255,255,.97);border:1px solid #ccc;border-radius:6px;padding:6px 8px;font-size:12px;display:none;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.08);z-index:20}
+#busy{position:fixed;bottom:16px;right:18px;background:#222;color:#fff;padding:7px 13px;border-radius:6px;font-size:13px;display:none;z-index:30}
+.find li{margin-bottom:6px}.find .src{color:var(--mute);font-size:11px;display:block}
+.legendline{display:inline-block;width:22px;border-top:2px solid #222;vertical-align:middle;margin:0 4px 0 10px}
+.next{margin-top:8px}
+code{background:#f3f3f0;padding:0 4px;border-radius:3px;font-size:12px}
+@media (max-width:1000px){.g-side,.g2,.g3{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>SoilSens: forecast-informed cable assessment</h1>
+  <div class="sub">Interactive prototype · soil forecasting workspace + underground cable modelling workspace · not for grid control <span id="livebadge"></span></div>
+  <div class="steps" id="steps">
+    <div class="step on" data-s="s1"><b>1</b>Soil observations</div>
+    <div class="step" data-s="s2"><b>2</b>Forecasts</div>
+    <div class="step" data-s="s3"><b>3</b>Installation</div>
+    <div class="step" data-s="s4"><b>4</b>Thermal &amp; ampacity</div>
+    <div class="step" data-s="s5"><b>5</b>Evidence &amp; comparisons</div>
+    <div class="step aux" data-s="s6">Project archive</div>
+    <div class="step" data-s="s7">Saved runs</div>
+  </div>
+  <div class="casebar" id="casebar"></div>
+</header>
+<div id="busy">Running…</div>
+<div class="tip" id="tip"></div>
+<main>
+
+<!-- ============================== SCREEN 1 ============================== -->
+<section class="screen on" id="s1">
+  <div class="lead">We first examine how the same weather episode appears at different depths. The deeper ground can respond later and retain a temperature anomaly after shallow conditions have changed.</div>
+  <div class="grid g-side">
+    <div>
+      <div class="card ctl">
+        <h3>Select</h3>
+        <label>Station</label><select id="st1"></select>
+        <label>Recorded heat spell (repo event archive)</label><select id="spell"></select>
+        <div id="nospell" class="warn" style="display:none"></div>
+        <label>Observation period</label>
+        <select id="period"><option value="7,21">7 d before → 21 d after</option><option value="3,14">3 d before → 14 d after</option><option value="14,30">14 d before → 30 d after</option></select>
+        <label>Depths</label><div class="row" id="dep1"></div>
+        <div class="next"><button id="toS2">Forecast from this spell's issue →</button></div>
+        <div class="caption" id="issuenote"></div>
+      </div>
+      <div class="card"><h3>Station</h3><div id="map"></div><div id="site" class="caption"></div></div>
+      <div class="card find"><h3>Research findings</h3><ul id="findings" style="padding-left:18px;margin:4px 0"></ul></div>
+    </div>
+    <div>
+      <div class="card"><h3>Soil temperature</h3><div id="c_t1"></div></div>
+      <div class="card"><h3>Soil moisture</h3><div id="c_m1"></div><div id="c_p1"></div><div class="caption">Rainfall (mm/h) beneath. Shaded band = the recorded heat spell (start to end, archive definition: hot days ≥ local P90 of daily maximum air temperature, ≥ 3 hot days, gaps ≤ 2 days).</div></div>
+      <div class="card"><h3>Temperature anomaly (daily mean minus day-of-year reference)</h3><div id="c_a1"></div>
+        <div class="caption">Reference here: 2019–2021 day-of-year median (±7 d). Archive columns use the repo's 2012–2021 reference, so values differ slightly.</div></div>
+      <div class="card"><h3>Depth response</h3><div id="t_metrics"></div>
+        <div class="caption">Definitions from <code>specs/pilotA_prereg.md</code>: peak anomaly over [start, end + 14 d]; peak delay = days from spell start to the peak; persistence = days from the peak until the anomaly first falls to ≤ 50% of the peak (* = censored by the window); burden = positive anomaly summed over [start, end + 21 d], in degree-days (not heat energy). Archive recovery day = repo <code>event_inventory.csv</code>.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SCREEN 2 ============================== -->
+<section class="screen" id="s2">
+  <div class="lead">The model forecasts the background ground conditions. We also test which measurements actually contribute to those forecasts.</div>
+  <div class="grid g-side">
+    <div>
+      <div class="card ctl">
+        <h3>Forecast</h3>
+        <label>Station</label><select id="st2"></select>
+        <label>Forecast issue (08:00 LST)</label><select id="issue"></select>
+        <label>Forecast model</label><select id="method"></select>
+        <div id="stagebox"><label>ML input configuration</label><select id="stage"></select></div>
+        <div id="gbtnote" class="warn" style="display:none"></div>
+        <label>Variable</label>
+        <div class="row"><label><input type="radio" name="var2" value="T" checked> Temperature</label><label><input type="radio" name="var2" value="M"> Moisture</label></div>
+        <label>Depths</label><div class="row" id="dep2"></div>
+        <div class="next"><button id="toS3">Select a cable installation →</button></div>
+      </div>
+      <div class="card"><h3>Input experiments</h3>
+        <table><tr><th>Forecast configuration</th><th>What it tests</th></tr>
+        <tr><td>0 · Temperature history</td><td>Reference learning model</td></tr>
+        <tr><td>1 · + past rainfall</td><td>Additional rainfall information</td></tr>
+        <tr><td>2 · + current moisture</td><td>Information from present wetness</td></tr>
+        <tr><td>3 · + moisture history</td><td>Information from the preceding wetting/drying trajectory</td></tr></table>
+        <div style="margin-top:8px"><button class="sec" id="cmpStages">Compare all models on this issue</button></div>
+        <div id="t_stages" style="margin-top:8px;overflow-x:auto"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card"><h3 id="fctitle">168 h observed → 72 h forecast</h3><div id="c_fc"></div>
+        <div class="caption"><span class="legendline"></span>observed <span class="legendline" style="border-top-style:dashed"></span>forecast <span class="legendline" style="border-top-style:dotted"></span>recorded later (revealed for retrospective evaluation) · vertical line = forecast issue</div>
+        <div class="caption" id="fcnote"></div></div>
+      <div class="grid g2">
+        <div class="card"><h3>Errors by depth and lead — temperature (°C MAE)</h3><div id="t_errT"></div></div>
+        <div class="card"><h3>Errors by depth and lead — moisture (m³/m³ MAE)</h3><div id="t_errM"></div></div>
+      </div>
+      <div class="card"><h3>Evaluated results so far</h3><div id="t_skill"></div>
+        <div class="warn"><b>Scope of the scores.</b> The repo's stage-8 forecast scores apply to the original temperature targets (20 and 50 cm, hot-spell issues; see Project archive). The five-depth temperature-and-moisture models here are preliminary: gradient-boosted trees (trained 2019–2020, tested 2021, daily issues) and the GRU (trained 2019 to Sep 2020, early stopping on Oct–Dec 2020) is tested on the same 2021 issues. Ablation configurations are run for the trees; the GRU uses all inputs.</div>
+        <div id="grucard" class="caption" style="margin-top:8px"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SCREEN 3 ============================== -->
+<section class="screen" id="s3">
+  <div class="lead">The soil forecast describes conditions away from cable heating. This installation model calculates the additional local heating produced by the cable.</div>
+  <div class="grid g-side">
+    <div class="card ctl">
+      <h3>Installation preset</h3>
+      <select id="preset"></select>
+      <div class="caption" id="presetnote"></div>
+      <h3 style="margin-top:14px">Adjust (supported options only)</h3>
+      <label>Cable construction</label><select id="cable"></select>
+      <label>Arrangement</label><select id="arr"><option value="single">Single cable</option><option value="trefoil">Touching trefoil (equivalent bundle)</option></select>
+      <label>Burial depth to cable centre (m)</label><input type="number" id="depth" step="0.01" min="0.3" max="2">
+      <div class="row" style="margin-top:8px"><label><input type="checkbox" id="duct"> In 4 in PVC duct</label></div>
+      <label>Backfill</label><select id="bed"></select>
+      <label>Backfill zone equivalent radius (m)</label><input type="number" id="bedr" step="0.01" min="0.08" max="0.6">
+      <label>Previous load, held 168 h (A)</label><input type="number" id="prior" step="10">
+      <label>Proposed future load (A)</label><input type="number" id="future" step="10">
+      <div class="row" style="margin-top:6px"><label><input type="radio" name="shape" value="flat" checked> flat</label><label><input type="radio" name="shape" value="daily cycle"> daily cycle</label></div>
+      <label>Conductor temperature limit</label><select id="tlim"></select>
+      <div class="next"><button id="toS4">Calculate thermal response →</button></div>
+    </div>
+    <div>
+      <div class="card"><h3>Cross-section</h3><div class="grid g2"><div id="xs1"></div><div id="xs2"></div></div>
+        <div class="caption">Left: the installation as modelled (schematic, to scale vertically). Right: the cable layers and the equivalent radial model domain. The model is radial: the backfill trench is represented by an equivalent annulus, and the outer boundary (r = 2 × depth, Kennelly equivalent) is held at the forecast background temperature.</div></div>
+      <div class="card"><h3>Inputs and where they come from</h3><div id="t_inputs"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== SCREEN 4 ============================== -->
+<section class="screen" id="s4">
+  <div class="lead">For the selected installation and current, the model calculates the conductor's thermal response over the 72 h horizon and searches for the largest current that keeps it within its limit throughout — a whole-period calculation that accounts for accumulated heat.</div>
+  <div class="card ctl"><div class="row">
+    <div style="width:170px"><label>Proposed current (A)</label><input type="number" id="cur4" step="10"></div>
+    <div style="width:220px"><label>Environmental conditions</label><select id="env"><option value="forecast">Forecast background</option><option value="fixed">Fixed at issue value</option><option value="observed">Observed (hindcast)</option></select></div>
+    <div style="width:230px"><label>Local moisture</label><select id="mm"><option value="background only">Held at background value</option><option value="critical-isotherm drying">Critical-isotherm drying (reduced rule)</option></select></div>
+    <div style="width:120px"><label>T_crit (°C)</label><input type="number" id="tcrit" value="50" min="30" max="80"></div>
+    <div style="align-self:flex-end"><button id="run4">Rerun</button> <button class="sec" id="perm4">Calculate permissible current</button></div>
+  </div><div class="caption" id="cap4"></div></div>
+  <div id="alert4"></div>
+  <div class="metrics">
+    <div class="metric"><div class="l">Permissible current, 72 h</div><div class="v" id="m1">–</div><div class="d" id="m1d"></div></div>
+    <div class="metric"><div class="l">Load multiplier on proposal</div><div class="v" id="m2">–</div></div>
+    <div class="metric"><div class="l">Peak conductor temperature</div><div class="v" id="m3">–</div><div class="d" id="m3d"></div></div>
+    <div class="metric"><div class="l">Minimum margin</div><div class="v" id="m4">–</div></div>
+    <div class="metric"><div class="l">Heat stored near cable</div><div class="v" id="m5">–</div><div class="d" id="m5d"></div></div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>Conductor temperature</h3><div id="c_tc"></div></div>
+    <div class="card"><h3>Backfill and nearby soil</h3><div id="c_bf"></div></div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>Temperature cross-section</h3>
+      <div class="row"><span>Hour</span><input type="range" id="hslider" min="1" max="72" value="24" style="flex:1"><span id="hlabel" style="min-width:150px"></span></div>
+      <canvas id="map2d" width="640" height="420" style="width:100%;max-width:640px;display:block;margin-top:6px"></canvas>
+      <div class="caption">Colour scale saturates at the top value so the soil warming stays visible; the cable itself is far hotter (see the radial profile). Background profile from the forecast (varies with depth) + the radial solution inside the backfill zone + the image-method field outside it (isothermal ground surface). A quasi-steady visualisation of the radial model, not a 2D finite-element solve.</div></div>
+    <div>
+      <div class="card"><h3>Radial temperature profile at the selected hour</h3><div id="c_rad"></div></div>
+      <div class="card"><h3>Local moisture</h3><div id="moist4"></div></div>
+    </div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>Heat flow</h3><div id="c_q"></div><div id="t_heat"></div></div>
+    <div class="card"><h3>Ampacity assessment</h3><div id="rating4"></div><div id="c_lim"></div></div>
+  </div>
+  <div class="row"><button class="sec" id="dlA">Configuration + results (JSON)</button><button class="sec" id="dlB">Trajectory (CSV)</button><button class="sec" id="dlC">Forecast (CSV)</button><span class="caption" id="saved4"></span></div>
+</section>
+
+<!-- ============================== SCREEN 5 ============================== -->
+<section class="screen" id="s5">
+  <div class="lead">How do you check the output? A. Against a real cable experiment. B. Against matched alternatives under identical assumptions.</div>
+  <div class="card"><h3>A. Darmstadt experiment reconstruction <span class="pill">experimental mode</span></h3>
+    <div class="caption" id="dcase"></div>
+    <div class="row" style="margin:8px 0">
+      <div style="width:220px"><label>Bedding section</label><select id="dbed"><option value="silt">Silt</option><option value="sand">Sand</option><option value="fluidized_backfill">Fluidized backfill</option><option value="loam">Loam</option></select></div>
+      <div style="width:330px"><label>Model configuration</label><select id="dcfg"></select></div>
+      <div style="align-self:flex-end"><button class="sec" id="dlive">Re-run live</button></div>
+    </div>
+    <div class="grid g2">
+      <div><div id="c_dt"></div><div class="caption">Measured vs calculated <b>conductor</b> temperature (case MF_IV_CL, configuration IV, single MV150 trefoil).</div></div>
+      <div><div id="c_di"></div><div id="c_dw"></div></div>
+    </div>
+    <div class="grid g2">
+      <div><h3 style="margin-top:10px">Agreement (all saved configurations)</h3><div id="t_dstats"></div></div>
+      <div><h3 style="margin-top:10px">Assumptions</h3><ul id="dass" style="font-size:12.5px;padding-left:18px"></ul>
+        <div class="warn">The present reconstruction still has substantial temperature error outside the fluidized backfill and does not reproduce the strong drying seen in sand. This stays visible here on purpose: experimental agreement is the most important unfinished physical task.</div></div>
+    </div>
+    <h3 style="margin-top:10px">Measured local moisture (case MF_III_CL)</h3>
+    <div class="grid g2"><div id="c_dm"></div><div id="c_ds"></div></div>
+    <div class="caption" id="mf3note"></div>
+  </div>
+  <div class="card"><h3>B. Reference-installation comparisons <span class="pill">forecast-informed mode</span></h3>
+    <div class="caption">Uses the current station, issue, installation and loading; changes one thing at a time. Each comparison is saved under <code>runs/</code>.</div>
+    <div class="row" style="margin:8px 0"><div style="width:330px"><select id="vary">
+      <option value="environment">Fixed vs forecast vs observed environment</option><option value="backfill">Documented backfills</option>
+      <option value="depth">Supported burial depths</option><option value="moisture">Prescribed vs drying local moisture</option>
+      <option value="cable">Cable sizes (single cable)</option><option value="duct">Duct vs direct burial</option><option value="method">Forecast model</option></select></div>
+      <button id="cmpbtn">Run comparison</button><button class="sec" id="cmpdl">Download results</button></div>
+    <div class="grid g2"><div id="c_cmp"></div><div id="t_cmp"></div></div>
+  </div>
+</section>
+
+<!-- ============================== ARCHIVE ============================== -->
+<section class="screen" id="s6">
+  <div class="card"><h3>How the project got here</h3><div class="caption">From <code>docs/PROJECT_HISTORY.md</code>.</div><div id="hist"></div></div>
+  <div class="card"><h3>Stage 8: 72 h forecast benchmark (repo results, original temperature targets)</h3><div class="caption" id="benchcap"></div>
+    <div class="row" style="margin:6px 0"><label><input type="radio" name="split" value="val" checked> validation</label><label><input type="radio" name="split" value="dev"> development</label></div>
+    <div id="t_bench"></div>
+    <img src="/repo/forecast_figure.png" alt="Repo forecast benchmark figure" style="width:100%;max-width:1100px;margin-top:12px;border:1px solid #eee;border-radius:6px">
+    <div class="caption">Figure from <code>results/06_forecast_benchmark/forecast_figure.png</code>. Its "headroom" panel predates the V4 audit: the "82% of error" statement was withdrawn.</div></div>
+  <div class="grid g2">
+    <div class="card"><h3>Re-execution of earlier-stage scripts</h3><div id="stagelog"></div></div>
+    <div class="card"><h3>Reproducibility check</h3><div id="repro"></div></div>
+  </div>
+</section>
+
+<!-- ============================== RUNS ============================== -->
+<section class="screen" id="s7">
+  <div class="card"><h3>Saved runs</h3><div class="caption">Every assessment saves its configuration, model version, inputs and outputs under <code>runs/</code>. Open one to view it again on screen 4.</div><div id="t_runs"></div></div>
+</section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const BADGE = {measured:"#2e7d32","experimental measurement":"#2e7d32",specified:"#1565c0","manufacturer specification":"#1565c0","utility standard":"#1565c0",estimated:"#ef6c00","derived property":"#ef6c00",fitted:"#6a1b9a",scenario:"#ad1457","selected scenario":"#ad1457",calculated:"#455a64"};
+const badge = k => `<span class="badge" style="background:${BADGE[k]||'#777'}">${k}</span>`;
+const DEPTHS = [5,10,20,50,100];
+const DCOL = {5:"#e53935",10:"#fb8c00",20:"#43a047",50:"#1e88e5",100:"#5e35b1"};
+const S = {station:null, spell:null, issue:null, method:"gbt", stage:3, preset:"PGE_30IN", over:{}, var2:"T",
+           dep1:new Set([5,20,50,100]), dep2:new Set([20,50,100]), env:"forecast", mm:"background only"};
+let META, RES, FC, SOIL, REPO, DSAVED, CMP, ISS;
+
+async function api(path, body){
+  $("busy").style.display = "block";
+  try {
+    const r = await fetch(path, body ? {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)} : {});
+    const j = await r.json();
+    if (!r.ok || (j && j.error)) throw new Error(j.error || r.statusText);
+    return j;
+  } finally { $("busy").style.display = "none"; }
+}
+function opts(sel, items, val){ sel.innerHTML = items.map(([v,l]) => `<option value="${v}">${l}</option>`).join(""); if (val!==undefined && val!==null) sel.value = val; }
+const pt = s => +new Date(String(s).replace(" ", "T"));
+const fmt1 = v => v===null||v===undefined ? "–" : (+v).toFixed(1);
+function niceStep(raw){ const p = Math.pow(10, Math.floor(Math.log10(raw||1))); const f = raw/p; return (f<1.5?1:f<3?2:f<7?5:10)*p; }
+function fmtTick(v, step){ const d = Math.max(0, -Math.floor(Math.log10(step))); return v.toFixed(Math.min(d,4)); }
+
+// ------------------------------------------------------------ charts
+function lineChart(el, series, o={}){
+  const W = el.clientWidth || 800, H = o.h || 300, m = {l:52, r:o.legend===false?14:160, t:12, b:30};
+  const X = o.numeric ? (v => +v) : pt;
+  const xs = series.flatMap(s => s.x.map(X)).concat((o.bands||[]).flatMap(b=>[X(b.x0),X(b.x1)]));
+  const ys = series.flatMap(s => s.y).filter(v => v!==null && v!==undefined && isFinite(v)).concat((o.hlines||[]).map(h=>h.y));
+  if (!xs.length || !ys.length){ el.innerHTML = '<div class="caption">no data</div>'; return; }
+  let x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  if (o.x0!==undefined) x0 = o.x0; if (o.x1!==undefined) x1 = o.x1;
+  if (y1 - y0 < 1e-9){ y0 -= 1; y1 += 1; } const pad = (y1-y0)*0.08; y0 -= pad; y1 += pad;
+  if (o.ymin !== undefined) y0 = Math.min(y0, o.ymin);
+  const PX = v => m.l + (v - x0) / (x1 - x0 || 1) * (W - m.l - m.r);
+  const PY = v => H - m.b - (v - y0) / (y1 - y0) * (H - m.t - m.b);
+  let s = `<svg width="${W}" height="${H}" style="display:block">`;
+  (o.bands||[]).forEach(b => s += `<rect x="${PX(X(b.x0))}" y="${m.t}" width="${Math.max(1,PX(X(b.x1))-PX(X(b.x0)))}" height="${H-m.t-m.b}" fill="${b.color||'#fde7d4'}" opacity="${b.opacity||0.6}"/>`);
+  const step = niceStep((y1-y0)/5);
+  for (let v = Math.ceil(y0/step)*step; v <= y1; v += step){
+    s += `<line x1="${m.l}" x2="${W-m.r}" y1="${PY(v)}" y2="${PY(v)}" stroke="#eee"/><text x="${m.l-6}" y="${PY(v)+4}" font-size="11" text-anchor="end" fill="#666">${fmtTick(v,step)}</text>`;
+  }
+  if (o.numeric){
+    const xs2 = niceStep((x1-x0)/8);
+    for (let v = Math.ceil(x0/xs2)*xs2; v <= x1; v += xs2) s += `<text x="${PX(v)}" y="${H-m.b+16}" font-size="11" text-anchor="middle" fill="#666">${fmtTick(v,xs2)}${o.xunit||''}</text>`;
+  } else {
+    const day = 864e5; let t = new Date(x0); t.setHours(0,0,0,0); t = +t + day;
+    const every = Math.max(1, Math.round((x1-x0)/day/9));
+    for (let k=0; t <= x1; t += day, k++){ if (k % every) continue; const d = new Date(t);
+      s += `<line x1="${PX(t)}" x2="${PX(t)}" y1="${m.t}" y2="${H-m.b}" stroke="#f3f3f3"/><text x="${PX(t)}" y="${H-m.b+16}" font-size="11" text-anchor="middle" fill="#666">${d.toLocaleDateString(undefined,{month:"short",day:"numeric"})}</text>`; }
+  }
+  if (o.ylabel) s += `<text x="12" y="${(H-m.b+m.t)/2}" font-size="11" fill="#666" transform="rotate(-90 12 ${(H-m.b+m.t)/2})" text-anchor="middle">${o.ylabel}</text>`;
+  (o.hlines||[]).forEach(h => { s += `<line x1="${m.l}" x2="${W-m.r}" y1="${PY(h.y)}" y2="${PY(h.y)}" stroke="${h.color||'#c62828'}" stroke-dasharray="6 4"/><text x="${W-m.r-4}" y="${PY(h.y)-4}" font-size="11" text-anchor="end" fill="${h.color||'#c62828'}">${h.label||''}</text>`; });
+  if (o.vline!==undefined) s += `<line x1="${PX(X(o.vline))}" x2="${PX(X(o.vline))}" y1="${m.t}" y2="${H-m.b}" stroke="#666" stroke-dasharray="3 3"/>`;
+  series.forEach(se => {
+    if (se.bars){ const bw = Math.max(1,(W-m.l-m.r)/se.x.length*0.8);
+      se.x.forEach((xv,i) => { const v = se.y[i]; if (!(v>0)) return; s += `<rect x="${PX(X(xv))-bw/2}" y="${PY(v)}" width="${bw}" height="${PY(Math.max(y0,0))-PY(v)}" fill="${se.color}"/>`; }); return; }
+    let d = "", pen = false;
+    se.x.forEach((xv,i) => { const yv = se.y[i]; if (yv===null || yv===undefined || !isFinite(yv)){ pen=false; return; }
+      d += (pen ? "L" : "M") + PX(X(xv)).toFixed(1) + "," + PY(yv).toFixed(1); pen = true; });
+    s += `<path d="${d}" fill="none" stroke="${se.color}" stroke-width="${se.width||1.7}" ${se.dash?`stroke-dasharray="${se.dash}"`:''} opacity="${se.opacity||1}"/>`;
+  });
+  if (o.legend !== false) series.filter(se=>!se.nolegend).forEach((se,i) => { const ly = m.t + 8 + i*16;
+    s += `<line x1="${W-m.r+10}" x2="${W-m.r+30}" y1="${ly}" y2="${ly}" stroke="${se.color}" stroke-width="${se.bars?6:2}" ${se.dash?`stroke-dasharray="${se.dash}"`:''}/><text x="${W-m.r+36}" y="${ly+4}" font-size="11" fill="#333">${se.name}</text>`; });
+  s += `<line class="hv" x1="0" x2="0" y1="${m.t}" y2="${H-m.b}" stroke="#bbb" style="display:none"/><rect x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg>`;
+  el.innerHTML = s;
+  const svg = el.querySelector("svg"), hv = svg.querySelector(".hv"), tip = $("tip");
+  svg.onmousemove = e => {
+    const r = svg.getBoundingClientRect(), px = e.clientX - r.left;
+    if (px < m.l || px > W - m.r){ tip.style.display="none"; hv.style.display="none"; return; }
+    const xv = x0 + (px - m.l) / (W - m.l - m.r) * (x1 - x0); let rows = [], lab = "";
+    series.forEach(se => { let best=-1, bd=Infinity; se.x.forEach((xx,i)=>{ const dd=Math.abs(X(xx)-xv); if (dd<bd){bd=dd;best=i;} });
+      if (best>=0 && se.y[best]!==null && se.y[best]!==undefined && isFinite(se.y[best]) && bd < (o.numeric? (x1-x0)/50 : 36e5*13)){ rows.push(`<span style="color:${se.color}">■</span> ${se.name}: <b>${(+se.y[best]).toFixed(o.dec ?? 2)}</b>`); lab = se.x[best]; } });
+    if (!rows.length){ tip.style.display="none"; return; }
+    hv.setAttribute("x1",px); hv.setAttribute("x2",px); hv.style.display="";
+    tip.innerHTML = `<div style="color:#666">${o.numeric? (o.xname||'')+' '+(+lab).toFixed(1) : lab}</div>` + rows.join("<br>");
+    tip.style.display = "block"; tip.style.left = (e.pageX + 14) + "px"; tip.style.top = (e.pageY + 10) + "px";
+  };
+  svg.onmouseleave = () => { tip.style.display = "none"; hv.style.display = "none"; };
+}
+function barChart(el, labels, values, unit){
+  const W = el.clientWidth || 600, H = 250, m = {l:50,r:10,t:20,b:56};
+  const mx = Math.max(...values.filter(v=>isFinite(v))) * 1.12 || 1, bw = (W-m.l-m.r)/labels.length;
+  let s = `<svg width="${W}" height="${H}">`; const step = niceStep(mx/5);
+  for (let v=0; v<=mx; v+=step){ const y = H-m.b-(v/mx)*(H-m.t-m.b); s += `<line x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}" stroke="#eee"/><text x="${m.l-6}" y="${y+4}" font-size="11" text-anchor="end" fill="#666">${v.toFixed(0)}</text>`; }
+  labels.forEach((l,i) => { const v = values[i]; if (!isFinite(v)) return; const h = v/mx*(H-m.t-m.b), x = m.l+i*bw+bw*0.2;
+    s += `<rect x="${x}" y="${H-m.b-h}" width="${bw*0.6}" height="${h}" fill="#1e6fd9" rx="3"/><text x="${x+bw*0.3}" y="${H-m.b-h-5}" font-size="12" text-anchor="middle">${v.toFixed(0)} ${unit}</text>`;
+    s += `<text x="${x+bw*0.3}" y="${H-m.b+15}" font-size="11" text-anchor="middle" fill="#444">${l.length>26?l.slice(0,24)+'…':l}</text>`; });
+  el.innerHTML = s + "</svg>";
+}
+function depthBoxes(el, set, cb){
+  el.innerHTML = DEPTHS.map(d => `<label><input type="checkbox" value="${d}" ${set.has(d)?'checked':''}> ${d} cm</label>`).join("");
+  el.onchange = e => { e.target.checked ? set.add(+e.target.value) : set.delete(+e.target.value); cb(); };
+}
+function download(name, text, type="text/csv"){ const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text],{type})); a.download = name; a.click(); }
+function toCSV(cols, n, get){ return cols.join(",") + "\n" + Array.from({length:n},(_,i)=>cols.map(c=>{const v=get(c,i); return v===null||v===undefined?"":v;}).join(",")).join("\n"); }
+function casebar(){
+  const p = META && META.presets[S.preset];
+  $("casebar").innerHTML = `<span>Station: ${S.station||'–'}</span><span>Heat spell: ${S.spell?S.spell.replace(S.station+'_',''):'–'}</span><span>Issue: ${S.issue||'–'}</span><span>Forecast: ${S.method}${S.method==='gbt'?' (config '+S.stage+')':''}</span><span>Installation: ${p?p.label:'custom'}</span>`;
+}
+function show(id){
+  document.querySelectorAll(".step").forEach(x => x.classList.toggle("on", x.dataset.s===id));
+  document.querySelectorAll(".screen").forEach(x => x.classList.toggle("on", x.id===id));
+  window.scrollTo(0,0);
+  if (id==="s1" && SOIL) drawSoil(); if (id==="s2") loadForecast(); if (id==="s3") loadInstall();
+  if (id==="s4"){ if (!RES || RES._stale) runAssess(); else drawAssess(); } if (id==="s5") loadEvidence(); if (id==="s6") loadRepo(); if (id==="s7") loadRuns();
+  casebar();
+}
+
+// ------------------------------------------------------------ screen 1
+async function setStation(name, keepIssue){
+  S.station = name; $("st1").value = name; $("st2").value = name;
+  const sp = await api("/api/spells?station="+encodeURIComponent(name));
+  ISS = await api("/api/issues?station="+encodeURIComponent(name));
+  if (sp.length){
+    opts($("spell"), sp.map(s => [s.spell_id, `${s.start} → ${s.end} · ${s.n_hot} hot days${s.issue?'':' (no issue)'}${s.hot_dry==='True'?' · dry':''}`]));
+    const pref = sp.find(s => s.spell_id === S.spell) || sp.find(s=>s.issue && s.issue.startsWith("2021-08")) || sp.find(s=>s.issue && s.issue.startsWith("2021")) || sp[sp.length-1];
+    $("spell").value = pref.spell_id; S.spell = pref.spell_id; $("spell").disabled = false; $("nospell").style.display = "none";
+  } else {
+    opts($("spell"), [["", "no archived heat spells for this station"]]); $("spell").disabled = true; S.spell = null;
+    $("nospell").style.display = "block";
+    $("nospell").textContent = "This station is not in the repo's 39-station heat-spell archive (spell detection needs air temperature, which the bundled data lacks). Showing a summer 2021 window instead; heat-spell stations: AL_Fairhope, CA_Santa_Barbara, NE_Lincoln, WY_Sundance.";
+  }
+  if (!keepIssue){ const spobj = sp.find(s=>s.spell_id===S.spell); S.issue = (spobj && spobj.issue) || ISS.issues.find(t=>t.startsWith("2021-07-15")) || ISS.issues[0]; }
+  fillIssues(); drawMap(); await loadSoil(); casebar();
+}
+function fillIssues(){
+  const sp = ISS.spell_issues.filter(x=>x.issue && ISS.issues.includes(x.issue));
+  let html = sp.length ? `<optgroup label="Heat-spell issues (morning after 3rd hot day)">${sp.map(x=>`<option value="${x.issue}">${x.issue} · spell ${x.spell_id.slice(-10)}</option>`).join("")}</optgroup>` : "";
+  html += `<optgroup label="Any day, 08:00 LST">${ISS.issues.map(t=>`<option value="${t}">${t}</option>`).join("")}</optgroup>`;
+  $("issue").innerHTML = html; if (S.issue) $("issue").value = S.issue;
+}
+async function loadSoil(){
+  const per = $("period").value.split(",").map(Number);
+  let q = `/api/soil?station=${encodeURIComponent(S.station)}`;
+  if (S.spell) q += `&spell=${encodeURIComponent(S.spell)}`; else q += `&start=2021-07-10&end=2021-07-12`;
+  SOIL = await api(q); SOIL._per = per; drawSoil();
+  const sp = SOIL.spell;
+  $("issuenote").textContent = sp ? (sp.issue ? `Forecast issue for this spell: ${sp.issue} (08:00 the morning after the third hot day).` : "This spell has no forecast issue in the repo's issue inventory.") : "";
+  $("toS2").disabled = !(sp && sp.issue);
+}
+function drawSoil(){
+  const D = SOIL, [b,a] = SOIL._per; if (!D) return;
+  const t0 = pt(D.start) - b*864e5, t1 = pt(D.end) + (a+1)*864e5;
+  const idx = D.times.map((t,i)=>[pt(t),i]).filter(([t])=>t>=t0&&t<=t1).map(x=>x[1]);
+  const X = idx.map(i=>D.times[i]); const band = [{x0:D.start+" 00:00", x1:D.end+" 23:59"}];
+  const ser = (arr) => DEPTHS.map((d,j)=>({d,j})).filter(o=>S.dep1.has(o.d)).map(o=>({name:o.d+" cm", x:X, y:idx.map(i=>arr[i][o.j]), color:DCOL[o.d]}));
+  lineChart($("c_t1"), ser(D.T), {ylabel:"°C", bands:band, h:270});
+  lineChart($("c_m1"), ser(D.M), {ylabel:"m³/m³", bands:band, h:220, dec:3});
+  lineChart($("c_p1"), [{name:"rain", x:X, y:idx.map(i=>D.P[i]), color:"#4a90d9", bars:true}], {ylabel:"mm/h", bands:band, h:110, legend:false, ymin:0, dec:1});
+  const di = D.days.map((d,i)=>[pt(d+" 12:00"),i]).filter(([t])=>t>=t0&&t<=t1).map(x=>x[1]);
+  lineChart($("c_a1"), DEPTHS.map((d,j)=>({d,j})).filter(o=>S.dep1.has(o.d)).map(o=>({name:o.d+" cm", x:di.map(i=>D.days[i]+" 12:00"), y:di.map(i=>D.anom[i][o.j]), color:DCOL[o.d]})),
+    {ylabel:"K", bands:band, h:240, hlines:[{y:0,color:"#999",label:""}]});
+  $("t_metrics").innerHTML = "<table><tr><th>Depth</th><th class='num'>Peak anomaly (°C)</th><th class='num'>Peak delay (d)</th><th class='num'>Persistence (d)</th><th class='num'>Burden (°C·d)</th><th class='num'>Archive peak anomaly (°C)</th><th class='num'>Archive recovery day</th></tr>" +
+    D.metrics.map(m=>`<tr><td>${m.depth_cm} cm</td><td class="num">${m.peak_anom_C??'–'}</td><td class="num">${m.peak_delay_d??'–'}</td><td class="num">${m.persistence_d??'–'}${m.persistence_censored?'*':''}</td><td class="num">${m.burden_Cd??'–'}</td><td class="num">${m.archive_peak_anom_C??'–'}</td><td class="num">${m.archive_recovery_day??'–'}</td></tr>`).join("") + "</table>";
+}
+function drawMap(){
+  const W = $("map").clientWidth || 270, H = 160, st = META.stations;
+  const lon = [-125,-66], lat = [24,50];
+  const PX = x => 8 + (x-lon[0])/(lon[1]-lon[0])*(W-16), PY = y => H-8 - (y-lat[0])/(lat[1]-lat[0])*(H-16);
+  let s = `<svg width="${W}" height="${H}"><rect x="1" y="1" width="${W-2}" height="${H-2}" fill="#f3f6f8" stroke="#dde" rx="6"/>`;
+  st.forEach(o => { const la = +o.site.latitude_deg, lo = +o.site.longitude_deg; if (!isFinite(la)) return; const on = o.name===S.station;
+    s += `<circle cx="${PX(lo)}" cy="${PY(la)}" r="${on?6:4}" fill="${on?'#b4372c':(o.n_spells?'#1e6fd9':'#9aa')}" stroke="#fff"><title>${o.name}</title></circle>`;
+    if (on) s += `<text x="${PX(lo)+8}" y="${PY(la)+4}" font-size="11">${o.site.state}</text>`; });
+  $("map").innerHTML = s + `</svg>`;
+  const o = st.find(x=>x.name===S.station), si = o.site;
+  $("site").innerHTML = `<b>${si.station_name||S.station}</b><br>${si.state} · ${si.climate_zone} · ${si.latitude_deg}°, ${si.longitude_deg}° · ${si.elevation_ft} ft · WBAN ${si.wban}<br>${o.n_spells} archived heat spells 2019–2021 · no basemap (offline)`;
+}
+
+// ------------------------------------------------------------ screen 2
+async function loadForecast(){
+  S.issue = $("issue").value || S.issue;
+  const hasG = ISS.gbt.includes(S.issue);
+  const items = Object.entries(META.methods).filter(([k]) => !["gbt","gru"].includes(k) || hasG);
+  opts($("method"), items, items.some(([k])=>k===S.method) ? S.method : "seasonal"); S.method = $("method").value;
+  $("gbtnote").style.display = hasG ? "none" : "block";
+  $("gbtnote").textContent = "Trained-ML forecasts (trees and GRU) exist only for 2021 issue times: the models were trained on 2019–2020, so earlier issues would be in-sample.";
+  $("stagebox").style.display = S.method==="gbt" ? "block" : "none";
+  FC = await api("/api/forecast", {station:S.station, issue:S.issue, method:S.method, stage:S.stage});
+  if (RES) RES._stale = true; drawForecast(); casebar();
+}
+function drawForecast(){
+  const F = FC, v = S.var2, H = v==="T"?F.histT:F.histM, P = v==="T"?F.T:F.M, O = v==="T"?F.obsT:F.obsM, ser = [];
+  DEPTHS.forEach((d,j)=>{ if (!S.dep2.has(d)) return;
+    ser.push({name:`${d} cm observed`, x:F.hist_times, y:H.map(r=>r[j]), color:DCOL[d]});
+    ser.push({name:`${d} cm forecast`, x:F.times, y:P.map(r=>r[j]), color:DCOL[d], dash:"7 4"});
+    if (O) ser.push({name:`${d} cm recorded later`, x:F.times, y:O.map(r=>r[j]), color:DCOL[d], dash:"2 3", width:1.2, opacity:.75}); });
+  lineChart($("c_fc"), ser, {ylabel: v==="T"?"°C":"m³/m³", vline:S.issue, dec: v==="T"?2:3, h:340});
+  $("fcnote").innerHTML = `${badge(F.provenance)} ${F.note}`;
+  const et = (rows, dec) => rows ? "<table><tr><th>Depth</th><th class='num'>1–24 h</th><th class='num'>25–48 h</th><th class='num'>49–72 h</th><th class='num'>1–72 h</th></tr>" +
+    rows.map(r=>`<tr><td>${r.depth_cm} cm</td>${["h1_24","h25_48","h49_72","h1_72"].map(k=>`<td class="num">${r[k]==null?'–':(+r[k]).toFixed(dec)}</td>`).join("")}</tr>`).join("") + "</table>" : "<div class='caption'>No later observations for this issue.</div>";
+  $("t_errT").innerHTML = et(F.errors && F.errors.T, 2); $("t_errM").innerHTML = et(F.errors && F.errors.M, 4);
+}
+async function compareStages(){
+  const out = [];
+  for (const m of [["persistence",null],["seasonal",null],["gbt",0],["gbt",1],["gbt",2],["gbt",3],["gru",null]]){
+    try { const f = await api("/api/forecast",{station:S.station, issue:S.issue, method:m[0], stage:m[1]??3}); out.push([m, f.errors]); } catch(e){ out.push([m, null]); } }
+  $("t_stages").innerHTML = "<table><tr><th>Model</th>" + [20,50,100].map(d=>`<th class='num'>T ${d} cm</th>`).join("") + "<th class='num'>M 20 cm</th></tr>" +
+    out.map(([m,e]) => `<tr><td>${m[0]==="gbt"?"Trees, config "+m[1]:m[0]==="gru"?"GRU":m[0]}</td>${e? [2,3,4].map(j=>`<td class="num">${e.T[j].h1_72??'–'}</td>`).join("")+`<td class="num">${e.M[2].h1_72??'–'}</td>` : '<td colspan=4 class="caption">n/a</td>'}</tr>`).join("") + "</table><div class='caption'>72 h MAE for this one issue. One issue is anecdotal; see the evaluated table for the test-year medians.</div>";
+}
+async function loadSkill(){
+  const g = META.gru_card; if (g) $("grucard").innerHTML = `<b>GRU model card.</b> ${g.architecture}. Inputs: ${g.inputs}. Targets: ${g.targets}. Loss: ${g.loss}. ${g.parameters.toLocaleString()} parameters; ${g.epochs_run} epochs, best validation loss ${g.best_validation_loss}. Train ${g.training}; validation ${g["validation (early stopping)"]}; test ${g.test}.`;
+  const sk = await api("/api/skill"); if (!sk.length) return;
+  const cols = ["var","depth_cm","persistence","diurnal","gbt_s0","gbt_s1","gbt_s2","gbt_s3","gru"].filter(c => c in sk[0]);
+  const names = {var:"Var", depth_cm:"Depth (cm)", persistence:"Persistence", diurnal:"Diurnal", gbt_s0:"Trees cfg 0", gbt_s1:"Trees cfg 1", gbt_s2:"Trees cfg 2", gbt_s3:"Trees cfg 3", gru:"GRU"};
+  $("t_skill").innerHTML = "<table><tr>" + cols.map((c,i)=>`<th class="${i>1?'num':''}">${names[c]}</th>`).join("") + "</tr>" + sk.map(r => { const nums = cols.slice(2).map(c=>+r[c]); const best = Math.min(...nums);
+    return "<tr>" + cols.map((c,i)=>`<td class="${i>1?'num':''}" style="${i>1&&+r[c]===best?'font-weight:700;color:#2e7d32':''}">${r[c]}</td>`).join("") + "</tr>"; }).join("") + "</table><div class='caption'>Median 72 h MAE over 2021 daily 08:00 issues, 13 stations (T in °C, M in m³/m³). Bold = best.</div>";
+}
+
+// ------------------------------------------------------------ screen 3
+function caseFromState(){
+  const c = {station:S.station, issue:S.issue, method:S.method, stage:S.stage, preset:S.preset,
+             moisture_mode:S.mm, t_crit:+$("tcrit").value, environment:S.env, ...S.over};
+  c.prior_current = +($("prior").value || 300); c.future_current = +($("future").value || 400);
+  c.future_shape = document.querySelector('input[name=shape]:checked').value;
+  if ($("tlim").value) c.t_max = +$("tlim").value;
+  return c;
+}
+let INST;
+async function loadInstall(){
+  INST = await api("/api/install", caseFromState());
+  const c = INST.case, p = META.presets[S.preset];
+  $("presetnote").innerHTML = p ? `${p.status}<br>${p.depth_ref}` : "Custom combination.";
+  $("cable").value = c.cable; $("arr").value = c.arrangement; $("depth").value = c.depth_m; $("duct").checked = c.in_duct;
+  $("bed").value = c.bedding; $("bedr").value = c.bedding_radius_m;
+  const g = INST.geometry; const cur = $("tlim").value;
+  opts($("tlim"), [[g.t_max, `${g.t_max} °C normal operating`]].concat(g.t_emergency?[[g.t_emergency, `${g.t_emergency} °C emergency`]]:[]), cur && [g.t_max,g.t_emergency].includes(+cur) ? cur : g.t_max);
+  $("t_inputs").innerHTML = "<table><tr><th>Input</th><th>Value</th><th>Source</th><th>Note</th></tr>" + INST.inputs.map(r=>`<tr><td>${r.input}</td><td>${r.value}</td><td>${badge(r.provenance)}</td><td class="caption">${r.note||''}</td></tr>`).join("") + "</table>";
+  drawCross(g); casebar();
+}
+function drawCross(g){
+  // left: installation, vertical scale true; right: cable layers + radial domain
+  const W = $("xs1").clientWidth || 380, H = 330, top = 40, zmax = Math.max(1.6, g.depth*2+0.2), sc = (H-top-20)/zmax;
+  const cx = W/2, cy = top + g.depth*sc;
+  let s = `<svg width="${W}" height="${H}" style="display:block">`;
+  s += `<rect x="0" y="${top}" width="${W}" height="${H-top}" fill="#efe6d6"/><text x="8" y="${H-10}" font-size="11" fill="#6b5a3e">native soil</text>`;
+  s += `<line x1="0" y1="${top}" x2="${W}" y2="${top}" stroke="#4a7a2a" stroke-width="3"/><text x="8" y="${top-8}" font-size="11" fill="#4a7a2a">ground surface (isothermal in the image-method view)</text>`;
+  const rb = Math.max(g.r_bed*sc, 8);
+  s += `<rect x="${cx-rb*1.6}" y="${top}" width="${rb*3.2}" height="${cy-top+rb}" fill="#f5e9c8" stroke="#c9a85b" stroke-dasharray="4 3"/><text x="${cx+rb*1.6+6}" y="${top+16}" font-size="11" fill="#8a6d2b">trench (schematic)</text>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${rb}" fill="#f0d790" stroke="#b08a2e"/><text x="${cx+rb+6}" y="${cy+4}" font-size="11" fill="#7a5d14">backfill zone r=${g.r_bed.toFixed(2)} m</text>`;
+  if (g.in_duct){ s += `<circle cx="${cx}" cy="${cy}" r="${Math.max(g.duct_od/2*sc,6)}" fill="#e8eef5" stroke="#7a8fa6" stroke-width="1.5"/>`; }
+  const rc = Math.max(g.r_cable*sc, 2.5);
+  if (g.arrangement==="trefoil"){ const R = Math.max(g.r_cable*sc, 2.5); [[0,-1.155],[-1,0.577],[1,0.577]].forEach(([a,b])=> s += `<circle cx="${cx+a*R}" cy="${cy+b*R}" r="${R}" fill="#b4372c"/>`); }
+  else s += `<circle cx="${cx}" cy="${cy}" r="${rc}" fill="#b4372c"/>`;
+  s += `<line x1="${W-30}" y1="${top}" x2="${W-30}" y2="${cy}" stroke="#333" marker-end="url(#ar)"/><text x="${W-34}" y="${(top+cy)/2}" font-size="11" text-anchor="end">${g.depth.toFixed(3)} m</text>`;
+  s += `<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#333"/></marker></defs></svg>`;
+  $("xs1").innerHTML = s;
+  // right panel: log-radius rings
+  const W2 = $("xs2").clientWidth || 380, H2 = 330, c2 = H2/2, rmax = g.r_far, rmin = 0.004;
+  const R = r => 14 + (Math.log(Math.max(r,rmin)/rmin)/Math.log(rmax/rmin))*(Math.min(W2,H2)/2-20);
+  const rings = [];
+  g.layers.forEach((L,i)=>rings.push([L[1], ["#c0392b","#f2f2f2","#d4a017","#333"][i]||"#999", L[0]]));
+  if (g.in_duct){ rings.push([g.duct_id/2, "#e8eef5", "air gap"]); rings.push([g.duct_od/2, "#7a8fa6", "PVC duct"]); }
+  rings.push([g.r_bed, "#f0d790", "backfill"]); rings.push([g.r_far, "#efe6d6", "native soil"]);
+  let t = `<svg width="${W2}" height="${H2}" style="display:block">`;
+  rings.slice().reverse().forEach(([r,col]) => t += `<circle cx="${c2}" cy="${c2}" r="${R(r)}" fill="${col}" stroke="#999" stroke-width="0.5"/>`);
+  t += `<circle cx="${c2}" cy="${c2}" r="${R(g.r_far)}" fill="none" stroke="#1e6fd9" stroke-dasharray="5 3" stroke-width="1.5"/>`;
+  rings.forEach(([r,col,name],i) => { const y = 16 + i*17; t += `<rect x="${H2+4}" y="${y-9}" width="10" height="10" fill="${col}" stroke="#999"/><text x="${H2+18}" y="${y}" font-size="11">${name} · ${(r*1000).toFixed(r<0.1?1:0)} mm</text>`; });
+  t += `<text x="${H2+4}" y="${16+rings.length*17+8}" font-size="11" fill="#1e6fd9">dashed = model boundary r = 2h,</text><text x="${H2+4}" y="${16+rings.length*17+22}" font-size="11" fill="#1e6fd9">held at background temperature</text><text x="${H2+4}" y="${16+rings.length*17+40}" font-size="11" fill="#666">radius on a log scale</text>`;
+  $("xs2").innerHTML = t + "</svg>";
+}
+function setOver(k, v){ S.over[k] = v; if (RES) RES._stale = true; loadInstall(); }
+
+// ------------------------------------------------------------ screen 4
+async function runAssess(){
+  $("future").value = $("cur4").value || $("future").value;
+  try { RES = await api("/api/assess", caseFromState()); drawAssess(); }
+  catch(e){ $("alert4").innerHTML = `<div class="err">${e.message}</div>`; }
+}
+function drawAssess(){
+  const R = RES, Sm = R.summary, T = R.trajectory; $("alert4").innerHTML = "";
+  $("cur4").value = R.case.future_current;
+  $("cap4").innerHTML = `${R.case.station} · issued ${R.case.issue} · ${META.methods[R.model.forecast]}${R.model.stage!=null?' (config '+R.model.stage+')':''} · environment: ${R.model.environment} · ${R.inputs[0].value} · ${R.case.arrangement} · ${R.model.geometry}${R.elapsed_s!=null?" · "+R.elapsed_s+" s":""} · run ${R.run_id||''}`;
+  if (Sm.load_multiplier.value < 1) $("alert4").innerHTML = '<div class="err">The proposed load exceeds the permissible loading within the 72 h horizon.</div>';
+  $("m1").textContent = Sm.permissible_current_A.value.toFixed(0)+" A"; $("m1d").textContent = Sm.permissible_current_A.source;
+  $("m2").textContent = Sm.load_multiplier.value.toFixed(2)+" ×";
+  $("m3").textContent = Sm.peak_T_conductor_C.value.toFixed(1)+" °C"; $("m3d").textContent = "limit "+Sm.T_max_C.value+" °C";
+  $("m4").textContent = Sm.min_margin_K.value.toFixed(1)+" K";
+  $("m5").textContent = Sm.stored_heat_end_kJ_m.value.toFixed(0)+" kJ/m"; $("m5d").textContent = `at issue ${Sm.stored_heat_at_issue_kJ_m.value.toFixed(0)} kJ/m · cable + backfill zone`;
+  lineChart($("c_tc"), [{name:"Conductor", x:T.time, y:T.T_conductor, color:"#c62828"}, {name:"Background (used)", x:T.time, y:T.T_background, color:"#1e88e5"}],
+    {ylabel:"°C", hlines:[{y:Sm.T_max_C.value, label:"T_max"}], h:280});
+  const bf = [{name:"Cable surface", x:T.time, y:T.T_cable_surface, color:"#ef6c00"}, {name:"Backfill edge", x:T.time, y:T.T_backfill_edge, color:"#8d6e63"},
+              {name:"Background (used)", x:T.time, y:T.T_background, color:"#1e88e5"}];
+  if (T.T_background_observed) bf.push({name:"Background recorded", x:T.time, y:T.T_background_observed, color:"#555", dash:"2 3"});
+  lineChart($("c_bf"), bf, {ylabel:"°C", h:280});
+  lineChart($("c_q"), [{name:"Losses I²R", x:T.time, y:T.losses_W_m, color:"#c62828"}, {name:"Out of cable surface ×n", x:T.time, y:T.q_surface_W_m.map(v=>v*(R.case.arrangement==="trefoil"?3:1)), color:"#ef6c00", dash:"5 3"}], {ylabel:"W/m", h:220, dec:1});
+  $("t_heat").innerHTML = `<table><tr><td>Losses over 72 h</td><td class="num">${Sm.losses_72h_kJ_m.value} kJ/m</td></tr><tr><td>Conducted out of the cable(s)</td><td class="num">${Sm.heat_out_of_cables_72h_kJ_m.value} kJ/m</td></tr><tr><td>Heat stored near cable at issue → end</td><td class="num">${Sm.stored_heat_at_issue_kJ_m.value} → ${Sm.stored_heat_end_kJ_m.value} kJ/m</td></tr><tr><td>Conductor at issue (after 168 h warm-up)</td><td class="num">${Sm.T_conductor_at_issue_C.value} °C</td></tr></table>`;
+  const rows = [["Permissible constant current", Sm.permissible_current_A, "A"], ["Load multiplier on the proposed profile", Sm.load_multiplier, "×"]];
+  if (Sm.permissible_current_observed_env_A) rows.push(["Same search, observed environment", Sm.permissible_current_observed_env_A, "A"], ["Effect of using the forecast", Sm.forecast_effect_A, "A"]);
+  rows.push(["Steady-state current (sanity check)", Sm.steady_state_current_A, "A"]);
+  $("rating4").innerHTML = rows.map(([l,v,u])=>`<div style="margin:4px 0"><b>${l}:</b> ${v.value} ${u} ${badge(v.provenance)} <span class="caption">${v.source||''}</span></div>`).join("");
+  lineChart($("c_lim"), [{name:"Conductor at the permissible current", x:T.time, y:T.T_conductor_at_limit, color:"#c62828"}], {ylabel:"°C", hlines:[{y:Sm.T_max_C.value,label:"T_max"}], h:200});
+  const dry = R.case.moisture_mode !== "background only";
+  $("moist4").innerHTML = (dry ? "" : `<div class="caption">Local moisture is held at the background value (${(T.theta_background[0]*100).toFixed(1)}% at lead 1) — no redistribution in this build. Switch to "critical-isotherm drying" to apply the reduced drying rule.</div>`) + `<div id="c_mo"></div>`;
+  lineChart($("c_mo"), [{name:"Background θ (m³/m³)", x:T.time, y:T.theta_background, color:"#1e88e5"}].concat(dry?[{name:"Dried radius (m)", x:T.time, y:T.dry_radius_m, color:"#ef6c00"}]:[]), {h:170, dec:3});
+  $("saved4").textContent = R.run_id ? `Saved as runs/run_${R.run_id}.json` : "";
+  $("hslider").value = Math.min(+$("hslider").value||24, 72); drawField();
+}
+let fieldT;
+function drawField(){ clearTimeout(fieldT); fieldT = setTimeout(async () => {
+  const h = +$("hslider").value; const F = await api("/api/field", {run_id:RES.run_id, hour:h});
+  $("hlabel").textContent = `+${h} h · ${F.time}`;
+  const cv = $("map2d"), ctx = cv.getContext("2d"), W = cv.width, Hh = cv.height, m = {l:46,r:70,t:12,b:30};
+  ctx.clearRect(0,0,W,Hh);
+  const all = F.T.flat(), lo = Math.min(...all), hi = Math.max(lo + 3, F.t_edge + 0.6*(F.t_edge - lo));
+  const col = v => { const f = Math.max(0, Math.min(1, (v-lo)/(hi-lo||1))); const stops=[[49,54,149],[69,117,180],[171,217,233],[254,224,144],[244,109,67],[165,0,38]];
+    const p = f*(stops.length-1), i = Math.min(stops.length-2, Math.floor(p)), t = p-i; return `rgb(${stops[i].map((c,k)=>Math.round(c+(stops[i+1][k]-c)*t)).join(",")})`; };
+  const nx = F.x.length, nz = F.z.length, cw = (W-m.l-m.r)/nx, ch = (Hh-m.t-m.b)/nz;
+  for (let j=0;j<nz;j++) for (let i=0;i<nx;i++){ ctx.fillStyle = col(F.T[j][i]); ctx.fillRect(m.l+i*cw, m.t+j*ch, cw+0.6, ch+0.6); }
+  ctx.strokeStyle="#2e5e1a"; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(m.l,m.t); ctx.lineTo(W-m.r,m.t); ctx.stroke();
+  const zx = x => m.l + (x - F.x[0])/(F.x[nx-1]-F.x[0])*(W-m.l-m.r), zz = z => m.t + z/F.z[nz-1]*(Hh-m.t-m.b);
+  ctx.strokeStyle="#fff"; ctx.setLineDash([4,3]); ctx.beginPath(); ctx.arc(zx(0), zz(F.cable_depth), (zx(F.r_bed)-zx(0)), 0, 2*Math.PI); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle="#000"; ctx.beginPath(); ctx.arc(zx(0), zz(F.cable_depth), 3, 0, 2*Math.PI); ctx.fill();
+  ctx.fillStyle="#333"; ctx.font="11px system-ui"; ctx.textAlign="right";
+  for (let z=0; z<=F.z[nz-1]+1e-9; z+=0.5) ctx.fillText(z.toFixed(1)+" m", m.l-4, zz(z)+4);
+  ctx.textAlign="center"; for (let x=-1.5; x<=1.5; x+=0.5) ctx.fillText(x.toFixed(1), zx(x), Hh-m.b+16);
+  for (let k=0;k<=40;k++){ ctx.fillStyle = col(lo+(hi-lo)*k/40); ctx.fillRect(W-m.r+20, m.t+(Hh-m.t-m.b)*(1-k/40)-4, 14, 8); }
+  ctx.fillStyle="#333"; ctx.textAlign="left"; ctx.fillText("≥"+hi.toFixed(1)+" °C", W-m.r+36, m.t+8); ctx.fillText(lo.toFixed(0)+" °C", W-m.r+36, Hh-m.b);
+  // radial profile at that hour
+  const pr = RES.radial.profiles[Math.max(0,h-1)];
+  const keep = RES.radial.r.map((r,i)=>i).filter(i=>RES.radial.r[i] <= Math.max(0.3, 2*RES.geometry.r_bed));
+  lineChart($("c_rad"), [{name:"T(r)", x:keep.map(i=>RES.radial.r[i]*1000), y:keep.map(i=>pr[i]), color:"#c62828"}], {numeric:true, h:200, legend:false, ylabel:"°C", xunit:" mm", xname:"r (mm)", dec:1});
+}, 120); }
+
+// ------------------------------------------------------------ screen 5
+async function loadEvidence(){
+  if (!DSAVED){ DSAVED = await api("/api/darmstadt/saved");
+    const labels = [...new Set(DSAVED.runs.map(r=>r.label))]; opts($("dcfg"), labels.map(l=>[l,l]));
+    const mf3 = await api("/api/darmstadt/mf3"); drawMF3(mf3); drawDStats(); }
+  drawDarm(DSAVED.runs.find(r=>r.bedding===$("dbed").value && r.label===$("dcfg").value), true);
+}
+function drawDarm(r, saved){
+  if (!r) return;
+  const h = r.hours.map(x=>x/24);
+  lineChart($("c_dt"), [{name:"Measured", x:h, y:r.measured_C, color:"#222"}, {name:"Calculated", x:h, y:r.model_C, color:"#c62828", dash:"6 3"}], {numeric:true, xunit:" d", xname:"day", ylabel:"°C", h:280, dec:1});
+  lineChart($("c_di"), [{name:"Recorded current", x:h, y:r.current_A, color:"#6a1b9a"}], {numeric:true, xunit:" d", xname:"day", ylabel:"A", h:140, dec:0});
+  lineChart($("c_dw"), [{name:"Soil 0.8 m (boundary)", x:h, y:r.soil_0p8m_C, color:"#1e88e5"}, {name:"Air", x:h, y:r.air_C, color:"#aaa"}], {numeric:true, xunit:" d", xname:"day", ylabel:"°C", h:150, dec:1});
+  $("dass").innerHTML = r.assumptions.map(a=>`<li>${a}</li>`).join("") + `<li>Bedding conductivity ${r.k_bedding_W_mK} W/m/K (measured dry-out curve at θ = ${r.theta.toFixed(3)})</li>`;
+  $("dcase").innerHTML = `Case <code>${r.case}</code> · sensor: <b>${r.sensor}</b> · ${saved ? `previously computed ${DSAVED.computed_at} with the same code` : 'computed live just now'} · MAE ${r.stats.mae_K} K, bias ${r.stats.bias_K} K, within ±5 K ${(r.stats.within_5K*100).toFixed(0)}%, coverage ${(r.stats.coverage*100).toFixed(1)}%`;
+}
+function drawDStats(){
+  const beds = ["silt","sand","fluidized_backfill","loam"], labels = [...new Set(DSAVED.runs.map(r=>r.label))];
+  $("t_dstats").innerHTML = "<table><tr><th>Configuration</th>" + beds.map(b=>`<th class="num">${b.replace('_',' ')}<br><span class="caption">MAE / bias (K)</span></th>`).join("") + "</tr>" +
+    labels.map(l=>`<tr><td>${l}</td>` + beds.map(b=>{ const r = DSAVED.runs.find(x=>x.bedding===b&&x.label===l); const s = r&&r.stats;
+      return `<td class="num ${s&&s.mae_K<5?'ok':''}">${s?`${s.mae_K} / ${s.bias_K>0?'+':''}${s.bias_K}`:'–'}</td>`; }).join("") + "</tr>").join("") +
+    `<tr><td class="caption">measured mean</td>${beds.map(b=>`<td class="num caption">${DSAVED.runs.find(x=>x.bedding===b).stats.measured_mean_C} °C</td>`).join("")}</tr></table><div class="caption">Coverage = share of recorded hours with both a measurement and a model value. Negative bias = model cooler than measured.</div>`;
+}
+function drawMF3(d){
+  const h = d.hours.map(x=>x/24), C = {silt:"#8d6e63", sand:"#e0a800", loam:"#6d4c41", fluidized_backfill:"#1e88e5"};
+  const ser = []; ["sand","silt","loam"].forEach(b => { if (d.moisture_pct[b]) ser.push({name:`${b} near cable`, x:h, y:d.moisture_pct[b], color:C[b]});
+    if (d.moisture_pct[b+"_undisturbed"]) ser.push({name:`${b} undisturbed`, x:h, y:d.moisture_pct[b+"_undisturbed"], color:C[b], dash:"4 3"}); });
+  lineChart($("c_dm"), ser, {numeric:true, xunit:" d", xname:"day", ylabel:"VWC %", h:240, dec:1});
+  lineChart($("c_ds"), Object.entries(d.sheath_C).map(([b,y])=>({name:`${b.replace('_',' ')} sheath`, x:h, y, color:C[b]||"#999"})), {numeric:true, xunit:" d", xname:"day", ylabel:"°C", h:240, dec:1});
+  $("mf3note").textContent = d.note + " Note how the sand next to the cable dries to ~2% while undisturbed sand stays near 12%.";
+}
+async function runCompare(){
+  try { CMP = await api("/api/compare", {case: caseFromState(), what: $("vary").value});
+    const ok = CMP.rows.filter(r=>!r.error);
+    barChart($("c_cmp"), ok.map(r=>r.option), ok.map(r=>r.permissible_current_A), "A");
+    $("t_cmp").innerHTML = "<table><tr><th>Option</th><th class='num'>Permissible current (A)</th><th class='num'>Peak conductor (°C)</th><th class='num'>Min margin (K)</th><th class='num'>T_c at issue (°C)</th></tr>" +
+      CMP.rows.map(r=> r.error ? `<tr><td>${r.option}</td><td colspan=4 class="bad">${r.error}</td></tr>` : `<tr><td>${r.option}</td><td class="num">${r.permissible_current_A}</td><td class="num">${r.peak_T_conductor_C}</td><td class="num">${r.min_margin_K}</td><td class="num">${r.T_conductor_at_issue_C}</td></tr>`).join("") +
+      `</table><div class="caption">Saved as runs/${CMP.saved_as} · ${CMP.saved_at}</div>`;
+  } catch(e){ $("t_cmp").innerHTML = `<div class="err">${e.message}</div>`; }
+}
+
+// ------------------------------------------------------------ archive + runs
+async function loadRepo(){
+  if (REPO) return; REPO = await api("/api/repo");
+  $("hist").innerHTML = "<table><tr><th>Stage</th><th>Question</th><th>What it taught us</th></tr>" + REPO.history.map(h=>`<tr><td style="white-space:nowrap">${h.stage}<div class="caption">${h.date}</div></td><td>${h.title}</td><td>${h.learned}</td></tr>`).join("") + "</table>";
+  const drawBench = () => { const sp = document.querySelector('input[name=split]:checked').value, B = REPO.benchmark[sp], cols = ["T20_h24","T20_h48","T20_h72","T50_h24","T50_h48","T50_h72"];
+    const best = {}; cols.forEach(c => best[c] = Math.min(...B.table.filter(r=>r.code!=="RECON").map(r=>r[c])));
+    $("benchcap").textContent = `Median event MAE (°C), recomputed from the repo's per-event scores: ${B.n_events} hot-spell events, ${B.n_stations} stations.`;
+    $("t_bench").innerHTML = "<table><tr><th>Code</th><th>Method</th><th class='num'>20 cm · 24 h</th><th class='num'>48 h</th><th class='num'>72 h</th><th class='num'>50 cm · 24 h</th><th class='num'>48 h</th><th class='num'>72 h</th></tr>" +
+      B.table.map(r=>`<tr style="${r.code==='RECON'?'color:#888;font-style:italic':''}"><td>${r.code}</td><td>${r.method}</td>${cols.map(c=>`<td class="num" style="${r.code!=='RECON'&&r[c]===best[c]?'font-weight:700;color:#2e7d32':''}">${r[c]?.toFixed(3)??''}</td>`).join("")}</tr>`).join("") + "</table>"; };
+  drawBench(); document.querySelectorAll('input[name=split]').forEach(r=>r.onchange=drawBench);
+  const L = REPO.stage_log, cls = s => s.startsWith("OK")?"ok":s.startsWith("SKIP")?"caption":"bad";
+  $("stagelog").innerHTML = `<div style="margin:6px 0">${Object.entries(L.counts).map(([k,v])=>`<b class="${cls(k)}">${v} ${k}</b>`).join(" · ")}</div><div style="max-height:300px;overflow:auto"><table>${L.rows.map(r=>`<tr><td>${r.script}</td><td class="${cls(r.status)}">${r.status}</td><td class="caption">${r.note||''}</td></tr>`).join("")}</table></div>`;
+  const R = REPO.repro; $("repro").innerHTML = `<div style="font-size:26px">${R.identical} / ${R.total}</div><div class="caption">outputs regenerated byte-identical</div>` + (R.different.length? "<table style='margin-top:8px'>"+R.different.map(d=>`<tr><td>${d.file}</td><td class="caption">${d.detail}</td></tr>`).join("")+"</table>":"");
+}
+async function loadRuns(){
+  const L = await api("/api/runs");
+  $("t_runs").innerHTML = L.length ? "<table><tr><th>Saved</th><th>Station</th><th>Issue</th><th>Forecast</th><th>Installation</th><th class='num'>Permissible (A)</th><th></th></tr>" +
+    L.map(r=>`<tr><td>${r.saved_at}</td><td>${r.station}</td><td>${r.issue}</td><td>${r.method}</td><td>${r.preset||''}</td><td class="num">${r.permissible_current_A}</td><td><button class="sec" data-run="${r.run_id}">Open</button></td></tr>`).join("") + "</table>" : "<div class='caption'>No runs saved yet.</div>";
+  $("t_runs").querySelectorAll("button[data-run]").forEach(b => b.onclick = async () => { RES = await api("/api/run?id="+b.dataset.run); show("s4"); });
+}
+
+// ------------------------------------------------------------ init
+async function init(){
+  try {
+    META = await api("/api/meta");
+    $("livebadge").innerHTML = META.live && META.live.enabled ? ' · <span class="pill" style="background:#e7f5ea;color:#1b5e20">ML models running live</span>' : ' · <span class="pill">ML forecasts precomputed</span>';
+    const st = META.stations.map(o=>[o.name, o.name + (o.n_spells?` (${o.n_spells} spells)`:'')]);
+    opts($("st1"), st); opts($("st2"), st);
+    opts($("stage"), Object.entries(META.stages).map(([k,v])=>[k, `${k} · ${v}`]), 3);
+    opts($("preset"), Object.entries(META.presets).map(([k,v])=>[k,v.label]).concat([["custom","Custom (keep my adjustments)"]]), S.preset);
+    opts($("cable"), META.cables.map(c=>[c.name, `${c.name} · ${c.od_mm} mm`]));
+    opts($("bed"), Object.keys(META.beddings).map(b=>[b,b]));
+    $("findings").innerHTML = META.findings.map(f=>`<li>${f.text}<span class="src">${f.source}</span></li>`).join("");
+    depthBoxes($("dep1"), S.dep1, ()=>drawSoil()); depthBoxes($("dep2"), S.dep2, ()=>drawForecast());
+    $("prior").value = 300; $("future").value = 400; $("cur4").value = 400;
+    document.querySelectorAll(".step").forEach(t => t.onclick = () => show(t.dataset.s));
+    $("st1").onchange = () => { S.spell = null; setStation($("st1").value); };
+    $("st2").onchange = async () => { S.spell = null; await setStation($("st2").value); loadForecast(); };
+    $("spell").onchange = async () => { S.spell = $("spell").value; const sp = (await api("/api/spells?station="+S.station)).find(s=>s.spell_id===S.spell); if (sp && sp.issue){ S.issue = sp.issue; fillIssues(); } loadSoil(); casebar(); };
+    $("period").onchange = () => { SOIL._per = $("period").value.split(",").map(Number); drawSoil(); };
+    $("toS2").onclick = () => show("s2");
+    $("issue").onchange = () => { S.issue = $("issue").value; loadForecast(); };
+    $("method").onchange = () => { S.method = $("method").value; loadForecast(); };
+    $("stage").onchange = () => { S.stage = +$("stage").value; loadForecast(); };
+    document.querySelectorAll('input[name=var2]').forEach(r => r.onchange = () => { S.var2 = r.value; drawForecast(); });
+    $("cmpStages").onclick = compareStages; $("toS3").onclick = () => show("s3");
+    $("preset").onchange = () => { S.preset = $("preset").value; if (S.preset !== "custom") S.over = {}; if (RES) RES._stale = true; $("tlim").value=""; loadInstall(); };
+    $("cable").onchange = () => { $("tlim").value=""; setOver("cable", $("cable").value); };
+    $("arr").onchange = () => setOver("arrangement", $("arr").value);
+    $("depth").onchange = () => setOver("depth_m", +$("depth").value);
+    $("duct").onchange = () => setOver("in_duct", $("duct").checked);
+    $("bed").onchange = () => setOver("bedding", $("bed").value);
+    $("bedr").onchange = () => setOver("bedding_radius_m", +$("bedr").value);
+    ["prior","future","tlim"].forEach(id => $(id).onchange = () => { if (RES) RES._stale = true; $("cur4").value = $("future").value; loadInstall(); });
+    document.querySelectorAll('input[name=shape]').forEach(r => r.onchange = () => { if (RES) RES._stale = true; loadInstall(); });
+    $("toS4").onclick = () => show("s4");
+    $("run4").onclick = runAssess; $("perm4").onclick = runAssess;
+    $("env").onchange = () => { S.env = $("env").value; runAssess(); };
+    $("mm").onchange = () => { S.mm = $("mm").value; runAssess(); };
+    $("tcrit").onchange = runAssess;
+    $("hslider").oninput = drawField;
+    $("dbed").onchange = () => drawDarm(DSAVED.runs.find(r=>r.bedding===$("dbed").value && r.label===$("dcfg").value), true);
+    $("dcfg").onchange = $("dbed").onchange;
+    $("dlive").onclick = async () => { const lab = $("dcfg").value, mo = lab.startsWith("near")?"near_cable":"undisturbed", dr = lab.includes("drying"), tc = dr ? +(lab.match(/above (\d+)/)||[0,45])[1] : 45;
+      drawDarm(await api("/api/darmstadt/run", {bedding:$("dbed").value, moisture:mo, drying:dr, t_crit:tc}), false); };
+    $("cmpbtn").onclick = runCompare;
+    $("cmpdl").onclick = () => { if (!CMP) return; download(`comparison_${CMP.what}.csv`, toCSV(["option","permissible_current_A","peak_T_conductor_C","min_margin_K","T_conductor_at_issue_C"], CMP.rows.length, (c,i)=>CMP.rows[i][c])); download(`comparison_${CMP.what}.json`, JSON.stringify(CMP,null,2), "application/json"); };
+    $("dlA").onclick = () => { const r = {...RES}; delete r.radial; download(`soilsens_run_${RES.run_id||'x'}.json`, JSON.stringify(r,null,2), "application/json"); };
+    $("dlB").onclick = () => { const T = RES.trajectory, ks = Object.keys(T).filter(k=>Array.isArray(T[k])); download(`trajectory_${RES.run_id||'x'}.csv`, toCSV(ks, T.time.length, (k,i)=>T[k][i])); };
+    $("dlC").onclick = () => { const F = RES.forecast, cols = ["time"].concat(DEPTHS.map(d=>"T"+d+"_fc"), DEPTHS.map(d=>"M"+d+"_fc"), DEPTHS.map(d=>"T"+d+"_obs"), DEPTHS.map(d=>"M"+d+"_obs"));
+      download(`forecast_${RES.run_id||'x'}.csv`, toCSV(cols, F.times.length, (c,i)=> c==="time"?F.times[i] : (()=>{ const v=c[0], d=DEPTHS.indexOf(+c.slice(1).split("_")[0]), src=c.endsWith("_fc")?(v==="T"?F.T:F.M):(v==="T"?F.obsT:F.obsM); return src? src[i][d] : ""; })())); };
+    window.addEventListener("resize", () => { const on = document.querySelector(".screen.on").id; if (on==="s1") drawSoil(); if (on==="s2" && FC) drawForecast(); if (on==="s4" && RES) drawAssess(); });
+    await setStation("NE_Lincoln_8_ENE"); loadSkill();
+  } catch(e){ $("casebar").innerHTML = `<div class="err">Could not reach the SoilSens server: ${e.message}\nStart it with:  python run_soilsens.py</div>`; }
+}
+init();
+</script>
+</body>
+</html>

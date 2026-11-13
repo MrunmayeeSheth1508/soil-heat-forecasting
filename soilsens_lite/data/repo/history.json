@@ -1,0 +1,50 @@
+[
+ {
+  "stage": "Stage 1",
+  "date": "8 Oct",
+  "title": "Can the question be asked at all? Data access and a first look",
+  "learned": "access and coverage justify an episode audit, not a conclusion that moisture is identifiable. \"Gate 2 passed decisively\" was withdrawn. Integer-like deep readings reflect 0.1 \u00b0C resolution, not zero information."
+ },
+ {
+  "stage": "Stage 2",
+  "date": "8 Oct",
+  "title": "First inverse pilot, its false null, and the correction",
+  "learned": "no independent moisture effect established, and also no proof of absence. Conditional reconstruction with measured boundaries is not forecasting."
+ },
+ {
+  "stage": "Stage 3",
+  "date": "8 Oct",
+  "title": "Do other stations behave the same?",
+  "learned": "a shared linear moisture term does not transfer; station differences motivated looking for measured soil properties."
+ },
+ {
+  "stage": "Stage 4",
+  "date": "8 Oct",
+  "title": "Soil properties",
+  "learned": "property-supported stations exist, but cores are ~2009\u20132011 and porosity vs measured moisture does not always agree (moisture sometimes exceeds the porosity estimate)."
+ },
+ {
+  "stage": "Stage 5",
+  "date": "14 Oct",
+  "title": "Literature, then a change of direction",
+  "learned": "broad material-law novelty was weak. Project moved to an event-focused study (Direction A) on the same data."
+ },
+ {
+  "stage": "Stage 6",
+  "date": "14 Oct",
+  "title": "Phase 3 events, Direction A selection and pilot A",
+  "learned": "rain-linked change not confirmed. The pilot's solver and events became the assets for the next stages."
+ },
+ {
+  "stage": "Stage 7",
+  "date": "15 Oct",
+  "title": "Was the rain effect real? Layered and identifiability diagnostics",
+  "learned": "the rain estimate depends on model, selection rule and forcing. Closed as unresolved."
+ },
+ {
+  "stage": "Stage 8",
+  "date": "15 Oct",
+  "title": "Forecasting, the current project",
+  "learned": "Benchmark complete on 1,689 hot-spell events (716 validation). Best 72 h MAE: 20 cm conduction C2 0.673 \u00b0C; 50 cm persistence 0.274 \u00b0C. Room for AI at 20 cm; simple baselines adequate at 50 cm. Next: GRU + boosted trees with rainfall/moisture ablations (this app)."
+ }
+]
